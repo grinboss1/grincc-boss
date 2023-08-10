@@ -49,12 +49,7 @@ function Index(props) {
   </div>
   </li>
 </ul>
-<ul>
-  <li><UserIcon /> anynomous</li>
-  <li><UserIcon /> mcmmike</li>
-  <li><UserIcon /> future3000</li>
-  <li><UserIcon /> mwgrin_fr</li>
-</ul>
+
 
         </div>
                 
