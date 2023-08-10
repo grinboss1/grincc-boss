@@ -18,21 +18,21 @@ function Index(props) {
 
                 <div className="py-4">
 
-                    <ul className="pl-4 pb-4">
-
+   <ul className="pl-4 pb-4">
   <li style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ display: 'flex', alignItems: 'center', border: '1.5px solid #000', padding: '2px', borderRadius: '5px', marginTop: '1px', marginBottom: '0px', marginLeft: '-3.5px', width: '200px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', border: '1.5px solid #000', padding: '2px', borderRadius: '5px', marginTop: '1px', marginBottom: '0px', marginLeft: '-3.5px' }}>
       <UserIcon2 />
       <span style={{ paddingLeft: '3.6px', marginBottom: '4.6px', marginRight: '2px' }}>grin boss <span style={{ fontSize: '0.7em', color: '#888' }}>*CC + OC lead*</span></span>
     </div>
   </li>
   <li style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ display: 'flex', alignItems: 'center', border: '1.5px solid #000', padding: '2px', borderRadius: '5px', marginTop: '1px', marginBottom: '0px', marginLeft: '-3.5px', width: '200px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '0px', marginLeft: '-3.5px' }}> {/* Removed border */}
       <Icon3 />
-      <span style={{ paddingLeft: '3.6px', marginBottom: '4.6px', marginRight: '2px' }}>grin boss <span style={{ fontSize: '0.7em', color: '#888' }}>*CC + OC lead* additional text</span></span>
+      <span style={{ paddingLeft: '3.6px', marginBottom: '4.6px', marginRight: '2px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}>*CC + OC ad*</span></span>
     </div>
   </li>
 </ul>
+
 
 
 
