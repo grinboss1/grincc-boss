@@ -3,6 +3,7 @@ import RightArrow from "../assets/icons/rightArrow";
 import Check from "../assets/icons/check";
 import Link from 'next/link'
 import UserIcon from "../assets/icons/userIcon";
+import UserIcon2 from "../assets/icons/userIcon2";
 
 
 function Index(props) {
@@ -16,7 +17,7 @@ function Index(props) {
                 <div className="py-4">
 
                     <ul className="pl-4 pb-4">
-                        <li><UserIcon /> grin boss *CC + OC lead*</li>
+                        <li><UserIcon2 /> grin boss *CC + OC lead*</li>
                        <li><UserIcon /> anynomous</li>
                         <li><UserIcon /> mcmmike</li>
                         <li><UserIcon /> future3000</li>
