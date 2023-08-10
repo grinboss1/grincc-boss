@@ -16,19 +16,21 @@ function Index(props) {
 
            <div className="py-4">
 
-   <ul className="pl-4 pb-4">
-  <li style={{ display: 'flex', alignItems: 'center' }}>
-    <div style={{ display: 'flex', alignItems: 'center', border: '1.5px solid #000', padding: '2px', borderRadius: '5px', marginTop: '1px', marginBottom: '0px', marginLeft: '-3.5px' }}>
+<ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}> {/* Adjust the margin and padding */}
+  <li style={{ display: 'flex', alignItems: 'center', marginBottom: '-10px' }}> {/* Negative margin to reduce space */}
+    <div style={{ display: 'flex', alignItems: 'center', border: '1.5px solid #000', padding: '2px', borderRadius: '5px', marginTop: '1px', marginBottom: '0px', marginLeft: '-18px' }}>
       <UserIcon2 />
-      <span style={{ paddingLeft: '3.6px', marginBottom: '4.6px', marginRight: '2px' }}>grin boss <span style={{ fontSize: '0.7em', color: '#888' }}>*CC + OC lead*</span></span>
+      <span style={{ paddingLeft: '3.6px', marginBottom: '1px', marginRight: '2px' }}>grin boss <span style={{ fontSize: '0.7em', color: '#888' }}>*CC + OC lead*</span></span>
     </div>
   </li>
-  <li style={{ display: 'flex', alignItems: 'center' }}>
+  <li style={{ display: 'flex', alignItems: 'center', marginTop: '-10px' }}> {/* Negative margin to reduce space */}
     <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '0px', marginLeft: '-18px' }}> {/* Removed border */}
       <Icon3 />
-      <span style={{ paddingLeft: '3.8px', marginBottom: '1px', marginRight: '2px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+      <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
     </div>
   </li>
+</ul>
+
          </ul>
           <ul>
             <li><UserIcon /> anynomous</li>
