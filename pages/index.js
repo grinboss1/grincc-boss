@@ -22,7 +22,7 @@ function Index(props) {
 <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
 
   <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
-    <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '0px', marginBottom: '-2px', marginLeft: '-2px' }}>
       <Icon3 />
       <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
     </div>
