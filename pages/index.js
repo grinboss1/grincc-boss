@@ -20,7 +20,7 @@ function Index(props) {
   <li style={{ display: 'flex', alignItems: 'center', marginBottom: '0px' }}>
     <div style={{ display: 'flex', alignItems: 'center', border: '1.5px solid #000', padding: '2px', borderRadius: '5px', marginTop: '1px', marginBottom: '0px', marginLeft: '-3px' }}>
       <UserIcon2 />
-      <span style={{ paddingLeft: '3.2px', marginBottom: '1px', marginRight: '2px' }}>grin boss <span style={{ fontSize: '0.7em', color: '#888' }}>*CC  OC lead*</span></span>
+      <span style={{ paddingLeft: '3px', marginBottom: '1px', marginRight: '2px' }}>grin boss <span style={{ fontSize: '0.7em', color: '#888' }}>*CC  OC lead*</span></span>
     </div>
   </li>
   <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
