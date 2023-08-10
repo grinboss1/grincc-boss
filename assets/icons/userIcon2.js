@@ -9,7 +9,7 @@ const UserIcon2 = () => {
         width: '24px',
         height: '24px',
         borderRadius: '50%',
-        marginLeft: '2px',
+        marginLeft: '0px',
         background: `url('https://i.ibb.co/PhrSq2p/Capture.png') no-repeat center/cover`, // Centered and covering the entire div
         overflow: 'hidden' // Ensuring no spill-over
       }}
