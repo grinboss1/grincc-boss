@@ -29,7 +29,6 @@ function Index(props) {
       <span style={{ paddingLeft: '3.6px', marginBottom: '4.6px', marginRight: '2px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}>*CC + OC ad*</span></span>
     </div>
   </li>
-</ul>
          </ul>
           <ul>
             <li><UserIcon /> anynomous</li>
