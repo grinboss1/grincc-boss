@@ -1,12 +1,10 @@
 import React from 'react';
 import RightArrow from "../assets/icons/rightArrow";
 import Check from "../assets/icons/check";
-import Link from 'next/link'
+import Link from 'next/link';
 import UserIcon from "../assets/icons/userIcon";
 import UserIcon2 from "../assets/icons/userIcon2";
 import Icon3 from '../assets/icons/Icon3'; // Adjust the path to the location of Icon3
-
-
 
 function Index(props) {
   return (
@@ -25,7 +23,6 @@ function Index(props) {
               {/* ... */}
             </li>
           </ul> {/* Closing tag for the first <ul> */}
-
           <ul>
             <li><UserIcon /> anynomous</li>
             <li><UserIcon /> mcmmike</li>
@@ -33,7 +30,6 @@ function Index(props) {
             <li><UserIcon /> mwgrin_fr</li>
           </ul>
         </div>
-      </div>
                 </div>
                 <h2 className="header-2">Background</h2>
                 <div className="pb-4 text-justify">
