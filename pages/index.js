@@ -30,7 +30,7 @@ function Index(props) {
             <li><UserIcon /> mwgrin_fr</li>
           </ul>
         </div>
-                </div>
+                
                 <h2 className="header-2">Background</h2>
                 <div className="pb-4 text-justify">
                     <p >
