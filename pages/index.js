@@ -35,7 +35,7 @@ function Index(props) {
       <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>anynomus <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
     </div>
   </li>
-</ul>
+
 
          </ul>
           <ul>
