@@ -10,10 +10,8 @@ const UserIcon2 = () => {
         height: '24px',
         borderRadius: '50%',
         marginLeft: '2px',
-        backgroundImage: 'url(https://i.ibb.co/PhrSq2p/Capture.png)',
-        backgroundSize: '50%', // Reduce the size of the image within the circle by 50%
-        backgroundPosition: 'center', // Center the image within the circle
-        backgroundRepeat: 'no-repeat' // Prevent the image from repeating
+        background: `url('https://i.ibb.co/PhrSq2p/Capture.png') no-repeat center/cover`, // Centered and covering the entire div
+        overflow: 'hidden' // Ensuring no spill-over
       }}
     />
   );
