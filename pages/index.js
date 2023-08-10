@@ -14,15 +14,23 @@ function Index(props) {
         <p>Grin Community Council is <a className="text-primary" href="https://forum.grin.mw/t/call-for-grin-community-candidates-for-additional-fund-granting-control/8521/13">formed</a> from valued community members with remarkable contributions to Grin in 2021 May.
           Council's main task is to control and direct <i>Grin Community Fund </i> to support grin projects, bounties and community activities. Current council members are:</p>
 
-        <div className="py-4">
-          <ul className="pl-4 pb-4">
-            <li style={{ display: 'flex', alignItems: 'center' }}>
-              {/* ... */}
-            </li>
-            <li style={{ display: 'flex', alignItems: 'center' }}>
-              {/* ... */}
-            </li>
-          </ul> {/* Closing tag for the first <ul> */}
+           <div className="py-4">
+
+   <ul className="pl-4 pb-4">
+  <li style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ display: 'flex', alignItems: 'center', border: '1.5px solid #000', padding: '2px', borderRadius: '5px', marginTop: '1px', marginBottom: '0px', marginLeft: '-3.5px' }}>
+      <UserIcon2 />
+      <span style={{ paddingLeft: '3.6px', marginBottom: '4.6px', marginRight: '2px' }}>grin boss <span style={{ fontSize: '0.7em', color: '#888' }}>*CC + OC lead*</span></span>
+    </div>
+  </li>
+  <li style={{ display: 'flex', alignItems: 'center' }}>
+    <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '0px', marginLeft: '-3.5px' }}> {/* Removed border */}
+      <Icon3 />
+      <span style={{ paddingLeft: '3.6px', marginBottom: '4.6px', marginRight: '2px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}>*CC + OC ad*</span></span>
+    </div>
+  </li>
+</ul>
+         </ul>
           <ul>
             <li><UserIcon /> anynomous</li>
             <li><UserIcon /> mcmmike</li>
