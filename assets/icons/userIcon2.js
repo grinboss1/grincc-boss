@@ -7,7 +7,7 @@ const UserIcon2 = () => {
     <img
       src="https://i.ibb.co/PhrSq2p/Capture.png"
       alt="User Icon"
-      style={{ width: '20px', height: '20px', borderRadius: '50%', marginLeft: '2px' }}
+      style={{ width: '24px', height: '24px', borderRadius: '50%', marginLeft: '2px' }} // Increased size to 24px, added marginLeft
     />
   );
 };
