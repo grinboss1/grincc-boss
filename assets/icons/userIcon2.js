@@ -1,3 +1,5 @@
+// ../assets/icons/userIcon2.js
+
 import React from 'react';
 
 const UserIcon2 = () => {
