@@ -4,6 +4,8 @@ import Check from "../assets/icons/check";
 import Link from 'next/link'
 import UserIcon from "../assets/icons/userIcon";
 import UserIcon2 from "../assets/icons/userIcon2";
+import Icon3 from './path/to/Icon3'; // Adjust the path to the location of Icon3
+
 
 
 function Index(props) {
