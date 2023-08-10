@@ -18,34 +18,34 @@ function Index(props) {
           Council's main task is to control and direct <i>Grin Community Fund </i> to support grin projects, bounties and community activities. Current council members are:</p>
 
            <div className="py-4">
-
-<ul className="pl-4 pb-4" style={{ margin: '10px', padding: '0px' }}>
-
-  <li style={{ display: 'flex', alignItems: 'center', marginTop: '1px' }}>
-    <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '-12px', marginBottom: '-2px', marginLeft: '-2px' }}>
-      <Icon3 />
-      <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
-    </div>
-  </li>
-  <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
-    <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
-      <Icon4 />
-      <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>mcmmike <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
-    </div>
-  </li>
-  <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
-    <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
-      <Icon5 />
-      <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}> future3000 <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
-    </div>
-  </li>
-  <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
-    <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
-      <Icon6 />
-      <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>mwgrin_fr <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+  <div className="icons-container"> {/* New wrapper div */}
+    <ul className="pl-4 pb-4" style={{ margin: '10px', padding: '0px' }}>
+      <li style={{ display: 'flex', alignItems: 'center', marginTop: '1px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '-12px', marginBottom: '-2px', marginLeft: '-2px' }}>
+          <Icon3 />
+          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+        </div>
+      </li>
+      <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
+          <Icon4 />
+          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>mcmmike <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+        </div>
+      </li>
+      <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
+          <Icon5 />
+          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>future3000 <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+        </div>
+      </li>
+      <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
+          <Icon6 />
+          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>mwgrin_fr <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+        </div>
+      </li>
+    </ul>
   </div>
-  </li>
-</ul>
 
 
         </div>
