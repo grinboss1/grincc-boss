@@ -19,7 +19,7 @@ function Index(props) {
                     <ul className="pl-4 pb-4">
 <li style={{ display: 'flex', alignItems: 'center' }}>
   <UserIcon2 />
-  <span style={{ paddingLeft: '2px', marginBottom: '6px' }}>grin boss <span style={{ fontSize: '0.8em', color: '#888' }}>*CC + OC lead*</span></span>
+  <span style={{ paddingLeft: '2px', marginBottom: '5.5px' }}>grin boss <span style={{ fontSize: '0.8em', color: '#888' }}>*CC + OC lead*</span></span>
 </li>
 
 
