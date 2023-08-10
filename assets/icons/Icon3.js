@@ -1,4 +1,5 @@
-// Icon3 component
+import React from 'react';
+
 const Icon3 = () => {
   return (
     <img
@@ -8,3 +9,5 @@ const Icon3 = () => {
     />
   );
 };
+
+export default Icon3;
