@@ -61,7 +61,7 @@ function Index(props) {
 
 
 
-            </div>
+           
         </section>
 
     );
