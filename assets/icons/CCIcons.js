@@ -32,7 +32,24 @@ export const Icon6 = () => (
   />
 );
 
-const CustomModal = ({ isOpen, onClose, label }) => {
+export const IconWrapper = ({ IconComponent, label }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
+
+  return (
+    <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+      <div className="icon-wrapper">
+        <IconComponent />
+        <span className="icon-label">{label}</span>
+      </div>
+      {modalIsOpen && <CustomModal onClose={closeModal} label={label} />}
+    </li>
+  );
+};
+
+const CustomModal = ({ onClose, label }) => {
   const contentRef = useRef();
 
   const handleClickOutside = (e) => {
@@ -42,16 +59,11 @@ const CustomModal = ({ isOpen, onClose, label }) => {
   };
 
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
+  }, [onClose]);
 
   return (
     <div className="modal-overlay">
@@ -63,25 +75,4 @@ const CustomModal = ({ isOpen, onClose, label }) => {
     </div>
   );
 };
-
-export const IconWrapper = ({ IconComponent, label }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
-
-  return (
-    <li className="icon-container px-2 py-2" style={{ cursor: 'pointer' }}>
-      <div className="icon-with-modal" onClick={openModal}>
-        <div className="icon-wrapper">
-          <IconComponent />
-          <span className="icon-label">{label}</span>
-        </div>
-        <CustomModal isOpen={modalIsOpen} onClose={closeModal} label={label} />
-      </div>
-    </li>
-  );
-};
-
-
 
