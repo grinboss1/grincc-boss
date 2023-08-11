@@ -39,7 +39,7 @@ export const IconWrapper = ({ IconComponent, label }) => {
 
  const openModal = () => {
   const rect = iconRef.current.getBoundingClientRect();
-  setModalPosition({ top: rect.top + window.scrollY, left: rect.right -1350  }); // Add 2px to the right
+  setModalPosition({ top: rect.top + window.scrollY, left: rect.right -1  }); // Add 2px to the right
   setModalIsOpen(true);
 }
 
@@ -76,13 +76,15 @@ const CustomModal = ({ onClose, label, position }) => {
   }, [onClose]);
 
 return (
-  <div className="modal-overlay">
-    <div className="modal-content-container">
-      <div className="modal-content" ref={contentRef} style={{ top: position.top, left: position.left }}>
-        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
-      </div>
+    <div className="icon-parent-container">
+      <li ref={iconRef} className="icon-container" onClick={openModal}>
+        <div className="icon-wrapper">
+          <IconComponent />
+          <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
+        </div>
+      </li>
+      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
     </div>
-  </div>
-);
+  );
 };
 
