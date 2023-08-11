@@ -37,11 +37,12 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
-  const openModal = () => {
+ const openModal = () => {
   const rect = iconRef.current.getBoundingClientRect();
-  setModalPosition({ top: rect.top + window.scrollY, left: rect.left + rect.width + 2 }); // Adding the width of the icon plus 2 pixels
+  setModalPosition({ top: rect.top + window.scrollY, left: rect.right + 2 }); // Add 2px to the right
   setModalIsOpen(true);
 };
+
 
 
   const closeModal = () => setModalIsOpen(false);
