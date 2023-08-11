@@ -34,23 +34,30 @@ export const Icon6 = () => (
 
 export const IconWrapper = ({ IconComponent, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  const iconRef = useRef(null);
 
-  const openModal = () => setModalIsOpen(true);
+  const openModal = () => {
+    const rect = iconRef.current.getBoundingClientRect();
+    setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
+    setModalIsOpen(true);
+  };
   const closeModal = () => setModalIsOpen(false);
 
   return (
-    <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+    <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
       <div className="icon-wrapper">
         <IconComponent />
         <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
       </div>
-      {modalIsOpen && <CustomModal onClose={closeModal} label={label} />}
+      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
     </li>
   );
 };
 
 
-const CustomModal = ({ onClose, label }) => {
+
+const CustomModal = ({ onClose, label, position }) => {
   const contentRef = useRef();
 
   const handleClickOutside = (e) => {
@@ -68,7 +75,7 @@ const CustomModal = ({ onClose, label }) => {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content-container">
+      <div className="modal-content-container" style={{ top: position.top, left: position.left }}>
         <div className="modal-content" ref={contentRef}>
           <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
         </div>
@@ -76,4 +83,3 @@ const CustomModal = ({ onClose, label }) => {
     </div>
   );
 };
-
