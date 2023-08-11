@@ -2,7 +2,8 @@ import React from 'react';
 import RightArrow from "../assets/icons/rightArrow";
 import Check from "../assets/icons/check";
 import Link from 'next/link';
-import UserIcon from "../assets/icons/userIcon";
+//import UserIcon from "../assets/icons/userIcon";
+import { IconList } from '../assets/icons/CCIcons';
 import { IconWrapper } from '../assets/icons/CCIcons';
 
 
