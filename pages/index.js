@@ -49,10 +49,10 @@ function Index(props) {
     <span className="icon-label">mwgrin_fr <span></span></span>
   </div>
 </li>
-   </ul> {/* Closing ul tag */}
+   </ul> 
   </div>
   
-  </div>
+  
  <h2 className="header-2">Background</h2>
                 <div className="pb-4 text-justify">
                     <p >
