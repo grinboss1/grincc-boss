@@ -32,6 +32,16 @@ export const Icon6 = () => (
   />
 );
 
+export const IconList = () => (
+  <ul className="icon-list">
+    <IconWrapper IconComponent={Icon3} label="anynomous" />
+    <IconWrapper IconComponent={Icon4} label="mcmmike" />
+    <IconWrapper IconComponent={Icon5} label="future3000" />
+    <IconWrapper IconComponent={Icon6} label="mwgrin_fr" />
+  </ul>
+);
+
+
 export const IconWrapper = ({ IconComponent, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
@@ -45,19 +55,15 @@ setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
 
   const closeModal = () => setModalIsOpen(false);
 
-return (
-  <ul className="icon-list">
-    <div className="icon-parent-container" style={{ position: 'relative' }}>
-      <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
-        <div className="icon-wrapper">
-          <IconComponent />
-          <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
-        </div>
-      </li>
+  return (
+    <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+      <div className="icon-wrapper">
+        <IconComponent />
+        <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
+      </div>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
-    </div>
-  </ul>
-);
+    </li>
+  );
 };
 
 
