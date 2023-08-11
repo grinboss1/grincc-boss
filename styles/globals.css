@@ -92,10 +92,10 @@ p {
 
 .modal-content-container {
   position: absolute;
-  right: 1700px; /* Adjust this to position the modal to the right */
-  width: 200px; /* Adjust this to set the width of the modal */
-    height: 670px;
+  width: 200px; /* Fixed width */
+  height: 100px; /* Fixed height */
 }
+
 
 .modal-content {
   background-color: #ffffff;
