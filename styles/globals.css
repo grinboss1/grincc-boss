@@ -89,6 +89,7 @@ p {
 
 .modal-content-container {
   position: absolute;
+  z-index: 1000;
 }
 
 .modal-content {
@@ -98,7 +99,9 @@ p {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 200px;
   height: 100px;
+  pointer-events: all;
 }
+
 
 
 
