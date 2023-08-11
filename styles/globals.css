@@ -90,21 +90,19 @@ p {
 
 .modal-content-container {
   position: absolute;
-  
- 
    
 }
 
-.modal-content {
-  position: absolute; /* You can use 'absolute' here */
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 200px; /* Adjust as needed */
-  height: 100px; /* Adjust as needed */
-  pointer-events: all;
+.icon-parent-container {
+  position: relative; /* This makes the child modal positioned relative to this container */
 }
+
+.modal-content {
+  position: absolute; /* Position the modal within the parent container */
+  right: 0; /* Align it to the right of the parent container */
+  /* Other styles as needed */
+}
+
 
 
 
