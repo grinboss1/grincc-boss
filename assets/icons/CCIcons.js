@@ -1,46 +1,27 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-export const Icon3 = () => (
-  <img
-    src="https://i.ibb.co/Bj70xwG/anon.jpg"
-    alt="Icon 3"
-    style={{ width: '24px', height: '24px', borderRadius: '50%' }}
-  />
-);
+const icons = [
+  { src: "https://i.ibb.co/Bj70xwG/anon.jpg", alt: "Icon 3", label: "anynomous" },
+  { src: "https://i.ibb.co/SX5bMQw/mike.jpg", alt: "Icon 4", label: "mcmmike" },
+  { src: "https://i.ibb.co/mhcXpxR/mac.jpg", alt: "Icon 5", label: "future3000" },
+  { src: "https://i.ibb.co/VMsjm9f/mw-grin.png", alt: "Icon 6", label: "mwgrin_fr" }
+];
 
-export const Icon4 = () => (
+export const Icon = ({ src, alt }) => (
   <img
-    src="https://i.ibb.co/SX5bMQw/mike.jpg"
-    alt="Icon 4"
-    style={{ width: '24px', height: '24px', borderRadius: '50%' }}
-  />
-);
-
-export const Icon5 = () => (
-  <img
-    src="https://i.ibb.co/mhcXpxR/mac.jpg"
-    alt="Icon 5"
-    style={{ width: '24px', height: '24px', borderRadius: '50%' }}
-  />
-);
-
-export const Icon6 = () => (
-  <img
-    src="https://i.ibb.co/VMsjm9f/mw-grin.png"
-    alt="Icon 6"
+    src={src}
+    alt={alt}
     style={{ width: '24px', height: '24px', borderRadius: '50%' }}
   />
 );
 
 export const IconList = () => (
   <ul className="icon-list">
-    <IconWrapper IconComponent={Icon3} label="anynomous" />
-    <IconWrapper IconComponent={Icon4} label="mcmmike" />
-    <IconWrapper IconComponent={Icon5} label="future3000" />
-    <IconWrapper IconComponent={Icon6} label="mwgrin_fr" />
+    {icons.map((icon, index) => (
+      <IconWrapper IconComponent={() => <Icon src={icon.src} alt={icon.alt} />} label={icon.label} key={index} />
+    ))}
   </ul>
 );
-
 
 export const IconWrapper = ({ IconComponent, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -49,7 +30,7 @@ export const IconWrapper = ({ IconComponent, label }) => {
 
   const openModal = () => {
     const rect = iconRef.current.getBoundingClientRect();
-setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
+    setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
     setModalIsOpen(true);
   };
 
@@ -65,7 +46,6 @@ setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
     </li>
   );
 };
-
 
 const CustomModal = ({ onClose, label, position }) => {
   const contentRef = useRef();
@@ -83,14 +63,15 @@ const CustomModal = ({ onClose, label, position }) => {
     };
   }, [onClose]);
 
-return (
-    <div className="modal-content-container" style={{ top: position.top, left: position.left }}>
+  return (
+    <div className="modal-content-container" style={{ position: 'absolute', top: position.top, left: position.left, zIndex: 1000 }}>
       <div className="modal-content" ref={contentRef}>
         <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
       </div>
     </div>
   );
 };
+
 
 
 
