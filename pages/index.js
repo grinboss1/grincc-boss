@@ -16,7 +16,7 @@ function Index(props) {
 <div className="py-4">
   <div className="icons-container">
     <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
-      <li className="icon-container">
+      <li className="icon-container px-2 py-2">
         <div className="icon-wrapper">
           <Icon3 />
           <span className="icon-label">anynomous <span></span></span>
