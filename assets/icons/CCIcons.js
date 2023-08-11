@@ -32,13 +32,30 @@ export const Icon6 = () => (
   />
 );
 
-const CustomModal = ({ isOpen, onClose, label, link }) => {
+const CustomModal = ({ isOpen, onClose, label }) => {
+  const contentRef = useRef();
+
+  const handleClickOutside = (e) => {
+    if (contentRef.current && !contentRef.current.contains(e.target)) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div className="modal-overlay">
-      <div className="modal-close-area" onClick={onClose}></div>
-      <div className="modal-content">
+      <div className="modal-content" ref={contentRef}>
         <h2>{label}</h2>
         <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
       </div>
@@ -46,10 +63,7 @@ const CustomModal = ({ isOpen, onClose, label, link }) => {
   );
 };
 
-
-
-
-export const IconWrapper = ({ IconComponent, label, link }) => {
+export const IconWrapper = ({ IconComponent, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => setModalIsOpen(true);
@@ -61,7 +75,7 @@ export const IconWrapper = ({ IconComponent, label, link }) => {
         <IconComponent />
         <span className="icon-label">{label}</span>
       </div>
-      <CustomModal isOpen={modalIsOpen} onClose={closeModal} label={label} link={link} />
+      <CustomModal isOpen={modalIsOpen} onClose={closeModal} label={label} />
     </li>
   );
 };
