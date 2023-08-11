@@ -77,14 +77,18 @@ const CustomModal = ({ onClose, label, position }) => {
   }, [onClose]);
 
  return (
-   <div className="icons-parent-container" style={{ position: 'relative' }}>
+ <div className="icons-parent-container" style={{ position: 'relative' }}>
   <div className="icons-container">
     <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
       <IconWrapper IconComponent={Icon3} label="anynomous" />
+      <IconWrapper IconComponent={Icon4} label="mcmmike" />
+      <IconWrapper IconComponent={Icon5} label="future3000" />
+      <IconWrapper IconComponent={Icon6} label="mwgrin_fr" />
       {/* other list items */}
     </ul>
   </div>
 </div>
+
 
   );
 };
