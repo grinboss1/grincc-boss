@@ -29,11 +29,10 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const iconRef = useRef(null);
 
   const openModal = () => {
-  const rect = iconRef.current.getBoundingClientRect();
-  setModalPosition({ top: rect.top, left: rect.right });
-  setModalIsOpen(true);
-};
-
+    const rect = iconRef.current.getBoundingClientRect();
+    setModalPosition({ top: rect.top + 30, left: rect.right + 10 }); // Added offsets for top and left
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => setModalIsOpen(false);
 
@@ -47,6 +46,7 @@ export const IconWrapper = ({ IconComponent, label }) => {
     </li>
   );
 };
+
 
 const CustomModal = ({ onClose, label, position }) => {
   const contentRef = useRef();
