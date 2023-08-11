@@ -33,7 +33,7 @@ export const Icon6 = () => (
 );
 
 export const IconWrapper = ({ IconComponent, label }) => (
-  <li className="icon-container pl-4 py-2">
+  <li className="icon-container px-2 py-2">
     <div className="icon-wrapper">
       <IconComponent />
       <span className="icon-label">{label} <span></span></span>
