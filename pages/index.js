@@ -16,37 +16,14 @@ function Index(props) {
 <div className="py-4">
   <div className="icons-container">
     <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
-      <li className="icon-container px-2 py-2">
-        <div className="icon-wrapper">
-          <Icon3 />
-          <span className="icon-label">anynomous <span></span></span>
-        </div>
-      </li>
-
-  
-   <li className="icon-container">
-  <div className="icon-wrapper">
-    <Icon4 className="icon-class" />
-    <span className="icon-label">mcmmike <span></span></span>
-  </div>
-</li>
-
- <li className="icon-container">
-  <div className="icon-wrapper">
-    <Icon5 className="icon-class" />
-    <span className="icon-label">future3000 <span></span></span>
-  </div>
-</li>
-
-   <li className="icon-container">
-  <div className="icon-wrapper">
-    <Icon6 className="icon-class" />
-    <span className="icon-label">mwgrin_fr <span></span></span>
-  </div>
-</li>
+      <IconWrapper IconComponent={Icon3} label="anynomous" />
+      <IconWrapper IconComponent={Icon4} label="mcmmike" />
+      <IconWrapper IconComponent={Icon5} label="future3000" />
+      <IconWrapper IconComponent={Icon6} label="mwgrin_fr" />
+      {/* other list items */}
     </ul>
   </div>
-  </div>
+</div>
                 
                 <h2 className="header-2">Background</h2>
                 <div className="pb-4 text-justify">
