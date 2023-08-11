@@ -83,6 +83,5 @@ const CustomModal = ({ onClose, label, position }) => {
   </div>
 </div>
 
-    </div>
   );
 };
