@@ -35,14 +35,13 @@ export const Icon6 = () => (
 export const IconWrapper = ({ IconComponent, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const iconRef = useRef(null); // Define iconRef here
+  const iconRef = useRef(null);
 
- const openModal = () => {
-  const rect = iconRef.current.getBoundingClientRect();
-  setModalPosition({ top: rect.top + window.scrollY, left: rect.right }); // Adjust the left value
-  setModalIsOpen(true);
-};
-
+  const openModal = () => {
+    const rect = iconRef.current.getBoundingClientRect();
+    setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => setModalIsOpen(false);
 
@@ -56,6 +55,7 @@ export const IconWrapper = ({ IconComponent, label }) => {
     </li>
   );
 };
+
 
 
 
@@ -76,21 +76,14 @@ const CustomModal = ({ onClose, label, position }) => {
     };
   }, [onClose]);
 
- return (
- <div className="icons-parent-container" style={{ position: 'relative' }}>
-  <div className="icons-container">
-    <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
-      <IconWrapper IconComponent={Icon3} label="anynomous" />
-      <IconWrapper IconComponent={Icon4} label="mcmmike" />
-      <IconWrapper IconComponent={Icon5} label="future3000" />
-      <IconWrapper IconComponent={Icon6} label="mwgrin_fr" />
-      {/* other list items */}
-    </ul>
-  </div>
-</div>
-
-
+  return (
+    <div className="modal-content-container" style={{ top: position.top, left: position.left }}>
+      <div className="modal-content" ref={contentRef}>
+        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+      </div>
+    </div>
   );
 };
+
 
 
