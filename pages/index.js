@@ -13,16 +13,15 @@ function Index(props) {
         <p>Grin Community Council is <a className="text-primary" href="https://forum.grin.mw/t/call-for-grin-community-candidates-for-additional-fund-granting-control/8521/13">formed</a> from valued community members with remarkable contributions to Grin in 2021 May.
           Council's main task is to control and direct <i>Grin Community Fund </i> to support grin projects, bounties and community activities. Current council members are:</p>
 
-           <div className="py-4">
+    <div className="py-4">
   <div className="icons-container">
-  <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
-  
-  <li className="icon-container">
-  <div className="icon-wrapper">
-    <Icon3 className="icon-class" />
-    <span className="icon-label">anynomous <span></span></span>
-  </div>
-</li>
+    <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
+      <li className="icon-container">
+        <div className="icon-wrapper">
+          <Icon3 className="pl-4 py-2" />
+          <span className="icon-label">anynomous <span></span></span>
+        </div>
+      </li>
 
   
    <li className="icon-container">
