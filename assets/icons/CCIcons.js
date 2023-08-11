@@ -36,8 +36,9 @@ const CustomModal = ({ isOpen, onClose, label, link }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}> {/* This is the overlay div */}
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay">
+      <div className="modal-close-area" onClick={onClose}></div> {/* This div will handle clicks to close the modal */}
+      <div className="modal-content">
         <h2>{label}</h2>
         <p>Visit the link:</p>
         <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
@@ -45,6 +46,7 @@ const CustomModal = ({ isOpen, onClose, label, link }) => {
     </div>
   );
 };
+
 
 
 export const IconWrapper = ({ IconComponent, label, link }) => {
