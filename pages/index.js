@@ -20,12 +20,12 @@ function Index(props) {
            <div className="py-4">
   <div className="icons-container">
   <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
-    <li className="flex items-center mt-1">
-      <div className="flex items-center p-2 mt-1 mb-[-2px] ml-[-2px]">
-        <Icon3 className="icon-class" />
-        <span style={{ paddingLeft: '0px', marginBottom: '0px', marginRight: '0px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
-      </div>
-    </li>
+  <li className="icon-container">
+  <div className="icon-wrapper">
+    <Icon3 className="icon-class" />
+    <span className="icon-label">anynomous <span></span></span>
+  </div>
+</li>
       <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
         <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
           <Icon4 />
