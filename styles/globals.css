@@ -92,7 +92,7 @@ p {
 
 .modal-content-container {
   position: absolute;
-  right: 800px; /* Adjust this to position the modal to the right */
+  right: 2000px; /* Adjust this to position the modal to the right */
   width: 200px; /* Adjust this to set the width of the modal */
 }
 
