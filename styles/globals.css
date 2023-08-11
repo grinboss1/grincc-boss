@@ -5,38 +5,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body {
-    /*@apply bg-white;*/
+  /*@apply bg-white;*/
 }
 
-.btn{
-    @apply rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
+.btn {
+  @apply rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
 }
 
 a {
-    @apply text-primary dark:text-indigo-400;
+  @apply text-primary dark:text-indigo-400;
 }
 
-
-.meeting-text p{
-    line-height: 1.25rem;
-    margin-bottom: 0.5rem;
+.meeting-text p {
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
 blockquote {
-    color: #666;
-    margin: 0;
-    padding-left: 3em;
-    border-left: 0.5em #eee solid;
+  color: #666;
+  margin: 0;
+  padding-left: 3em;
+  border-left: 0.5em #eee solid;
 }
 
 p {
-    @apply py-2;
+  @apply py-2;
+}
+
+.icon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .icon-container {
   display: flex;
   align-items: center;
   margin-top: 0px;
+}
+
+.icon-parent-container {
+  display: inline-block;
 }
 
 .icon-wrapper {
@@ -63,58 +74,32 @@ p {
   @apply w-6 h-6 rounded-full;
 }
 
-
-
 .my-container {
-        @apply container px-6 py-24 mx-auto text-gray-600  dark:bg-black dark:text-gray-300;
+  @apply container px-6 py-24 mx-auto text-gray-600 dark:bg-black dark:text-gray-300;
 }
 
 .header-1 {
-    @apply text-2xl sm:text-3xl font-medium  mb-4 text-gray-900 dark:text-gray-100  text-center ;
+  @apply text-2xl sm:text-3xl font-medium mb-4 text-gray-900 dark:text-gray-100 text-center;
 }
 
 .header-2 {
-    @apply text-lg sm:text-xl text-gray-900 font-medium  dark:text-gray-100  mb-2 ;
+  @apply text-lg sm:text-xl text-gray-900 font-medium dark:text-gray-100 mb-2;
 }
-
-
-.icon-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-
-.icon-container {
-  display: inline-block;
-  /* Other styles */
-}
-
-.icon-parent-container {
-  display: inline-block;
-  /* Other styles */
-}
-
 
 .modal-content-container {
-  z-index: 100; /* Make sure the modal appears above other content */
-  /* Other styles */
+  position: absolute;
+  z-index: 1000;
 }
-
-
 
 .modal-content {
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  /* Other styles */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 100px;
+  pointer-events: all;
 }
-
-
-
-
-
 
 .highlighted {
   background-color: #ff0; /* Vibrant yellow color */
