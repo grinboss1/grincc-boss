@@ -49,29 +49,9 @@ function Index(props) {
     <span className="icon-label">mwgrin_fr <span></span></span>
   </div>
 </li>
-    <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
-          <Icon4 />
-          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>mcmmike <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
-        </div>
-      </li>
-      <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
-          <Icon5 />
-          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>future3000 <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
-        </div>
-      </li>
-      <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
-          <Icon6 />
-          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>mwgrin_fr <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
-        </div>
-      </li>
     </ul>
   </div>
-
-
-        </div>
+  </div>
                 
                 <h2 className="header-2">Background</h2>
                 <div className="pb-4 text-justify">
@@ -100,8 +80,6 @@ function Index(props) {
                         Grin Community Council is gathered every 1st and 3th Tuesday of the month  with a predefined agenda in <a href="https://keybase.io/team/grincoin">Keybase#general channel</a>. Everyone is free to offer agenda topics before the meetings, join the meetings and express their opinions and ideas in a friendly and respectful environment. Previous meetings notes can be found <a href="https://github.com/grincc/agenda/tree/main/notes">here</a>. You can follow next meetings agenda in community council agenda <a href="https://github.com/grincc/agenda/issues">repo</a>.
                     </p>
                 </div>
-
-
 
 
             </div>
