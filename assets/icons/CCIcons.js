@@ -37,13 +37,11 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
- const openModal = () => {
-  const rect = iconRef.current.getBoundingClientRect();
-  setModalPosition({ top: rect.top + window.scrollY, left: rect.right + 2 }); // Add 2px to the right
-  setModalIsOpen(true);
-};
-
-
+  const openModal = () => {
+    const rect = iconRef.current.getBoundingClientRect();
+    setModalPosition({ top: rect.top + window.scrollY, left: rect.right + 2 }); // Add 2px to the right
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => setModalIsOpen(false);
 
@@ -57,6 +55,7 @@ export const IconWrapper = ({ IconComponent, label }) => {
     </li>
   );
 };
+
 
 
 
