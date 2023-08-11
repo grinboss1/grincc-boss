@@ -81,13 +81,11 @@ p {
   position: fixed;
   top: 0;
   left: 0;
-  right: 300;
+  right: 0; /* Removed the 300 value here */
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
   z-index: 1000; /* Ensures the overlay appears above other content */
+  pointer-events: none; /* Allows clicks to pass through to the content below */
 }
 
 .modal-content-container {
@@ -97,12 +95,15 @@ p {
 }
 
 .modal-content {
+  position: absolute; /* Position absolutely based on the JavaScript-calculated values */
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 100px;
+  pointer-events: all; /* Enable interaction with the modal content */
 }
-
 
 
 
