@@ -94,7 +94,7 @@ p {
   position: absolute;
   right: 1700px; /* Adjust this to position the modal to the right */
   width: 200px; /* Adjust this to set the width of the modal */
-    height: 100px;
+    height: 500px;
 }
 
 .modal-content {
