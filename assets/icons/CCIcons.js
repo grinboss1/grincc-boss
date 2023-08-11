@@ -18,19 +18,10 @@ export const Icon = ({ src, alt }) => (
 export const IconList = () => (
   <ul className="icon-list">
     {icons.map((icon, index) => (
-      <li key={index} className="icon-container">
-        <div className="icon-with-popup">
-          <Icon src={icon.src} alt={icon.alt} />
-          <div className="popup">
-            <p>Your popup content here</p>
-          </div>
-        </div>
-        <span className="icon-label">{icon.label}</span>
-      </li>
+      <IconWrapper IconComponent={() => <Icon src={icon.src} alt={icon.alt} />} label={icon.label} key={index} />
     ))}
   </ul>
 );
-
 
 export const IconWrapper = ({ IconComponent, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -80,6 +71,7 @@ const CustomModal = ({ onClose, label, position }) => {
     </div>
   );
 };
+
 
 
 
