@@ -46,7 +46,7 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const closeModal = () => setModalIsOpen(false);
 
   return (
-    <div className="icon-parent-container" style={{ position: 'relative' }}> {/* Add this line */}
+    <div className="icon-parent-container" style={{ position: 'relative' }}>
       <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
         <div className="icon-wrapper">
           <IconComponent />
@@ -54,10 +54,9 @@ export const IconWrapper = ({ IconComponent, label }) => {
         </div>
       </li>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
-    </div> {/* Add this line */}
+    </div>
   );
 };
-
 
 
 const CustomModal = ({ onClose, label, position }) => {
