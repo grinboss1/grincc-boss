@@ -3,7 +3,7 @@ import RightArrow from "../assets/icons/rightArrow";
 import Check from "../assets/icons/check";
 import Link from 'next/link';
 import UserIcon from "../assets/icons/userIcon";
-import { Icon3, Icon4, Icon5, Icon6 } from '../assets/icons/CCIcons'; 
+import { Icon3, Icon4, Icon5, Icon6, IconWrapper } from '../assets/icons/CCIcons'; 
 
 function Index(props) {
   return (
