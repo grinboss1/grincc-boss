@@ -1,10 +1,9 @@
-// ../assets/icons/userIcon2.js
-
 import React from 'react';
 
-const UserIcon2 = () => {
+const UserIcon2 = ({ className }) => {
   return (
     <div
+      className={className} // Added className prop
       style={{
         width: '24px',
         height: '24px',
@@ -18,6 +17,7 @@ const UserIcon2 = () => {
 };
 
 export default UserIcon2;
+
 
 
 
