@@ -1,17 +1,17 @@
 import React from 'react';
 
-const Icon3 = ({ className }) => {
+const Icon5 = ({ className }) => {
   return (
     <img
       className={className} // Added className prop
       src="https://i.ibb.co/mhcXpxR/mac.jpg"
-      alt="Icon 3"
+      alt="Icon 5"
       style={{ width: '24px', height: '24px', borderRadius: '50%' }}
     />
   );
 };
 
-export default Icon3;
+export default Icon5;
 
 
 
