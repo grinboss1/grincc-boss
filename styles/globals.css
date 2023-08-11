@@ -88,7 +88,8 @@ p {
 
 .modal-content-container {
   position: absolute;
-  z-index: 1000;
+   border: 1px solid red;
+  z-index: 100;
 }
 
 .modal-content {
