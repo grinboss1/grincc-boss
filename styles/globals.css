@@ -33,6 +33,11 @@ p {
     @apply py-2;
 }
 
+.icon-class {
+  @apply w-6 h-6 rounded-full; /* Width and height of 24px with a circular border */
+}
+
+
 .my-container {
         @apply container px-6 py-24 mx-auto text-gray-600  dark:bg-black dark:text-gray-300;
 }
