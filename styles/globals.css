@@ -87,7 +87,6 @@ p {
 }
 
 .modal-content-container {
-  position: absolute;
    background-color: #f9f9f9;
   border: 1px solid #ccc;
   padding: 10px;
