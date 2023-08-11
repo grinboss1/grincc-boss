@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Icon3 = ({ className }) => {
+export const Icon3 = ({ className = "pl-4 py-2" }) => {
   return (
     <img
       className={className}
