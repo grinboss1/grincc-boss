@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Icon3 = () => {
+const Icon4 = ({ className }) => {
   return (
     <img
-      src="https://i.ibb.co/SX5bMQw/mike.jpg"
+      className={className} // Added className prop
+      src="https://i.ibb.co/SX5bMQw/mike.jpgg"
       alt="Icon 4"
       style={{ width: '24px', height: '24px', borderRadius: '50%' }}
     />
@@ -11,3 +12,4 @@ const Icon3 = () => {
 };
 
 export default Icon3;
+
