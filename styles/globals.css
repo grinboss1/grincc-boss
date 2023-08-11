@@ -91,10 +91,11 @@ p {
 }
 
 .modal-content-container {
-  position: absolute;
-  width: 200px; /* Fixed width */
-  height: 100px; /* Fixed height */
+  position: fixed; // Changed from absolute to fixed
+  width: 200px;
+  height: 100px;
 }
+
 
 
 .modal-content {
