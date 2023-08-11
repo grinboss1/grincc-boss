@@ -77,32 +77,34 @@ p {
     @apply text-lg sm:text-xl text-gray-900 font-medium  dark:text-gray-100  mb-2 ;
 }
 
+.icon-with-modal {
+  position: relative;
+  display: flex;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-container {
+  position: absolute;
+  top: 0;
+  left: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modal-close-area {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
 .modal-content {
-  position: relative; /* Make sure this is relative so it stays on top of the close area */
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 
 
