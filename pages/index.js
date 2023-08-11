@@ -5,12 +5,6 @@ import Link from 'next/link';
 import UserIcon from "../assets/icons/userIcon";
 import { IconWrapper } from '../assets/icons/CCIcons';
 
-const icons = [
-  { src: "https://i.ibb.co/Bj70xwG/anon.jpg", alt: "Icon 3", label: "anynomous" },
-  { src: "https://i.ibb.co/SX5bMQw/mike.jpg", alt: "Icon 4", label: "mcmmike" },
-  { src: "https://i.ibb.co/mhcXpxR/mac.jpg", alt: "Icon 5", label: "future3000" },
-  { src: "https://i.ibb.co/VMsjm9f/mw-grin.png", alt: "Icon 6", label: "mwgrin_fr" }
-];
 
 function Index(props) {
   return (
@@ -21,9 +15,7 @@ function Index(props) {
           Council's main task is to control and direct <i>Grin Community Fund </i> to support grin projects, bounties and community activities. Current council members are:</p>
         <div className="py-4">
           <div className="icons-container">
-            <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
-              {icons.map((icon) => (
-                <IconWrapper IconComponent={() => <img src={icon.src} alt={icon.alt} style={{ width: '24px', height: '24px', borderRadius: '50%' }} />} label={icon.label} />
+            <IconList />
               ))}
             </ul>
           </div>
