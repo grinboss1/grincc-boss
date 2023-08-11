@@ -81,7 +81,7 @@ function Index(props) {
                     </p>
                 </div>
 
-           
+           </div>
         </section>
 
     );
