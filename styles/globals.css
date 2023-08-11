@@ -92,7 +92,7 @@ p {
 
 .modal-content-container {
   position: absolute;
-  width: 200px; /* Adjust this to set the width of the modal */
+  width: 100px; /* Adjust this to set the width of the modal */
   height: 100px; /* Adjust this to set the height of the modal */
 }
 
