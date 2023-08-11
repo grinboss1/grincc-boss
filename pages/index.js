@@ -43,6 +43,13 @@ function Index(props) {
   </div>
 </li>
 
+   <li className="icon-container">
+  <div className="icon-wrapper">
+    <Icon6 className="icon-class" />
+    <span className="icon-label">mwgrin_fr <span></span></span>
+  </div>
+</li>
+
   
       <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
         <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
