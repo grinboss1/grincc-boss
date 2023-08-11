@@ -81,30 +81,26 @@ p {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0; /* Removed the 300 value here */
+  right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000; /* Ensures the overlay appears above other content */
-  pointer-events: none; /* Allows clicks to pass through to the content below */
+  z-index: 1000;
+  pointer-events: none;
 }
 
 .modal-content-container {
-  position: absolute;
-  width: 200px; /* Adjust this to set the width of the modal */
-  height: 50px; /* Adjust this to set the height of the modal */
+  position: fixed; /* Change this to 'fixed' */
 }
 
 .modal-content {
-  position: absolute; /* Position absolutely based on the JavaScript-calculated values */
+  position: absolute; /* You can use 'absolute' here */
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 200px;
-  height: 100px;
-  pointer-events: all; /* Enable interaction with the modal content */
+  width: 200px; /* Adjust as needed */
+  height: 100px; /* Adjust as needed */
+  pointer-events: all;
 }
-
 
 
 
