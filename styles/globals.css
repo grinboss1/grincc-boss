@@ -91,7 +91,7 @@ p {
 }
 
 .modal-content-container {
-  position: fixed; // Changed from absolute to fixed
+  position: fixed;
   width: 200px;
   height: 100px;
 }
