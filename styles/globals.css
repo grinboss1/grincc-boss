@@ -77,30 +77,29 @@ p {
     @apply text-lg sm:text-xl text-gray-900 font-medium  dark:text-gray-100  mb-2 ;
 }
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+.icon-container {
+  display: inline-block;
+  /* Other styles */
+}
+
+.icon-parent-container {
+  display: inline-block;
+  /* Other styles */
 }
 
 .modal-content-container {
-  position: absolute;
-  z-index: 1000;
+  z-index: 100; /* Make sure the modal appears above other content */
+  /* Other styles */
 }
 
 .modal-content {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 200px;
-  height: 100px;
-  pointer-events: all;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  /* Other styles */
 }
+
 
 
 
