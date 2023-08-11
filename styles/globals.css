@@ -87,8 +87,12 @@ p {
   pointer-events: none;
 }
 
+
 .modal-content-container {
-  position: fixed; /* Change this to 'fixed' */
+  position: absolute;
+  right: 1700px; /* Adjust this to position the modal to the right */
+  width: 200px; /* Adjust this to set the width of the modal */
+    height: 670px;
 }
 
 .modal-content {
