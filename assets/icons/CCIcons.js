@@ -35,13 +35,13 @@ export const Icon6 = () => (
 export const IconWrapper = ({ IconComponent, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const iconRef = useRef(null);
+  const iconRef = useRef(null); // Define iconRef here
 
- const openModal = () => {
-  const rect = iconRef.current.getBoundingClientRect();
-  setModalPosition({ top: rect.top + window.scrollY, left: rect.right -1  }); // Add 2px to the right
-  setModalIsOpen(true);
-}
+  const openModal = () => {
+    const rect = iconRef.current.getBoundingClientRect();
+    setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => setModalIsOpen(false);
 
@@ -75,7 +75,7 @@ const CustomModal = ({ onClose, label, position }) => {
     };
   }, [onClose]);
 
-return (
+ return (
     <div className="icon-parent-container">
       <li ref={iconRef} className="icon-container" onClick={openModal}>
         <div className="icon-wrapper">
