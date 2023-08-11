@@ -81,26 +81,23 @@ p {
   position: fixed;
   top: 0;
   left: 0;
-  right: auto;
+  right: 0;
   bottom: 0;
   z-index: 1000;
-  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
-
 
 .modal-content-container {
   position: absolute;
-   
-}
-
-.icon-parent-container {
-  position: relative; /* This makes the child modal positioned relative to this container */
 }
 
 .modal-content {
-  position: absolute; /* Position the modal within the parent container */
-  right: 0; /* Align it to the right of the parent container */
-  /* Other styles as needed */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 100px;
 }
 
 
