@@ -42,12 +42,13 @@ export const IconWrapper = ({ IconComponent, label }) => {
     <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
       <div className="icon-wrapper">
         <IconComponent />
-        <span className="icon-label">{label}</span>
+        <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
       </div>
       {modalIsOpen && <CustomModal onClose={closeModal} label={label} />}
     </li>
   );
 };
+
 
 const CustomModal = ({ onClose, label }) => {
   const contentRef = useRef();
