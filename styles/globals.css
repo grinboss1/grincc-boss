@@ -106,8 +106,10 @@ p {
 }
 
 .highlighted {
-  background-color: yellow; /* Highlight color */
+  background-color: #ff0; /* Vibrant yellow color */
+  font-weight: bold; /* Bold text */
 }
+
 
 
 
