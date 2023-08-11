@@ -4,8 +4,7 @@ import Check from "../assets/icons/check";
 import Link from 'next/link';
 import UserIcon from "../assets/icons/userIcon";
 import UserIcon2 from "../assets/icons/userIcon2";
-import Icon3 from '../assets/icons/Icon3'; // Adjust the path to the location of Icon3
-import Icon4 from '../assets/icons/Icon4';
+import { Icon3, Icon4 } from '../assets/icons/Icon3'; // Adjust the path to the location of Icon3
 import Icon5 from '../assets/icons/Icon5';
 import Icon6 from '../assets/icons/Icon6';
 
