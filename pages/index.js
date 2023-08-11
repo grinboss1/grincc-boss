@@ -49,11 +49,31 @@ function Index(props) {
     <span className="icon-label">mwgrin_fr <span></span></span>
   </div>
 </li>
-   </ul> 
+    <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
+          <Icon4 />
+          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>mcmmike <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+        </div>
+      </li>
+      <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
+          <Icon5 />
+          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>future3000 <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+        </div>
+      </li>
+      <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', padding: '2px', marginTop: '1px', marginBottom: '-2px', marginLeft: '-2px' }}>
+          <Icon6 />
+          <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>mwgrin_fr <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+        </div>
+      </li>
+    </ul>
   </div>
-  
-  
- <h2 className="header-2">Background</h2>
+
+
+        </div>
+                
+                <h2 className="header-2">Background</h2>
                 <div className="pb-4 text-justify">
                     <p >
                         Since its launch in 2019, Grin development was funded by only donations. Donations to <a className="text-primary" href="https://grin.mw/fund">Grin General Fund</a> was controlled by <i>Original Grin Council</i> according to <a href="https://github.com/mimblewimble/grin-rfcs/blob/master/text/0002-grin-governance.md">Grin Governance RFC</a>. After the last planned hard fork, this RFC has been replaced with <a href="https://github.com/mimblewimble/grin-rfcs/blob/master/text/0016-simplify-governance.md">Simplify-Governance RFC</a>. Meanwhile community has raised its voice for supporting of more projects extendeding grin and its usability which was heard by <i>Original Grin Council</i>. One of Original Grin Council members, yeastplume made a <a href="https://gist.github.com/yeastplume/5d1913c7dc40c40f409ffcfe8fa9b094">proposition</a> to split <i>Grin Development Fund</i>, and give control to a second group (or more than one group) for decentralizing governance. After discussions of several different split strategies in governance meetings <a href="https://github.com/mimblewimble/grin-pm/blob/master/notes/20210216-meeting-governance.md">²</a> <a href="https://github.com/newjack777/grin-pm/blob/master/notes/20210302-meeting-governance.md">³</a> and <a href="https://forum.grin.mw/t/call-for-grin-community-candidates-for-additional-fund-granting-control/8521">community</a>, it was decided to split Development Fund into two funds:
@@ -81,7 +101,10 @@ function Index(props) {
                     </p>
                 </div>
 
-           </div>
+
+
+
+            </div>
         </section>
 
     );
