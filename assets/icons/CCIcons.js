@@ -32,25 +32,6 @@ export const Icon6 = () => (
   />
 );
 
-export const IconWrapper = ({ IconComponent, label }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
-
-  return (
-    <li className="icon-container px-2 py-2" style={{ cursor: 'pointer' }}>
-      <div className="icon-with-modal" onClick={openModal}>
-        <div className="icon-wrapper">
-          <IconComponent />
-          <span className="icon-label">{label}</span>
-        </div>
-        <CustomModal isOpen={modalIsOpen} onClose={closeModal} label={label} />
-      </div>
-    </li>
-  );
-};
-
 const CustomModal = ({ isOpen, onClose, label }) => {
   const contentRef = useRef();
 
@@ -80,6 +61,25 @@ const CustomModal = ({ isOpen, onClose, label }) => {
         </div>
       </div>
     </div>
+  );
+};
+
+export const IconWrapper = ({ IconComponent, label }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
+
+  return (
+    <li className="icon-container px-2 py-2" style={{ cursor: 'pointer' }}>
+      <div className="icon-with-modal" onClick={openModal}>
+        <div className="icon-wrapper">
+          <IconComponent />
+          <span className="icon-label">{label}</span>
+        </div>
+        <CustomModal isOpen={modalIsOpen} onClose={closeModal} label={label} />
+      </div>
+    </li>
   );
 };
 
