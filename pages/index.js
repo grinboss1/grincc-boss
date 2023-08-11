@@ -16,8 +16,8 @@ function Index(props) {
 <div className="py-4">
   <div className="icons-container">
     <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
-      <li><IconWrapper IconComponent={Icon3} label="anynomous" /></li>
-      <li><IconWrapper IconComponent={Icon4} label="mcmmike" /></li>
+      <IconWrapper IconComponent={Icon3} label="anynomous" />
+      <IconWrapper IconComponent={Icon4} label="mcmmike" />
       <IconWrapper IconComponent={Icon5} label="future3000" />
       <IconWrapper IconComponent={Icon6} label="mwgrin_fr" />
       {/* other list items */}
