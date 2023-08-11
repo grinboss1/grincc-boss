@@ -46,15 +46,18 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const closeModal = () => setModalIsOpen(false);
 
   return (
-    <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
-      <div className="icon-wrapper">
-        <IconComponent />
-        <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
-      </div>
+    <div className="icon-parent-container" style={{ position: 'relative' }}>
+      <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+        <div className="icon-wrapper">
+          <IconComponent />
+          <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
+        </div>
+      </li>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
-    </li>
+    </div>
   );
 };
+
 
 
 
@@ -77,13 +80,14 @@ const CustomModal = ({ onClose, label, position }) => {
   }, [onClose]);
 
   return (
-    <div className="modal-content-container" style={{ top: position.top, left: position.left }}>
+    <div className="modal-content-container" style={{ position: 'absolute', top: position.top, left: position.left }}>
       <div className="modal-content" ref={contentRef}>
         <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
       </div>
     </div>
   );
 };
+
 
 
 
