@@ -32,6 +32,25 @@ export const Icon6 = () => (
   />
 );
 
+export const IconWrapper = ({ IconComponent, label }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
+
+  return (
+    <li className="icon-container px-2 py-2" style={{ cursor: 'pointer' }}>
+      <div className="icon-with-modal" onClick={openModal}>
+        <div className="icon-wrapper">
+          <IconComponent />
+          <span className="icon-label">{label}</span>
+        </div>
+        <CustomModal isOpen={modalIsOpen} onClose={closeModal} label={label} />
+      </div>
+    </li>
+  );
+};
+
 const CustomModal = ({ isOpen, onClose, label }) => {
   const contentRef = useRef();
 
@@ -55,29 +74,14 @@ const CustomModal = ({ isOpen, onClose, label }) => {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content" ref={contentRef}>
-        <h2>{label}</h2>
-        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+      <div className="modal-content-container">
+        <div className="modal-content" ref={contentRef}>
+          <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+        </div>
       </div>
     </div>
   );
 };
 
-export const IconWrapper = ({ IconComponent, label }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  const openModal = () => setModalIsOpen(true);
-  const closeModal = () => setModalIsOpen(false);
-
-  return (
-    <li className="icon-container px-2 py-2" onClick={openModal} style={{ cursor: 'pointer' }}>
-      <div className="icon-wrapper">
-        <IconComponent />
-        <span className="icon-label">{label}</span>
-      </div>
-      <CustomModal isOpen={modalIsOpen} onClose={closeModal} label={label} />
-    </li>
-  );
-};
 
 
