@@ -16,8 +16,7 @@ function Index(props) {
         <div className="py-4">
           <div className="icons-container">
             <IconList />
-              ))}
-            </ul>
+              )))
           </div>
         </div>
                 
