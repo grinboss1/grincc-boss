@@ -19,7 +19,7 @@ function Index(props) {
 
            <div className="py-4">
   <div className="icons-container">
-  <ul className="pl-4 pb-4" style={{ margin: '10px', padding: '0px' }}>
+  <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
     <li className="flex items-center mt-1">
       <div className="flex items-center p-2 mt-1 mb-[-2px] ml-[-2px]">
         <Icon3 className="icon-class" />
