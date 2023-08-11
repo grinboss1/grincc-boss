@@ -105,6 +105,9 @@ p {
 
 }
 
+.highlighted {
+  background-color: yellow; /* Highlight color */
+}
 
 
 
