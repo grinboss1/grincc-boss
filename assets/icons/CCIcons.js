@@ -37,11 +37,12 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null); // Define iconRef here
 
-  const openModal = () => {
-    const rect = iconRef.current.getBoundingClientRect();
-    setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
-    setModalIsOpen(true);
-  };
+ const openModal = () => {
+  const rect = iconRef.current.getBoundingClientRect();
+  setModalPosition({ top: rect.top + window.scrollY, left: rect.right }); // Adjust the left value
+  setModalIsOpen(true);
+};
+
 
   const closeModal = () => setModalIsOpen(false);
 
@@ -76,13 +77,15 @@ const CustomModal = ({ onClose, label, position }) => {
   }, [onClose]);
 
  return (
-    <div className="modal-overlay">
-      <div className="modal-content-container">
-        <div className="modal-content" ref={contentRef} style={{ top: position.top, left: position.left }}>
-          <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
-        </div>
-      </div>
-    </div>
+   <div className="icons-parent-container" style={{ position: 'relative' }}>
+  <div className="icons-container">
+    <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
+      <IconWrapper IconComponent={Icon3} label="anynomous" />
+      {/* other list items */}
+    </ul>
+  </div>
+</div>
+
   );
 };
 
