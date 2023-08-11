@@ -3,7 +3,14 @@ import RightArrow from "../assets/icons/rightArrow";
 import Check from "../assets/icons/check";
 import Link from 'next/link';
 import UserIcon from "../assets/icons/userIcon";
-import { Icon3, Icon4, Icon5, Icon6, IconWrapper } from '../assets/icons/CCIcons'; 
+import { IconWrapper } from '../assets/icons/CCIcons';
+
+const icons = [
+  { src: "https://i.ibb.co/Bj70xwG/anon.jpg", alt: "Icon 3", label: "anynomous" },
+  { src: "https://i.ibb.co/SX5bMQw/mike.jpg", alt: "Icon 4", label: "mcmmike" },
+  { src: "https://i.ibb.co/mhcXpxR/mac.jpg", alt: "Icon 5", label: "future3000" },
+  { src: "https://i.ibb.co/VMsjm9f/mw-grin.png", alt: "Icon 6", label: "mwgrin_fr" }
+];
 
 function Index(props) {
   return (
@@ -12,18 +19,15 @@ function Index(props) {
         <h1 className="header-1">Grin Community Council</h1>
         <p>Grin Community Council is <a className="text-primary" href="https://forum.grin.mw/t/call-for-grin-community-candidates-for-additional-fund-granting-control/8521/13">formed</a> from valued community members with remarkable contributions to Grin in 2021 May.
           Council's main task is to control and direct <i>Grin Community Fund </i> to support grin projects, bounties and community activities. Current council members are:</p>
-
-<div className="py-4">
-  <div className="icons-container">
-    <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
-      <IconWrapper IconComponent={Icon3} label="anynomous" />
-      <IconWrapper IconComponent={Icon4} label="mcmmike" />
-      <IconWrapper IconComponent={Icon5} label="future3000" />
-      <IconWrapper IconComponent={Icon6} label="mwgrin_fr" />
-      {/* other list items */}
-    </ul>
-  </div>
-</div>
+        <div className="py-4">
+          <div className="icons-container">
+            <ul className="pl-4 pb-4" style={{ margin: '0px', padding: '0px' }}>
+              {icons.map((icon) => (
+                <IconWrapper IconComponent={() => <img src={icon.src} alt={icon.alt} style={{ width: '24px', height: '24px', borderRadius: '50%' }} />} label={icon.label} />
+              ))}
+            </ul>
+          </div>
+        </div>
                 
                 <h2 className="header-2">Background</h2>
                 <div className="pb-4 text-justify">
