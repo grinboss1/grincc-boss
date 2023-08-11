@@ -42,7 +42,7 @@ p {
 .icon-wrapper {
   display: flex;
   align-items: center;
-  padding: -5px;
+  padding: 0px;
   margin-top: 2px;
   margin-bottom: 2px;
   margin-left: -2px;
@@ -50,7 +50,7 @@ p {
 
 .icon-label {
   padding-left: 4px;
-  margin-bottom: 1px;
+  margin-bottom: 0px;
   margin-right: 2px;
 }
 
