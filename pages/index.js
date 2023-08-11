@@ -4,9 +4,7 @@ import Check from "../assets/icons/check";
 import Link from 'next/link';
 import UserIcon from "../assets/icons/userIcon";
 import UserIcon2 from "../assets/icons/userIcon2";
-import { Icon3, Icon4 } from '../assets/icons/CCIcons'; // Adjust the path to the location of Icon3
-import Icon5 from '../assets/icons/Icon5';
-import Icon6 from '../assets/icons/Icon6';
+import { Icon3, Icon4, Icon5, Icon6 } from '../assets/icons/CCIcons'; 
 
 function Index(props) {
   return (
