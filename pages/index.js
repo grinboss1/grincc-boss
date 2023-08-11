@@ -50,6 +50,7 @@ function Index(props) {
   </div>
 </li>
    </ul> {/* Closing ul tag */}
+  </div>
   
   </div>
  <h2 className="header-2">Background</h2>
