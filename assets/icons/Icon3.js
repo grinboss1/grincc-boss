@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Icon3 = ({ className }) => {
+export const Icon3 = ({ className }) => {
   return (
     <img
-      className={className} // Added className prop
+      className={className}
       src="https://i.ibb.co/Bj70xwG/anon.jpg"
       alt="Icon 3"
       style={{ width: '24px', height: '24px', borderRadius: '50%' }}
@@ -11,4 +11,14 @@ const Icon3 = ({ className }) => {
   );
 };
 
-export default Icon3;
+export const Icon4 = ({ className }) => {
+  return (
+    <img
+      className={className}
+      src="https://i.ibb.co/SX5bMQw/mike.jpg"
+      alt="Icon 4"
+      style={{ width: '24px', height: '24px', borderRadius: '50%' }}
+    />
+  );
+};
+
