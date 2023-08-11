@@ -11,5 +11,5 @@ const Icon4 = ({ className }) => {
   );
 };
 
-export default Icon3;
+export default Icon4;
 
