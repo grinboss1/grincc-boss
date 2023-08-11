@@ -76,15 +76,14 @@ const CustomModal = ({ onClose, label, position }) => {
   }, [onClose]);
 
  return (
-    <div className="icon-parent-container">
-      <li ref={iconRef} className="icon-container" onClick={openModal}>
-        <div className="icon-wrapper">
-          <IconComponent />
-          <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
+    <div className="modal-overlay">
+      <div className="modal-content-container">
+        <div className="modal-content" ref={contentRef} style={{ top: position.top, left: position.left }}>
+          <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
         </div>
-      </li>
-      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+      </div>
     </div>
   );
 };
+
 
