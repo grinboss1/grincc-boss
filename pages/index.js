@@ -23,7 +23,7 @@ function Index(props) {
     <li className="flex items-center mt-1">
       <div className="flex items-center p-2 mt-1 mb-[-2px] ml-[-2px]">
         <Icon3 className="icon-class" />
-        <span style={{ paddingLeft: '3.4px', marginBottom: '1px', marginRight: '2px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
+        <span style={{ paddingLeft: '0px', marginBottom: '0px', marginRight: '0px' }}>anynomous <span style={{ fontSize: '0.7em', color: '#888' }}></span></span>
       </div>
     </li>
       <li style={{ display: 'flex', alignItems: 'center', marginTop: '0px' }}>
