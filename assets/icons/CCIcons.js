@@ -36,16 +36,16 @@ const CustomModal = ({ isOpen, onClose, label, link }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <div className="modal-overlay" onClick={onClose}> {/* This is the overlay div */}
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <h2>{label}</h2>
         <p>Visit the link:</p>
         <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
-        <button onClick={onClose}>Close</button>
       </div>
     </div>
   );
 };
+
 
 export const IconWrapper = ({ IconComponent, label, link }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
