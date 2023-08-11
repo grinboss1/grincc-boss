@@ -39,7 +39,7 @@ export const IconWrapper = ({ IconComponent, label }) => {
 
   const openModal = () => {
     const rect = iconRef.current.getBoundingClientRect();
-    setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
+setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
     setModalIsOpen(true);
   };
 
@@ -78,8 +78,8 @@ const CustomModal = ({ onClose, label, position }) => {
     };
   }, [onClose]);
 
-  return (
-    <div className="modal-content-container" style={{ position: 'absolute', top: position.top, left: position.left }}>
+return (
+    <div className="modal-content-container" style={{ top: position.top, left: position.left }}>
       <div className="modal-content" ref={contentRef}>
         <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
       </div>
