@@ -28,12 +28,14 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
- const openModal = () => {
-  console.log("Opening modal..."); // Add this line
+const openModal = () => {
+  console.log("Opening modal...");
   const rect = iconRef.current.getBoundingClientRect();
-  setModalPosition({ top: rect.top, left: rect.right });
+  setModalPosition({ top: rect.bottom, left: rect.right }); // Updated line
   setModalIsOpen(true);
 };
+
+
 
 
 
