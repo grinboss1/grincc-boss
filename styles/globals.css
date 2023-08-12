@@ -41,9 +41,7 @@ p {
 }
 
 .icon-container {
-  display: flex;
-  align-items: center;
-  margin-top: 0px;
+  position: relative;
 }
 
 .icon-parent-container {
