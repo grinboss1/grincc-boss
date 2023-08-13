@@ -34,7 +34,7 @@ export const IconWrapper = ({ icon, label }) => {
     const rect = iconRef.current.getBoundingClientRect();
     console.log('Rect values:', rect); // Log the entire rect object
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 100; // Add 10 pixels to the right
+    const leftPosition = rect.right + 10; // Add 10 pixels to the right
 
     console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
     setModalPosition({ top: topPosition, left: leftPosition });
@@ -44,19 +44,18 @@ export const IconWrapper = ({ icon, label }) => {
   const closeModal = () => setModalIsOpen(false);
 
   return (
-    <ul className="icon-list">
-      <div className="icon-parent-container" style={{ position: 'relative' }}>
-        <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
-          <div className="icon-wrapper">
-            <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
-            <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
-          </div>
-        </li>
-        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
-      </div>
-    </ul>
+    <div className="icon-parent-container" style={{ position: 'relative' }}>
+      <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+        <div className="icon-wrapper">
+          <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
+          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
+        </div>
+      </li>
+      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+    </div>
   );
 };
+
 
 
 const CustomModal = ({ onClose, label, position }) => {
