@@ -28,21 +28,34 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
-  const openModal = () => {
-    const rect = iconRef.current.getBoundingClientRect();
-    console.log("Icon position:", rect);
-    const leftPosition = rect.right;
-    console.log("Modal left position:", leftPosition);
-    setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
-    setModalIsOpen(true);
-  };
+ const openModal = () => {
+  const rect = iconRef.current.getBoundingClientRect();
+  console.log("Icon position:", rect);
+  const modalWidth = 200; // The width of your modal
+  let leftPosition = rect.right;
+
+  // Check if the modal would go off the right side of the viewport
+  if (leftPosition + modalWidth > window.innerWidth) {
+    leftPosition = rect.left - modalWidth; // Position the modal to the left of the icon
+  }
+
+  console.log("Modal left position:", leftPosition);
+
+  setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
+  setModalIsOpen(true);
+};
+
+
+
 
   const closeModal = () => setModalIsOpen(false);
 
   return (
-    <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+    <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
       <div className="icon-wrapper">
-        <IconComponent />
+        <div ref={iconRef}> {/* Set the ref here */}
+          <IconComponent />
+        </div>
         <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
       </div>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
