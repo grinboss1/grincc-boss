@@ -31,14 +31,15 @@ export const IconWrapper = ({ IconComponent, label }) => {
  const openModal = () => {
   const rect = iconRef.current.getBoundingClientRect();
   console.log("Icon position:", rect);
-  console.log("Viewport width:", window.innerWidth);
 
+  // Set the left position to the right edge of the icon
   const leftPosition = rect.right;
   console.log("Modal left position:", leftPosition);
 
   setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
   setModalIsOpen(true);
 };
+
 
 
 
