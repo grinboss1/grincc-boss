@@ -88,7 +88,6 @@ const userLinks = {
 };
 
 const CustomModal = ({ onClose, label, position }) => {
-  const popupText = userPopupTexts[label] || "Default text if label not found";
   const userLink = userLinks[label] || "https://www.defaultlink.com"; // Default link if label not found
 
   return (
@@ -103,8 +102,7 @@ const CustomModal = ({ onClose, label, position }) => {
       onClick={(e) => e.stopPropagation()}
     >
       <div className="modal-content">
-        <p>{popupText}</p>
-        <p>Visit <a href={userLink} target="_blank" rel="noopener noreferrer">{label}'s forum</a></p>
+        <p>Visit the <a href={userLink} target="_blank" rel="noopener noreferrer">forum</a> for {label}</p>
       </div>
     </div>
   );
