@@ -89,6 +89,22 @@ p {
   @apply text-lg sm:text-xl text-gray-900 font-medium dark:text-gray-100 mb-2;
 }
 
+.username-container {
+  position: relative; /* Ensure this is relative */
+  width: 10px; /* Fixed width to contain the username */
+}
+
+.popup {
+  display: none; /* Hide by default */
+  position: absolute; /* Absolute positioning relative to the parent */
+  left: 100%; /* Position to the right of the parent element */
+  top: 0; /* Align with the top of the parent element */
+  margin-left: 2rem; /* Set the distance from the username container */
+  /* Other styling for the popup here */
+}
+
+
+
 .modal-overlay {
   position: absolute;
   top: 0;
