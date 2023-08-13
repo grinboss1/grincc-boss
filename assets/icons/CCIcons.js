@@ -47,20 +47,16 @@ export const IconWrapper = ({ IconComponent, label }) => {
     setModalIsOpen(true);
   };
 
-  const closeModal = () => setModalIsOpen(false);
-
+  const CustomModal = ({ onClose, label, position }) => {
   return (
-    <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
-      <div className="icon-wrapper">
-        <div ref={iconRef}> {/* Set the ref here */}
-          <IconComponent />
-        </div>
-        <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
+    <div className="modal-content-container" style={{ top: position.top, left: position.left }}>
+      <div className="modal-content">
+        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
       </div>
-      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
-    </li>
+    </div>
   );
 };
+
 
 
 
