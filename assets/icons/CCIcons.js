@@ -27,7 +27,7 @@ export const IconList = () => (
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const iconAndLabelRef = useRef(null);
+  
 
   const openModal = () => {
   setModalIsOpen(true);
