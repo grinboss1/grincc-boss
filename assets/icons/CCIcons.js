@@ -54,8 +54,9 @@ export const IconWrapper = ({ icon, label }) => {
   return (
     <ul className="icon-list">
       <div className="icon-parent-container" style={{ position: 'relative' }}>
-        <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
-          <div className="icon-wrapper">
+        <li className="icon-container px-2 py-2 relative">
+          {/* Wrap the icon and label inside a div and attach the click event to this div */}
+          <div className="icon-clickable" onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
             <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
             <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
           </div>
