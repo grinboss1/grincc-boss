@@ -50,10 +50,8 @@ export const IconWrapper = ({ icon, label }) => {
   );
 };
 
-const CustomModal = ({ iconAndLabelRef, onClose, label }) => {
-  const rect = iconAndLabelRef.current.getBoundingClientRect();
-  const topPosition = rect.top + window.scrollY;
-  const leftPosition = rect.right;
+const CustomModal = ({ onClose, label, position }) => {
+  const contentRef = useRef();
 
   return (
     <div
@@ -64,20 +62,22 @@ const CustomModal = ({ iconAndLabelRef, onClose, label }) => {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: 10000,
-        background: 'rgba(0, 0, 0, 0.0)'
+        zIndex: 9999,
+        background: 'rgba(0, 0, 0, 0.0)' // Transparent background
       }}
-      onClick={onClose}
+      onClick={onClose} // Close the modal when the overlay is clicked
     >
       <div
         className="modal-content-container"
         style={{
-          position: 'absolute', // Now absolute inside the fixed overlay
-          top: topPosition,
-          left: leftPosition
+          position: 'fixed',
+          top: position.top,
+          left: position.left,
+          zIndex: 10000 // Ensure the content is above the overlay
         }}
+        onClick={(e) => e.stopPropagation()} // Prevent clicks on the content from closing the modal
       >
-        <div className="modal-content">
+        <div className="modal-content" ref={contentRef}>
           <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
         </div>
       </div>
