@@ -90,7 +90,9 @@ p {
   border: 1px solid #ccc;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 100; /* Ensure this is above other z-index values */
+  top: 100px; /* Example value */
+  left: 100px;
+  z-index: 1000; /* Ensure this is above other z-index values */
 }
 
 
