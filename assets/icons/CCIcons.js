@@ -82,19 +82,8 @@ const CustomModal = ({ onClose, label, position }) => {
       }}
       onClick={(e) => e.stopPropagation()} // Prevent clicks on the content from closing the modal
     >
-      <div
-        className="modal-content-container"
-        style={{
-          position: 'fixed',
-          top: position.top,
-          left: position.left,
-          zIndex: 10000 // Ensure the content is above the overlay
-        }}
-        onClick={(e) => e.stopPropagation()} // Prevent clicks on the content from closing the modal
-      >
-        <div className="modal-content">
-          <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
-        </div>
+      <div className="modal-content">
+        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
       </div>
     </div>
   );
