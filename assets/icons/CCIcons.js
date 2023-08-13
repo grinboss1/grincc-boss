@@ -28,6 +28,17 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
+  return (
+    <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+      <div className="icon-wrapper" ref={iconRef}>
+        <IconComponent />
+        {/* ... */}
+      </div>
+      {modalIsOpen && <CustomModal position={modalPosition} onClose={() => setModalIsOpen(false)} label={label} />}
+    </li>
+  );
+};
+
   const openModal = () => {
     const rect = iconRef.current.getBoundingClientRect();
     console.log(`Icon position for ${label}:`, rect);
