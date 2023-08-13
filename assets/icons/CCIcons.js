@@ -27,66 +27,56 @@ export const IconList = () => (
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const iconAndLabelRef = useRef(null); // Reference to the div containing icon and label
+  const iconAndLabelRef = useRef(null);
 
   const openModal = () => {
-    const rect = iconAndLabelRef.current.getBoundingClientRect(); // Get bounding rect of the div
-    const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right; // Adjust as needed
-
-    // Prevent scrolling
     document.body.style.overflow = 'hidden';
-    setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
-    // Allow scrolling
     document.body.style.overflow = 'auto';
     setModalIsOpen(false);
   };
 
-  useEffect(() => {
-    // Close the modal when clicking anywhere outside the modal
-    const handleClickOutside = (event) => {
-      if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
-        closeModal();
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [modalIsOpen]);
-
   return (
     <div className="icon-parent-container" style={{ position: 'relative' }}>
-      {/* Wrap the icon and label inside a div with a ref */}
       <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
         <Icon src={icon.src} alt={icon.alt} />
         <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
       </div>
-      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+      {modalIsOpen && <CustomModal iconAndLabelRef={iconAndLabelRef} onClose={closeModal} label={label} />}
     </div>
   );
 };
 
+const CustomModal = ({ iconAndLabelRef, onClose, label }) => {
+  const rect = iconAndLabelRef.current.getBoundingClientRect();
+  const topPosition = rect.top + window.scrollY;
+  const leftPosition = rect.right;
 
-
-const CustomModal = ({ onClose, label, position }) => {
   return (
     <div
       className="modal-overlay"
       style={{
-        position: 'absolute',
-        top: position.top,
-        left: position.left,
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
         zIndex: 10000,
-        background: 'rgba(0, 0, 0, 0.0)' // Transparent background
+        background: 'rgba(0, 0, 0, 0.0)'
       }}
-      onClick={onClose} // Close the modal when the overlay is clicked
+      onClick={onClose}
     >
-      <div className="modal-content-container">
+      <div
+        className="modal-content-container"
+        style={{
+          position: 'absolute', // Now absolute inside the fixed overlay
+          top: topPosition,
+          left: leftPosition
+        }}
+      >
         <div className="modal-content">
           <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
         </div>
@@ -94,6 +84,7 @@ const CustomModal = ({ onClose, label, position }) => {
     </div>
   );
 };
+
 
 
 
