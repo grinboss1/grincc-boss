@@ -26,14 +26,14 @@ export const IconList = () => (
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, right: 0 });
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 }); // Changed 'right' to 'left'
   const iconAndLabelRef = useRef(null);
 
   const openModal = () => {
     const rect = iconAndLabelRef.current.getBoundingClientRect();
     const topPosition = rect.top + window.scrollY;
-    const rightPosition = 20;
-    setModalPosition({ top: topPosition, right: rightPosition });
+    const leftPosition = rect.right + 20; // Calculating left position based on the right edge
+    setModalPosition({ top: topPosition, left: leftPosition }); // Using left position
     setModalIsOpen(true);
   };
 
@@ -76,10 +76,10 @@ const CustomModal = ({ onClose, label, position }) => {
       style={{
         position: 'fixed',
         top: position.top,
-        right: position.right, // Set the right position instead of the left
-        zIndex: 10000 // Ensure the content is above the overlay
+        left: position.left, // Using left position instead of right
+        zIndex: 10000
       }}
-      onClick={(e) => e.stopPropagation()} // Prevent clicks on the content from closing the modal
+      onClick={(e) => e.stopPropagation()}
     >
       <div className="modal-content">
         <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
