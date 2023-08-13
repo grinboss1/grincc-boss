@@ -48,47 +48,38 @@ export const IconWrapper = ({ IconComponent, label }) => {
   };
 
   const CustomModal = ({ onClose, label, position }) => {
-  return (
-    <div className="modal-content-container" style={{ top: position.top, left: position.left }}>
-      <div className="modal-content">
-        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+    const contentRef = useRef();
+
+    const handleClickOutside = (e) => {
+      if (contentRef.current && !contentRef.current.contains(e.target)) {
+        onClose();
+      }
+    };
+
+    useEffect(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [onClose]);
+
+    return (
+      <div className="modal-content-container" style={{ position: 'absolute', top: position.top, left: position.left }}>
+        <div className="modal-content" ref={contentRef}>
+          <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+        </div>
       </div>
-    </div>
-  );
-};
-
-
-
-
-
-
-
-
-
-
-
-const CustomModal = ({ onClose, label, position }) => {
-  const contentRef = useRef();
-
-  const handleClickOutside = (e) => {
-    if (contentRef.current && !contentRef.current.contains(e.target)) {
-      onClose();
-    }
+    );
   };
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [onClose]);
-
   return (
-    <div className="modal-content-container" style={{ position: 'absolute', top: position.top, left: position.left }}>
-      <div className="modal-content" ref={contentRef}>
-        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+    <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+      <div className="icon-wrapper" ref={iconRef}>
+        <IconComponent />
+        {/* ... */}
       </div>
-    </div>
+      {modalIsOpen && <CustomModal position={modalPosition} onClose={() => setModalIsOpen(false)} label={label} />}
+    </li>
   );
 };
 
