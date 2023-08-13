@@ -67,6 +67,11 @@ export const IconWrapper = ({ icon, label }) => {
 
 
 const CustomModal = ({ onClose, label, position }) => {
+  if (!position) {
+    console.error('Position is not defined');
+    return null;
+  }
+
   const contentRef = useRef();
 
   return (
