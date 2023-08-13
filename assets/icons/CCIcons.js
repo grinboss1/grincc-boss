@@ -34,7 +34,7 @@ export const IconWrapper = ({ icon, label }) => {
     const rect = iconRef.current.getBoundingClientRect();
     console.log('Rect values:', rect); // Log the entire rect object
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 10; // Add 10 pixels to the right
+    const leftPosition = rect.right + 100; // Add 10 pixels to the right
 
     console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
     setModalPosition({ top: topPosition, left: leftPosition });
