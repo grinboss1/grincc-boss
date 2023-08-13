@@ -29,14 +29,29 @@ export const IconWrapper = ({ icon, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconAndLabelRef = useRef(null); // Reference to the div containing icon and label
 
-  const openModal = () => {
-    const rect = iconAndLabelRef.current.getBoundingClientRect(); // Get bounding rect of the div
-    const topPosition = rect.top + window.scrollY;
-    const rightPosition = 20; // Distance from the right edge of the parent container
+ const openModal = () => {
+  const rect = iconAndLabelRef.current.getBoundingClientRect(); // Get bounding rect of the div
+  const topPosition = rect.top + window.scrollY;
+  const leftPosition = rect.right + 20; // Adjust as needed
 
-    setModalPosition({ top: topPosition, right: rightPosition });
-    setModalIsOpen(true);
-  };
+  setModalPosition({ top: topPosition, left: leftPosition });
+  setModalIsOpen(true);
+};
+
+return (
+  <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', width: 'max-content', textAlign: 'right' }}>
+    <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
+      {/* Wrap the icon and label inside a div and attach the click event to this div */}
+      <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+        <Icon src={icon.src} alt={icon.alt} />
+        <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
+      </div>
+      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+    </div>
+  </li>
+);
+
+
 
   const closeModal = () => {
     // Allow scrolling
