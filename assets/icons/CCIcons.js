@@ -31,7 +31,7 @@ export const IconWrapper = ({ IconComponent, label }) => {
  const openModal = () => {
   const rect = iconRef.current.getBoundingClientRect();
   console.log("Icon position:", rect);
-  const modalWidth = 200; // The width of your modal
+  const modalWidth = 20; // The width of your modal
   let leftPosition = rect.right;
 
   // Check if the modal would go off the right side of the viewport
