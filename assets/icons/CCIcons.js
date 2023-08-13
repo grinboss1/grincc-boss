@@ -61,29 +61,24 @@ export const IconWrapper = ({ icon, label }) => {
 
 const CustomModal = ({ onClose, label, position }) => {
   const contentRef = useRef();
-  const containerRef = useRef(); // Add this line
 
   const handleClickOutside = (e) => {
-    if (e.target === containerRef.current) { // Update this line
+    if (contentRef.current && !contentRef.current.contains(e.target)) {
       onClose();
     }
   };
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [onClose]);
-
   return (
-    <div className="modal-content-container" ref={containerRef} style={{ position: 'fixed', top: position.top, left: position.left }}> {/* Update this line */}
-      <div className="modal-content" ref={contentRef}>
-        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+    <div className="modal-overlay" onClick={handleClickOutside} style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+      <div className="modal-content-container" style={{ position: 'fixed', top: position.top, left: position.left }}>
+        <div className="modal-content" ref={contentRef}>
+          <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+        </div>
       </div>
     </div>
   );
 };
+
 
 
 
