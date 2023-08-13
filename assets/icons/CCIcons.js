@@ -16,7 +16,6 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
   />
 ));
 
-
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
@@ -56,8 +55,8 @@ export const IconWrapper = ({ icon, label }) => {
       <div className="icon-parent-container" style={{ position: 'relative' }}>
         <li className="icon-container px-2 py-2 relative">
           {/* Wrap the icon and label inside a div and attach the click event to this div */}
-          <div className="icon-clickable" onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
-            <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
+          <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+            <Icon src={icon.src} alt={icon.alt} />
             <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
           </div>
         </li>
@@ -66,9 +65,6 @@ export const IconWrapper = ({ icon, label }) => {
     </ul>
   );
 };
-
-
-
 
 const CustomModal = ({ onClose, label, position }) => {
   const contentRef = useRef();
@@ -104,7 +100,6 @@ const CustomModal = ({ onClose, label, position }) => {
     </div>
   );
 };
-
 
 
 
