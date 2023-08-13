@@ -31,19 +31,34 @@ export const IconWrapper = ({ IconComponent, label }) => {
  const openModal = () => {
   const rect = iconRef.current.getBoundingClientRect();
   console.log("Icon position:", rect);
-  const modalWidth = 20; // The width of your modal
-  let leftPosition = rect.right;
+
+  // Assuming this is the width and height of your modal
+  const modalWidth = 200;
+  const modalHeight = 100;
+
+  // Calculate the left position by taking the left edge of the icon and adding an offset
+  let leftPosition = rect.left + 30; // You can adjust this offset as needed
+
+  // Calculate the top position by taking the top edge of the icon and adding an offset
+  let topPosition = rect.top + window.scrollY + 30; // You can adjust this offset as needed
 
   // Check if the modal would go off the right side of the viewport
   if (leftPosition + modalWidth > window.innerWidth) {
-    leftPosition = rect.left - modalWidth; // Position the modal to the left of the icon
+    leftPosition = rect.right - modalWidth - 30; // Position the modal to the left of the icon
+  }
+
+  // Check if the modal would go off the bottom of the viewport
+  if (topPosition + modalHeight > window.innerHeight) {
+    topPosition = rect.bottom - modalHeight - 30; // Position the modal above the icon
   }
 
   console.log("Modal left position:", leftPosition);
+  console.log("Modal top position:", topPosition);
 
-  setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
+  setModalPosition({ top: topPosition, left: leftPosition });
   setModalIsOpen(true);
 };
+
 
 
 
