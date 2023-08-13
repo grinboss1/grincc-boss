@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
+
+
 const icons = [
   { src: "https://i.ibb.co/Bj70xwG/anon.jpg", alt: "Icon 3", label: "anynomous" },
   { src: "https://i.ibb.co/SX5bMQw/mike.jpg", alt: "Icon 4", label: "mcmmike" },
@@ -31,6 +33,7 @@ export const IconWrapper = ({ IconComponent, label }) => {
 const openModal = () => {
   console.log("Opening modal...");
   const rect = iconRef.current.getBoundingClientRect();
+  console.log(rect);
   setModalPosition({ top: rect.bottom, left: rect.right }); // Updated line
   setModalIsOpen(true);
 };
