@@ -17,55 +17,52 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
 ));
 
 
-export const IconList = () => (
-  <ul className="icon-list">
-    {icons.map((icon, index) => (
-      <IconWrapper icon={icon} label={icon.label} key={index} />
-    ))}
-  </ul>
-);
-
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const iconRef = useRef(null);
+  const iconAndLabelRef = useRef(null); // Reference to the div containing icon and label
 
   const openModal = () => {
-    const rect = iconRef.current.getBoundingClientRect();
-    console.log('Rect values:', rect); // Log the entire rect object
+    const rect = iconAndLabelRef.current.getBoundingClientRect(); // Get bounding rect of the div
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 100; // Add 100 pixels to the right
+    const leftPosition = rect.right; // Adjust as needed
 
-    // Disable scrolling on the index page so the pop up doesn't move down the page( fix for mobile) 
+    // Prevent scrolling
     document.body.style.overflow = 'hidden';
-
-    console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
     setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
-    // Re-enable scrolling once pop up is closed
+    // Allow scrolling
     document.body.style.overflow = 'auto';
-
     setModalIsOpen(false);
   };
 
+  useEffect(() => {
+    // Close the modal when clicking anywhere outside the modal
+    const handleClickOutside = (event) => {
+      if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [modalIsOpen]);
+
   return (
-    <ul className="icon-list">
-      <div className="icon-parent-container" style={{ position: 'relative' }}>
-        <li className="icon-container px-2 py-2 relative">
-          {/* Wrap the icon and label inside a div and attach the click event to this div */}
-          <div className="icon-clickable" onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
-            <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
-            <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
-          </div>
-        </li>
-        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+    <div className="icon-parent-container" style={{ position: 'relative' }}>
+      {/* Wrap the icon and label inside a div with a ref */}
+      <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+        <Icon src={icon.src} alt={icon.alt} />
+        <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
       </div>
-    </ul>
+      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+    </div>
   );
 };
+
 
 
 
