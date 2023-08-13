@@ -26,14 +26,9 @@ export const IconList = () => (
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconAndLabelRef = useRef(null);
 
   const openModal = () => {
-    const rect = iconAndLabelRef.current.getBoundingClientRect();
-    const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 20;
-    setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
     document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
@@ -56,17 +51,24 @@ export const IconWrapper = ({ icon, label }) => {
   }, [modalIsOpen]);
 
   return (
-    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem' }}>
+    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}> {/* Set position to relative */}
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
         <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
           <Icon src={icon.src} alt={icon.alt} />
-          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span> {/* Set min-width as needed */}
+          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
-        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+        {modalIsOpen && (
+          <div className="modal-content-container" style={{ position: 'absolute', top: '100%', left: '0', zIndex: 10000 }}>
+            <div className="modal-content">
+              <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+            </div>
+          </div>
+        )}
       </div>
     </li>
   );
 };
+
 
 
 
