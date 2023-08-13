@@ -41,7 +41,7 @@ p {
 }
 
 .icon-container {
-  position: relative;
+  position: relative; /* Ensure this is relative */
 }
 
 .icon-parent-container {
@@ -94,10 +94,6 @@ p {
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
-.icon-container {
-  position: relative; /* Ensure this is relative */
-}
-
 .modal-content-container {
   position: absolute;
   top: 0; /* Adjust as needed */
@@ -111,7 +107,6 @@ p {
   max-width: 400px; /* Set a maximum width */
   overflow: auto; /* Allow scrolling if content is too large */
 }
-
 
 .modal-content {
   background-color: #ffffff;
