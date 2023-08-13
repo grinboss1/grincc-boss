@@ -33,13 +33,13 @@ export const IconWrapper = ({ IconComponent, label }) => {
   console.log("Icon position:", rect);
   console.log("Viewport width:", window.innerWidth);
 
-  const modalWidth = 200; // Assuming this is the width of your modal
-  const leftPosition = rect.right - modalWidth;
+  const leftPosition = rect.right;
   console.log("Modal left position:", leftPosition);
 
   setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
   setModalIsOpen(true);
 };
+
 
 
   const closeModal = () => setModalIsOpen(false);
