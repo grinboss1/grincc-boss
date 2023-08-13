@@ -28,57 +28,37 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
-  const openModal = () => {
-    const rect = iconRef.current.getBoundingClientRect();
-    console.log(`Icon position for ${label}:`, rect);
+ const openModal = () => {
+  const rect = iconRef.current.getBoundingClientRect();
+  console.log("Icon position:", rect);
+  const modalWidth = 200; // The width of your modal
+  let leftPosition = rect.right;
 
-    const modalWidth = 200; // The width of your modal
-    let leftPosition = rect.right;
+  // Check if the modal would go off the right side of the viewport
+  if (leftPosition + modalWidth > window.innerWidth) {
+    leftPosition = rect.left - modalWidth; // Position the modal to the left of the icon
+  }
 
-    // Check if the modal would go off the right side of the viewport
-    if (leftPosition + modalWidth > window.innerWidth) {
-      leftPosition = rect.left - modalWidth; // Position the modal to the left of the icon
-    }
+  console.log("Modal left position:", leftPosition);
 
-    const newPosition = { top: rect.top + window.scrollY, left: leftPosition };
-    console.log(`Modal position for ${label}:`, newPosition);
+  setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
+  setModalIsOpen(true);
+};
 
-    setModalPosition(newPosition);
-    setModalIsOpen(true);
-  };
 
-  const CustomModal = ({ onClose, label, position }) => {
-    const contentRef = useRef();
 
-    const handleClickOutside = (e) => {
-      if (contentRef.current && !contentRef.current.contains(e.target)) {
-        onClose();
-      }
-    };
 
-    useEffect(() => {
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [onClose]);
-
-    return (
-      <div className="modal-content-container" style={{ position: 'absolute', top: position.top, left: position.left }}>
-        <div className="modal-content" ref={contentRef}>
-          <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
-        </div>
-      </div>
-    );
-  };
+  const closeModal = () => setModalIsOpen(false);
 
   return (
     <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
-      <div className="icon-wrapper" ref={iconRef}>
-        <IconComponent />
-        {/* ... */}
+      <div className="icon-wrapper">
+        <div ref={iconRef}> {/* Set the ref here */}
+          <IconComponent />
+        </div>
+        <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
       </div>
-      {modalIsOpen && <CustomModal position={modalPosition} onClose={() => setModalIsOpen(false)} label={label} />}
+      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
     </li>
   );
 };
