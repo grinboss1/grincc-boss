@@ -21,6 +21,8 @@ export const IconWrapper = ({ icon, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
+  console.log('Position in IconWrapper:', modalPosition);
+
   const openModal = () => {
     if (!iconRef.current) {
       console.error('iconRef.current is undefined');
@@ -52,7 +54,7 @@ export const IconWrapper = ({ icon, label }) => {
       </li>
       {modalIsOpen && (
         <div className="modal-content-container" style={{ position: 'absolute', top: modalPosition.top, left: modalPosition.left }}>
-          <CustomModal onClose={closeModal} label={label} />
+          <CustomModal onClose={closeModal} label={label} position={modalPosition} /> {/* Pass modalPosition here */}
         </div>
       )}
     </div>
@@ -68,7 +70,13 @@ export const IconList = () => (
 );
 
 const CustomModal = ({ onClose, label, position }) => {
+  console.log('Position in CustomModal:', position);
   const contentRef = useRef();
+
+if (!position) {
+    console.error('Position is not defined');
+    return null;
+  }
 
   return (
     <div
