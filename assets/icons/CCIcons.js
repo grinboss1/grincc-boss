@@ -55,11 +55,11 @@ export const IconWrapper = ({ icon, label }) => {
   }, [modalIsOpen]);
 
   return (
-    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', width: 'max-content', textAlign: 'right' }}>
+    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
         <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
           <Icon src={icon.src} alt={icon.alt} />
-          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
+          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '150px' }}>{label}</span> {/* Set min-width as needed */}
         </div>
         {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
       </div>
