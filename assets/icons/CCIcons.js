@@ -26,9 +26,14 @@ export const IconList = () => (
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconAndLabelRef = useRef(null);
 
   const openModal = () => {
+    const rect = iconAndLabelRef.current.getBoundingClientRect();
+    const topPosition = rect.top + window.scrollY;
+    const leftPosition = rect.right + 20;
+    setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
     document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
@@ -57,18 +62,12 @@ export const IconWrapper = ({ icon, label }) => {
           <Icon src={icon.src} alt={icon.alt} />
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
-        {modalIsOpen && (
-          <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
-            {/* top: '50%' and transform: 'translateY(-50%)' center the popup vertically relative to the icon */}
-            <div className="modal-content">
-              <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
-            </div>
-          </div>
-        )}
+        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
       </div>
     </li>
   );
 };
+
 
 
 
