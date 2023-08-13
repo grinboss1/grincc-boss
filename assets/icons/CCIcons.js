@@ -24,16 +24,22 @@ export const IconList = () => (
   </ul>
 );
 
-export const IconWrapper = ({ icon, label }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  
-
-  const openModal = () => {
-  setModalIsOpen(true);
-  document.body.style.overflow = 'hidden'; // Prevent scrolling
+// Define the links and text for each user
+const userLinks = {
+  "anynomous": { link: "https://45454545.com", text: "Key base: 45454545.com" },
+  "mcmmike": { link: "https://45545.com", text: "Forum: 45545.com" },
+  "future3000": { link: "https://dfgjkdfgfd.com", text: "Telegram: dfgjkdfgfd.com" },
+  "mwgrin_fr": { link: "https://dfg3434.com", text: "Twitter dfg3434.com" },
 };
 
+export const IconWrapper = ({ icon, label }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const iconAndLabelRef = useRef(null);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+  };
 
   const closeModal = () => {
     setModalIsOpen(false);
@@ -52,6 +58,8 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
+  const userContent = userLinks[label] || { link: "https://www.grin.mw", text: "Default text if label not found" };
+
   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
@@ -59,11 +67,19 @@ export const IconWrapper = ({ icon, label }) => {
           <Icon src={icon.src} alt={icon.alt} />
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
-        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+        {modalIsOpen && (
+          <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
+            {/* top: '50%' and transform: 'translateY(-50%)' center the popup vertically relative to the icon */}
+            <div className="modal-content">
+              <p>{userContent.text} <a href={userContent.link} target="_blank" rel="noopener noreferrer">Visit</a></p>
+            </div>
+          </div>
+        )}
       </div>
     </li>
   );
 };
+
 
 
 
