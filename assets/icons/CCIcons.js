@@ -26,23 +26,17 @@ export const IconList = () => (
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, right: 0 });
   const iconAndLabelRef = useRef(null);
 
   const openModal = () => {
-    const rect = iconAndLabelRef.current.getBoundingClientRect();
-    const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right; // Align the left edge of the modal with the right edge of the icon
-    setModalPosition({ top: topPosition, left: leftPosition });
-    setModalIsOpen(true);
     document.body.style.overflow = 'hidden'; // Prevent scrolling
+    setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
     document.body.style.overflow = 'auto'; // Allow scrolling
   };
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -63,23 +57,30 @@ export const IconWrapper = ({ icon, label }) => {
           <Icon src={icon.src} alt={icon.alt} />
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span> {/* Set min-width as needed */}
         </div>
-        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+        {modalIsOpen && <CustomModal iconRef={iconAndLabelRef} onClose={closeModal} label={label} />}
       </div>
     </li>
   );
 };
 
+const CustomModal = ({ iconRef, onClose, label }) => {
+  const [position, setPosition] = useState({ top: 0, left: 0 });
 
+  useEffect(() => {
+    const rect = iconRef.current.getBoundingClientRect();
+    const topPosition = rect.top + window.scrollY;
+    const leftPosition = rect.right; // Align with the right edge of the icon
+    setPosition({ top: topPosition, left: leftPosition });
+  }, [iconRef]);
 
-const CustomModal = ({ onClose, label, position }) => {
   return (
     <div
       className="modal-content-container"
       style={{
         position: 'fixed',
         top: position.top,
-        left: position.left, // Using left position
-        zIndex: 10000
+        left: position.left,
+        zIndex: 10000,
       }}
       onClick={(e) => e.stopPropagation()}
     >
