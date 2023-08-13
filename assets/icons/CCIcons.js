@@ -20,33 +20,30 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
 export const IconList = () => (
   <ul className="icon-list">
     {icons.map((icon, index) => (
-      <IconWrapper IconComponent={() => <Icon src={icon.src} alt={icon.alt} />} label={icon.label} key={index} />
+      <IconWrapper icon={icon} label={icon.label} key={index} />
     ))}
   </ul>
 );
 
-export const IconWrapper = ({ IconComponent, label }) => {
+export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
-const openModal = () => {
-  const rect = iconRef.current.getBoundingClientRect();
-  console.log('Rect values:', rect); // Log the entire rect object
-  const topPosition = rect.top + window.scrollY;
-  const leftPosition = rect.right;
-  console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
-  setModalPosition({ top: topPosition, left: leftPosition });
-  setModalIsOpen(true);
-};
-
-
-
-
+  const openModal = () => {
+    const rect = iconRef.current.getBoundingClientRect();
+    console.log('Rect values:', rect); // Log the entire rect object
+    const topPosition = rect.top + window.scrollY;
+    const leftPosition = rect.right;
+    console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
+    setModalPosition({ top: topPosition, left: leftPosition });
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => setModalIsOpen(false);
 
-<ul className="icon-list">
+  return (
+    <ul className="icon-list">
       <div className="icon-parent-container" style={{ position: 'relative' }}>
         <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
           <div className="icon-wrapper">
@@ -59,6 +56,7 @@ const openModal = () => {
     </ul>
   );
 };
+
 
 const CustomModal = ({ onClose, label, position }) => {
   const contentRef = useRef();
