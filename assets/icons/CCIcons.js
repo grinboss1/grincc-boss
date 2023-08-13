@@ -79,10 +79,17 @@ const userPopupTexts = {
   // Add more as needed
 };
 
-
+const userLinks = {
+  "anynomous": "https://www.grin.mw",
+  "mcmmike": "https://www.grincc.mw",
+  "future3000": "https://www.grinccc.mw",
+  "mwgrin_fr": "https://www.grincccc.mw",
+  // Add more as needed
+};
 
 const CustomModal = ({ onClose, label, position }) => {
   const popupText = userPopupTexts[label] || "Default text if label not found";
+  const userLink = userLinks[label] || "https://www.defaultlink.com"; // Default link if label not found
 
   return (
     <div
@@ -97,11 +104,12 @@ const CustomModal = ({ onClose, label, position }) => {
     >
       <div className="modal-content">
         <p>{popupText}</p>
-        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+        <p>Visit <a href={userLink} target="_blank" rel="noopener noreferrer">{label}'s forum</a></p>
       </div>
     </div>
   );
 };
+
 
 
 
