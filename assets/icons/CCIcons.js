@@ -37,18 +37,21 @@ export const IconWrapper = ({ IconComponent, label }) => {
     setModalIsOpen(true);
   };
 
-  const closeModal = () => setModalIsOpen(false); // Here's the closeModal function
+  const closeModal = () => setModalIsOpen(false);
 
   return (
-    <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+    <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
       <div className="icon-wrapper">
-        <IconComponent />
+        <div ref={iconRef}> {/* Set the ref here */}
+          <IconComponent />
+        </div>
         <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
       </div>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
     </li>
   );
 };
+
 
 
 
