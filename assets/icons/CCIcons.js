@@ -30,13 +30,16 @@ export const IconWrapper = ({ icon, label }) => {
   const iconAndLabelRef = useRef(null);
 
   const openModal = () => {
+  if (iconAndLabelRef.current) {
     const rect = iconAndLabelRef.current.getBoundingClientRect();
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right; // Align with the right edge of the icon
+    const leftPosition = rect.right + 20;
     setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
     document.body.style.overflow = 'hidden'; // Prevent scrolling
-  };
+  }
+};
+
 
   const closeModal = () => {
     setModalIsOpen(false);
