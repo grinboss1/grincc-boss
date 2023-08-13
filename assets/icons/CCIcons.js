@@ -28,17 +28,24 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
-  const openModal = () => {
+ const openModal = () => {
   const rect = iconRef.current.getBoundingClientRect();
   console.log("Icon position:", rect);
-  
-  const offset = 10; // You can adjust this value to create space between the icon and the popup
-  const leftPosition = rect.right + offset;
+  const modalWidth = 200; // The width of your modal
+  let leftPosition = rect.right;
+
+  // Check if the modal would go off the right side of the viewport
+  if (leftPosition + modalWidth > window.innerWidth) {
+    leftPosition = rect.left - modalWidth; // Position the modal to the left of the icon
+  }
+
   console.log("Modal left position:", leftPosition);
 
   setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
   setModalIsOpen(true);
 };
+
+
 
 
   const closeModal = () => setModalIsOpen(false);
