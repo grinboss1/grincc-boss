@@ -33,34 +33,43 @@ export const IconWrapper = ({ icon, label }) => {
   const openModal = () => {
     const rect = iconAndLabelRef.current.getBoundingClientRect(); // Get bounding rect of the div
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 10; // Adjust as needed
+    const leftPosition = rect.right; // Adjust as needed
 
+    // Prevent scrolling
     document.body.style.overflow = 'hidden';
     setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
+    // Allow scrolling
     document.body.style.overflow = 'auto';
     setModalIsOpen(false);
   };
 
+  useEffect(() => {
+    // Close the modal when clicking anywhere outside the modal
+    const handleClickOutside = (event) => {
+      if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [modalIsOpen]);
+
   return (
-    <ul className="icon-list">
-      <div className="icon-parent-container" style={{ position: 'relative' }}>
-        <li className="icon-container px-2 py-2 relative">
-          {/* Wrap the icon and label inside a div with a ref */}
-          <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
-            <Icon src={icon.src} alt={icon.alt} />
-            <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
-          </div>
-        </li>
-        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+    <div className="icon-parent-container" style={{ position: 'relative' }}>
+      {/* Wrap the icon and label inside a div with a ref */}
+      <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+        <Icon src={icon.src} alt={icon.alt} />
+        <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
       </div>
-    </ul>
+      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+    </div>
   );
 };
-
 
 
 
