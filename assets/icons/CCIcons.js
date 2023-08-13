@@ -32,11 +32,9 @@ export const IconWrapper = ({ icon, label }) => {
   const openModal = () => {
     const rect = iconAndLabelRef.current.getBoundingClientRect(); // Get bounding rect of the div
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 10; // Adjust as needed
+    const rightPosition = 20; // Distance from the right edge of the parent container
 
-    // Prevent scrolling
-    document.body.style.overflow = 'hidden';
-    setModalPosition({ top: topPosition, left: leftPosition });
+    setModalPosition({ top: topPosition, right: rightPosition });
     setModalIsOpen(true);
   };
 
@@ -59,7 +57,8 @@ export const IconWrapper = ({ icon, label }) => {
   }, [modalIsOpen]);
 
   return (
-    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem' }}>
+    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', width: '200px' }}> {/* Adjust the width as needed */}
+      <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
       {/* Wrap the icon and label inside a div and attach the click event to this div */}
       <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
         <Icon src={icon.src} alt={icon.alt} />
@@ -74,17 +73,14 @@ export const IconWrapper = ({ icon, label }) => {
 const CustomModal = ({ onClose, label, position }) => {
   return (
     <div
-      className="modal-overlay"
+      className="modal-content-container"
       style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: 9999,
-        background: 'rgba(0, 0, 0, 0.0)' // Transparent background
+        top: position.top,
+        right: position.right, // Set the right position instead of the left
+        zIndex: 10000 // Ensure the content is above the overlay
       }}
-      onClick={onClose} // Close the modal when the overlay is clicked
+      onClick={(e) => e.stopPropagation()} // Prevent clicks on the content from closing the modal
     >
       <div
         className="modal-content-container"
