@@ -25,23 +25,29 @@ export const IconList = () => (
   </ul>
 );
 
-export const IconWrapper = ({ icon, label }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const iconRef = useRef(null);
-  const containerRef = useRef(null);
+const openModal = () => {
+  if (!iconRef.current) {
+    console.error('iconRef.current is undefined');
+    return;
+  }
 
-  const openModal = () => {
-    if (iconRef.current && containerRef.current) {
-      const rect = iconRef.current.getBoundingClientRect();
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const topPosition = rect.top - containerRect.top;
-      const leftPosition = rect.right - containerRect.left + 10; // Add 10 pixels to the right
+  const rect = iconRef.current.getBoundingClientRect();
+  if (!rect) {
+    console.error('rect is undefined');
+    return;
+  }
 
-      setModalPosition({ top: topPosition, left: leftPosition });
-      setModalIsOpen(true);
-    }
-  };
+  console.log('Rect values:', rect);
+
+  const topPosition = rect.top + window.scrollY;
+  const leftPosition = rect.right + 10; // Add 10 pixels to the right
+
+  console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition);
+
+  setModalPosition({ top: topPosition, left: leftPosition });
+  setModalIsOpen(true);
+};
+
 
   const closeModal = () => setModalIsOpen(false);
 
