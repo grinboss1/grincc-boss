@@ -70,6 +70,7 @@ export const IconWrapper = ({ icon, label }) => {
 
 
 
+
 const CustomModal = ({ onClose, label, position }) => {
   return (
     <div
