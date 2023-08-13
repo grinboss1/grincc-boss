@@ -34,7 +34,7 @@ export const IconWrapper = ({ icon, label }) => {
     const rect = iconRef.current.getBoundingClientRect();
     console.log('Rect values:', rect); // Log the entire rect object
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 10; // Add 10 pixels to the right
+    const leftPosition = rect.right + 100; // Add 10 pixels to the right
 
     console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
     setModalPosition({ top: topPosition, left: leftPosition });
@@ -65,7 +65,7 @@ const CustomModal = ({ onClose, label, position }) => {
     <div
       className="modal-overlay"
       style={{
-        position: 'absolute',
+        position: 'relative',
         top: 0,
         left: 0,
         width: '100%',
@@ -78,7 +78,7 @@ const CustomModal = ({ onClose, label, position }) => {
       <div
         className="modal-content-container"
         style={{
-          position: 'absolute',
+          position: 'relative',
           top: position.top,
           left: position.left,
           zIndex: 10000 // Ensure the content is above the overlay
