@@ -52,11 +52,12 @@ export const IconWrapper = ({ icon, label }) => {
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
         </div>
       </li>
-      {modalIsOpen && (
-        <div className="modal-content-container" style={{ position: 'absolute', top: modalPosition.top, left: modalPosition.left }}>
-          <CustomModal onClose={closeModal} label={label} position={modalPosition} /> {/* Pass modalPosition here */}
-        </div>
-      )}
+      {modalIsOpen && modalPosition.top !== 0 && modalPosition.left !== 0 && (
+  <div className="modal-content-container" style={{ position: 'absolute', top: modalPosition.top, left: modalPosition.left }}>
+    <CustomModal onClose={closeModal} label={label} position={modalPosition} />
+  </div>
+)}
+
     </div>
   );
 };
