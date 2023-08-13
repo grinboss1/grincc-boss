@@ -81,8 +81,9 @@ const userPopupDetails = {
   // Add more as needed
 };
 
+
 const CustomModal = ({ onClose, label, position }) => {
-  const details = userPopupDetails[label] || { text: "Default text if label not found", url: "#" };
+  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
 
   return (
     <div
@@ -91,7 +92,7 @@ const CustomModal = ({ onClose, label, position }) => {
         position: 'fixed',
         top: position.top,
         left: position.left,
-        zIndex: 10000
+        zIndex: 10000,
       }}
       onClick={(e) => e.stopPropagation()}
     >
@@ -101,6 +102,7 @@ const CustomModal = ({ onClose, label, position }) => {
     </div>
   );
 };
+
 
 
 
