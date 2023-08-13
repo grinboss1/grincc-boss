@@ -94,8 +94,14 @@ p {
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
+.icon-container {
+  position: relative; /* Ensure this is relative */
+}
+
 .modal-content-container {
   position: absolute;
+  top: 0; /* Adjust as needed */
+  left: 100%;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   padding: 10px;
