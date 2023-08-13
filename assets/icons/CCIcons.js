@@ -54,8 +54,8 @@ export const IconWrapper = ({ icon, label }) => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    window.addEventListener('mousedown', handleClickOutside);
+    return () => window.removeEventListener('mousedown', handleClickOutside);
   }, [modalIsOpen]);
 
  return (
@@ -87,7 +87,6 @@ const CustomModal = ({ onClose, label, position }) => {
         zIndex: 9999,
         background: 'rgba(0, 0, 0, 0.0)', // Transparent background
       }}
-      onClick={onClose} // Close the modal when the overlay is clicked
     >
       <div
         className="modal-content-container"
