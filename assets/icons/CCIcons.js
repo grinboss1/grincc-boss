@@ -26,11 +26,16 @@ export const IconList = () => (
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconAndLabelRef = useRef(null);
 
   const openModal = () => {
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    const rect = iconAndLabelRef.current.getBoundingClientRect();
+    const topPosition = rect.top + window.scrollY;
+    const leftPosition = rect.right; // Align with the right edge of the icon
+    setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
 
   const closeModal = () => {
