@@ -42,6 +42,11 @@ p {
 
 .icon-container {
   position: relative; /* Ensure this is relative */
+  transition: color 0.3s ease;
+}
+
+.icon-container:hover .icon-label {
+  color: #007bff; /* Change color on hover */
 }
 
 .icon-parent-container {
