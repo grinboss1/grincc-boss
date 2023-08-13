@@ -34,10 +34,10 @@ const openModal = () => {
   const rect = iconRef.current.getBoundingClientRect();
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
   const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-  const modalWidth = 200; // The width of your modal
-  setModalPosition({ top: rect.bottom + scrollTop, left: rect.right + scrollLeft - modalWidth });
+  setModalPosition({ top: rect.top + scrollTop, left: rect.right + scrollLeft });
   setModalIsOpen(true);
 };
+
 
 
 
