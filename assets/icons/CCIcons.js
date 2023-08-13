@@ -76,7 +76,7 @@ const CustomModal = ({ onClose, label, position }) => {
     <div
       className="modal-overlay"
       style={{
-        position: 'absolute',
+        position: 'relative',
         top: 0,
         left: 0,
         width: '100%',
@@ -89,7 +89,7 @@ const CustomModal = ({ onClose, label, position }) => {
       <div
         className="modal-content-container"
         style={{
-          position: 'absolute',
+          position: 'relative',
           top: position.top,
           left: position.left,
           zIndex: 10000 // Ensure the content is above the overlay
