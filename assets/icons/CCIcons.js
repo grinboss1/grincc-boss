@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 const icons = [
   { src: "https://i.ibb.co/Bj70xwG/anon.jpg", alt: "Icon 3", label: "anynomous" },
@@ -16,43 +16,34 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
   />
 ));
 
+export const IconWrapper = ({ icon, label }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  const iconRef = useRef(null);
 
-export const IconList = () => (
-  <ul className="icon-list">
-    {icons.map((icon, index) => (
-      <IconWrapper icon={icon} label={icon.label} key={index} />
-    ))}
-  </ul>
-);
+  const openModal = () => {
+    if (!iconRef.current) {
+      console.error('iconRef.current is undefined');
+      return;
+    }
 
-const openModal = () => {
-  if (!iconRef.current) {
-    console.error('iconRef.current is undefined');
-    return;
-  }
+    const rect = iconRef.current.getBoundingClientRect();
+    if (!rect) {
+      console.error('rect is undefined');
+      return;
+    }
 
-  const rect = iconRef.current.getBoundingClientRect();
-  if (!rect) {
-    console.error('rect is undefined');
-    return;
-  }
+    const topPosition = rect.top + window.scrollY;
+    const leftPosition = rect.right + 10;
 
-  console.log('Rect values:', rect);
-
-  const topPosition = rect.top + window.scrollY;
-  const leftPosition = rect.right + 10; // Add 10 pixels to the right
-
-  console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition);
-
-  setModalPosition({ top: topPosition, left: leftPosition });
-  setModalIsOpen(true);
-};
-
+    setModalPosition({ top: topPosition, left: leftPosition });
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => setModalIsOpen(false);
 
   return (
-    <div ref={containerRef} className="icon-parent-container" style={{ position: 'relative' }}>
+    <div className="icon-parent-container" style={{ position: 'relative' }}>
       <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
         <div className="icon-wrapper">
           <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
@@ -68,16 +59,15 @@ const openModal = () => {
   );
 };
 
-
-
-
+export const IconList = () => (
+  <ul className="icon-list">
+    {icons.map((icon, index) => (
+      <IconWrapper icon={icon} label={icon.label} key={index} />
+    ))}
+  </ul>
+);
 
 const CustomModal = ({ onClose, label, position }) => {
-  if (!position) {
-    console.error('Position is not defined');
-    return null;
-  }
-
   const contentRef = useRef();
 
   return (
@@ -90,9 +80,9 @@ const CustomModal = ({ onClose, label, position }) => {
         width: '100%',
         height: '100%',
         zIndex: 9999,
-        background: 'rgba(0, 0, 0, 0.0)' // Transparent background
+        background: 'rgba(0, 0, 0, 0.0)'
       }}
-      onClick={onClose} // Close the modal when the overlay is clicked
+      onClick={onClose}
     >
       <div
         className="modal-content-container"
@@ -100,9 +90,9 @@ const CustomModal = ({ onClose, label, position }) => {
           position: 'fixed',
           top: position.top,
           left: position.left,
-          zIndex: 10000 // Ensure the content is above the overlay
+          zIndex: 10000
         }}
-        onClick={(e) => e.stopPropagation()} // Prevent clicks on the content from closing the modal
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-content" ref={contentRef}>
           <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
