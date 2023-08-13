@@ -16,6 +16,14 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
   />
 ));
 
+export const IconList = () => (
+  <ul className="icon-list">
+    {icons.map((icon, index) => (
+      <IconWrapper icon={icon} label={icon.label} key={index} />
+    ))}
+  </ul>
+);
+
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
