@@ -63,7 +63,30 @@ export const IconWrapper = ({ IconComponent, label }) => {
   );
 };
 
+const CustomModal = ({ onClose, label, position }) => {
+  const contentRef = useRef();
 
+  const handleClickOutside = (e) => {
+    if (contentRef.current && !contentRef.current.contains(e.target)) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+
+  return (
+    <div className="modal-content-container" style={{ position: 'absolute', top: position.top, left: position.left }}>
+      <div className="modal-content" ref={contentRef}>
+        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+      </div>
+    </div>
+  );
+};
 
 
 
