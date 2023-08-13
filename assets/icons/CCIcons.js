@@ -71,27 +71,38 @@ export const IconWrapper = ({ icon, label }) => {
 };
 
 
+const userPopupTexts = {
+  "anynomous": "Anynomous's details...",
+  "mcmmike": "Mcmmike's details...",
+  "future3000": "Future3000's details...",
+  "mwgrin_fr": "Mwgrin_fr's details...",
+  // Add more as needed
+};
 
 
 
 const CustomModal = ({ onClose, label, position }) => {
+  const popupText = userPopupTexts[label] || "Default text if label not found";
+
   return (
     <div
       className="modal-content-container"
       style={{
         position: 'fixed',
         top: position.top,
-        left: position.left, // Using left position instead of right
+        left: position.left,
         zIndex: 10000
       }}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="modal-content">
+        <p>{popupText}</p>
         <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
       </div>
     </div>
   );
 };
+
 
 
 
