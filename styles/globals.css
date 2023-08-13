@@ -94,7 +94,7 @@ p {
 }
 
 .modal-content-container {
-  /*position: absolute;*/
+  position: absolute;
   z-index: 100; /* Make sure the modal appears above other content */
   /* Other styles */
 }
