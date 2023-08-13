@@ -46,17 +46,7 @@ export const IconWrapper = ({ icon, label }) => {
     setModalIsOpen(false);
   };
 
-  useEffect(() => {
-    // Close the modal when clicking anywhere outside the modal
-    const handleClickOutside = (event) => {
-      if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
-        closeModal();
-      }
-    };
 
-    window.addEventListener('mousedown', handleClickOutside);
-    return () => window.removeEventListener('mousedown', handleClickOutside);
-  }, [modalIsOpen]);
 
  return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem' }}>
@@ -85,8 +75,9 @@ const CustomModal = ({ onClose, label, position }) => {
         width: '100%',
         height: '100%',
         zIndex: 9999,
-        background: 'rgba(0, 0, 0, 0.0)', // Transparent background
+        background: 'rgba(0, 0, 0, 0.0)' // Transparent background
       }}
+      onClick={onClose} // Close the modal when the overlay is clicked
     >
       <div
         className="modal-content-container"
@@ -94,7 +85,7 @@ const CustomModal = ({ onClose, label, position }) => {
           position: 'fixed',
           top: position.top,
           left: position.left,
-          zIndex: 10000, // Ensure the content is above the overlay
+          zIndex: 10000 // Ensure the content is above the overlay
         }}
         onClick={(e) => e.stopPropagation()} // Prevent clicks on the content from closing the modal
       >
