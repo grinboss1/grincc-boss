@@ -26,14 +26,14 @@ export const IconList = () => (
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  const [modalPosition, setModalPosition] = useState({ top: 0, right: 0 });
   const iconAndLabelRef = useRef(null);
 
   const openModal = () => {
     const rect = iconAndLabelRef.current.getBoundingClientRect();
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 20;
-    setModalPosition({ top: topPosition, left: leftPosition });
+    const rightPosition = 20; // Fixed distance from the right edge of the viewport
+    setModalPosition({ top: topPosition, right: rightPosition });
     setModalIsOpen(true);
     document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
@@ -42,6 +42,7 @@ export const IconWrapper = ({ icon, label }) => {
     setModalIsOpen(false);
     document.body.style.overflow = 'auto'; // Allow scrolling
   };
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -77,7 +78,7 @@ const CustomModal = ({ onClose, label, position }) => {
       style={{
         position: 'fixed',
         top: position.top,
-        left: position.left, // Using left position instead of right
+        right: position.right, // Using right position relative to the viewport
         zIndex: 10000
       }}
       onClick={(e) => e.stopPropagation()}
