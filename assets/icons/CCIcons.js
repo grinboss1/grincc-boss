@@ -65,6 +65,7 @@ export const IconWrapper = ({ icon, label }) => {
         <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
       </div>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+        </div> 
     </li>
   );
 };
