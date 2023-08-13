@@ -34,14 +34,22 @@ export const IconWrapper = ({ icon, label }) => {
     const rect = iconRef.current.getBoundingClientRect();
     console.log('Rect values:', rect); // Log the entire rect object
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 100; // Add 10 pixels to the right
+    const leftPosition = rect.right + 100; // Add 100 pixels to the right
+
+    // Disable scrolling on the index page so the pop up doesn't move down the page( fix for mobile) 
+    document.body.style.overflow = 'hidden';
 
     console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
     setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
   };
 
-  const closeModal = () => setModalIsOpen(false);
+  const closeModal = () => {
+    // Re-enable scrolling once pop up is closed
+    document.body.style.overflow = 'auto';
+
+    setModalIsOpen(false);
+  };
 
   return (
     <ul className="icon-list">
@@ -57,6 +65,7 @@ export const IconWrapper = ({ icon, label }) => {
     </ul>
   );
 };
+
 
 
 const CustomModal = ({ onClose, label, position }) => {
