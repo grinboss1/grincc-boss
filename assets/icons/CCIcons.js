@@ -29,31 +29,37 @@ export const IconWrapper = ({ icon, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconAndLabelRef = useRef(null);
 
-  const openModal = () => {
+ const openModal = () => {
+  if (iconAndLabelRef.current) {
     const rect = iconAndLabelRef.current.getBoundingClientRect();
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 0; // adjust the offset as needed
+    const leftPosition = rect.right + 0; // Adjust the offset as needed
     setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
     document.body.style.overflow = 'hidden'; // Prevent scrolling
-  };
+  }
+};
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-    document.body.style.overflow = 'auto'; // Allow scrolling
-  };
+const closeModal = () => {
+  setModalIsOpen(false);
+  document.body.style.overflow = 'auto'; // Allow scrolling
+};
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
-        closeModal();
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [modalIsOpen]);
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (
+      modalIsOpen &&
+      iconAndLabelRef.current &&
+      !iconAndLabelRef.current.contains(event.target)
+    ) {
+      closeModal();
+    }
+  };
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
+}, [modalIsOpen]);
 
   return (
   <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem' }}>
