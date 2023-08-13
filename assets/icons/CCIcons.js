@@ -7,13 +7,15 @@ const icons = [
   { src: "https://i.ibb.co/VMsjm9f/mw-grin.png", alt: "Icon 6", label: "mwgrin_fr" }
 ];
 
-export const Icon = ({ src, alt }) => (
+export const Icon = React.forwardRef(({ src, alt }, ref) => (
   <img
+    ref={ref}
     src={src}
     alt={alt}
     style={{ width: '24px', height: '24px', borderRadius: '50%' }}
   />
-);
+));
+
 
 export const IconList = () => (
   <ul className="icon-list">
@@ -44,19 +46,18 @@ const openModal = () => {
 
   const closeModal = () => setModalIsOpen(false);
 
-return (
-  <ul className="icon-list">
-    <div className="icon-parent-container" style={{ position: 'relative' }}>
-      <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
-        <div className="icon-wrapper">
-          <IconComponent />
-          <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
-        </div>
-      </li>
-      {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
-    </div>
-  </ul>
-);
+<ul className="icon-list">
+      <div className="icon-parent-container" style={{ position: 'relative' }}>
+        <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+          <div className="icon-wrapper">
+            <Icon ref={iconRef} src={icon.src} alt={icon.alt} /> {/* Use Icon directly */}
+            <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
+          </div>
+        </li>
+        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+      </div>
+    </ul>
+  );
 };
 
 const CustomModal = ({ onClose, label, position }) => {
