@@ -68,6 +68,11 @@ p {
   color: #888;
 }
 
+.icon-label-bold {
+  font-weight: bold;
+}
+
+
 .icon-class {
   @apply w-6 h-6 rounded-full;
 }
@@ -109,10 +114,7 @@ p {
 /*z-index: 1000;*/
 }
 
-.highlighted {
-  background-color: #ff0; /* Vibrant yellow color */
-  font-weight: bold; /* Bold text */
-}
+
 
 
 
