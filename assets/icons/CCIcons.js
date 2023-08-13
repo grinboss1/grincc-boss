@@ -29,13 +29,17 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const iconRef = useRef(null);
 
   const openModal = () => {
-    const rect = iconRef.current.getBoundingClientRect();
-    console.log("Icon position:", rect);
-    const leftPosition = rect.right;
-    console.log("Modal left position:", leftPosition);
-    setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
-    setModalIsOpen(true);
-  };
+  const rect = iconRef.current.getBoundingClientRect();
+  console.log("Icon position:", rect);
+  
+  const offset = 10; // You can adjust this value to create space between the icon and the popup
+  const leftPosition = rect.right + offset;
+  console.log("Modal left position:", leftPosition);
+
+  setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
+  setModalIsOpen(true);
+};
+
 
   const closeModal = () => setModalIsOpen(false);
 
