@@ -87,6 +87,7 @@ const CustomModal = ({ onClose, label, position }) => {
         zIndex: 9999,
         background: 'rgba(0, 0, 0, 0.0)', // Transparent background
       }}
+      onClick={onClose} // Close the modal when the overlay is clicked
     >
       <div
         className="modal-content-container"
@@ -101,7 +102,6 @@ const CustomModal = ({ onClose, label, position }) => {
         <div className="modal-content">
           <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
         </div>
-        <button onClick={onClose}>Close</button> {/* Add close button */}
       </div>
     </div>
   );
