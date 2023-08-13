@@ -61,7 +61,8 @@ export const IconWrapper = ({ icon, label }) => {
  return (
     <ul className="icon-list" style={{ padding: 0, margin: 0 }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
-        <li className="icon-container px-1 py-1 relative ml-8" style={{ margin: '0px' }}>
+        <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '2rem' }}>
+
 
 
           {/* Wrap the icon and label inside a div and attach the click event to this div */}
