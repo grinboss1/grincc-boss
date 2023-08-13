@@ -71,24 +71,18 @@ export const IconWrapper = ({ icon, label }) => {
 };
 
 
-const userPopupTexts = {
-  "anynomous": "Anynomous's details...",
-  "mcmmike": "Mcmmike's details...",
-  "future3000": "Future3000's details...",
-  "mwgrin_fr": "Mwgrin_fr's details...",
-  // Add more as needed
-};
 
-const userLinks = {
-  "anynomous": "https://www.grin.mw",
-  "mcmmike": "https://www.grincc.mw",
-  "future3000": "https://www.grinccc.mw",
-  "mwgrin_fr": "https://www.grincccc.mw",
+
+const userPopupDetails = {
+  "anynomous": { text: "Key base:", url: "https://45454545.com" },
+  "mcmmike": { text: "Forum:", url: "https://45545.com" },
+  "future3000": { text: "Telegram:", url: "https://dfgjkdfgfd.com" },
+  "mwgrin_fr": { text: "Twitter:", url: "https://dfg3434.com" },
   // Add more as needed
 };
 
 const CustomModal = ({ onClose, label, position }) => {
-  const userLink = userLinks[label] || "https://www.defaultlink.com"; // Default link if label not found
+  const details = userPopupDetails[label] || { text: "Default text if label not found", url: "#" };
 
   return (
     <div
@@ -102,11 +96,12 @@ const CustomModal = ({ onClose, label, position }) => {
       onClick={(e) => e.stopPropagation()}
     >
       <div className="modal-content">
-        <p>Visit the <a href={userLink} target="_blank" rel="noopener noreferrer">forum</a> for {label}</p>
+        <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
       </div>
     </div>
   );
 };
+
 
 
 
