@@ -32,7 +32,7 @@ export const IconWrapper = ({ icon, label }) => {
   const openModal = () => {
     const rect = iconAndLabelRef.current.getBoundingClientRect(); // Get bounding rect of the div
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 10; // Adjust as needed
+    const leftPosition = rect.right + 20; // Adjust as needed
 
     // Prevent scrolling
     document.body.style.overflow = 'hidden';
