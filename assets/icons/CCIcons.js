@@ -76,7 +76,7 @@ const CustomModal = ({ onClose, label, position }) => {
     <div
       className="modal-overlay"
       style={{
-        position: 'fixed',
+        position: 'absolute',
         top: 0,
         left: 0,
         width: '100%',
