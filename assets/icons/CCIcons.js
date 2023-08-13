@@ -32,7 +32,7 @@ export const IconWrapper = ({ icon, label }) => {
   const openModal = () => {
     const rect = iconAndLabelRef.current.getBoundingClientRect(); // Get bounding rect of the div
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 20; // Adjust as needed
+    const leftPosition = rect.right + 10; // Adjust as needed
 
     // Prevent scrolling
     document.body.style.overflow = 'hidden';
@@ -46,7 +46,7 @@ export const IconWrapper = ({ icon, label }) => {
     setModalIsOpen(false);
   };
 
-useEffect(() => {
+  useEffect(() => {
     // Close the modal when clicking anywhere outside the modal
     const handleClickOutside = (event) => {
       if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
@@ -54,23 +54,22 @@ useEffect(() => {
       }
     };
 
-    window.addEventListener('mousedown', handleClickOutside);
-    return () => window.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [modalIsOpen]);
 
- return (
-  <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem' }}>
-    <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
+  return (
+    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem' }}>
       {/* Wrap the icon and label inside a div and attach the click event to this div */}
       <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
         <Icon src={icon.src} alt={icon.alt} />
         <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
       </div>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
-    </div>
-  </li>
-);
+    </li>
+  );
 };
+
 
 const CustomModal = ({ onClose, label, position }) => {
   return (
