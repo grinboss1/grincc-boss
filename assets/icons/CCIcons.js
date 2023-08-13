@@ -26,10 +26,10 @@ export const IconList = () => (
 export const IconWrapper = ({ IconComponent, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const iconImageRef = useRef(null);
+  const iconRef = useRef(null);
 
   const openModal = () => {
-    const rect = iconImageRef.current.getBoundingClientRect();
+    const rect = iconRef.current.getBoundingClientRect();
     console.log("Icon position:", rect);
     const leftPosition = rect.right;
     console.log("Modal left position:", leftPosition);
@@ -40,15 +40,16 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const closeModal = () => setModalIsOpen(false); // Here's the closeModal function
 
   return (
-    <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+    <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
       <div className="icon-wrapper">
-        <img ref={iconImageRef} src={IconComponent.src} alt={IconComponent.alt} style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
+        <IconComponent />
         <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
       </div>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
     </li>
   );
 };
+
 
 
 const CustomModal = ({ onClose, label, position }) => {
