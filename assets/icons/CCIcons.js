@@ -33,12 +33,13 @@ export const IconWrapper = ({ icon, label }) => {
   if (iconAndLabelRef.current) {
     const rect = iconAndLabelRef.current.getBoundingClientRect();
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 0; // Adjust the offset as needed
+    const leftPosition = window.innerWidth <= 768 ? rect.left : rect.right; // Example: Adjust based on screen size
     setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
     document.body.style.overflow = 'hidden'; // Prevent scrolling
   }
 };
+
 
 const closeModal = () => {
   setModalIsOpen(false);
