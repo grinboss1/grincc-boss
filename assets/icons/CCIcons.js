@@ -31,10 +31,19 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const iconRef = useRef(null);
 
   const openModal = () => {
-    const rect = iconRef.current.getBoundingClientRect();
-    setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
-    setModalIsOpen(true);
-  };
+  const rect = iconRef.current.getBoundingClientRect();
+  const modalWidth = 200; // You can adjust this to the actual width of your modal
+  let leftPosition = rect.right;
+
+  // Check if the modal will be rendered off the screen
+  if (leftPosition + modalWidth > window.innerWidth) {
+    leftPosition = window.innerWidth - modalWidth - 10; // 10 is a buffer space
+  }
+
+  setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
+  setModalIsOpen(true);
+};
+
 
 
 
