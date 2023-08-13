@@ -25,14 +25,19 @@ export const IconList = () => (
 
 export const IconWrapper = ({ IconComponent, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 100, left: 100 });
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
 const openModal = () => {
-    const rect = iconRef.current.getBoundingClientRect();
-setModalPosition({ bottom: rect.bottom + window.scrollY, right: rect.left });
-    setModalIsOpen(true);
-  }
+  const rect = iconRef.current.getBoundingClientRect();
+  console.log('Rect values:', rect); // Log the entire rect object
+  const topPosition = rect.top + window.scrollY;
+  const leftPosition = rect.right;
+  console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
+  setModalPosition({ top: topPosition, left: leftPosition });
+  setModalIsOpen(true);
+};
+
 
 
 
