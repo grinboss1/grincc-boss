@@ -32,8 +32,8 @@ export const IconWrapper = ({ icon, label }) => {
   const openModal = () => {
     const rect = iconAndLabelRef.current.getBoundingClientRect();
     const topPosition = rect.top + window.scrollY;
-    const rightPosition = 20; // Fixed distance from the right edge of the viewport
-    setModalPosition({ top: topPosition, right: rightPosition });
+    const leftPosition = rect.right; // Align the left edge of the modal with the right edge of the icon
+    setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
     document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
@@ -78,7 +78,7 @@ const CustomModal = ({ onClose, label, position }) => {
       style={{
         position: 'fixed',
         top: position.top,
-        right: position.right, // Using right position relative to the viewport
+        left: position.left, // Using left position
         zIndex: 10000
       }}
       onClick={(e) => e.stopPropagation()}
