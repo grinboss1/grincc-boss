@@ -69,22 +69,14 @@ useEffect(() => {
         <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
       </div>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+
     </div>
   </li>
 );
 
 };
 
-const CustomModal = ({ iconRef, onClose, label }) => {
-  const [position, setPosition] = useState({ top: 0, left: 0 });
-
-  useEffect(() => {
-    const rect = iconRef.current.getBoundingClientRect();
-    const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right; // Align with the right edge of the icon
-    setPosition({ top: topPosition, left: leftPosition });
-  }, [iconRef]);
-
+const CustomModal = ({ position, onClose, label }) => {
   return (
     <div
       className="modal-content-container"
