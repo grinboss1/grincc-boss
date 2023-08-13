@@ -32,13 +32,15 @@ export const IconWrapper = ({ icon, label }) => {
   const containerRef = useRef(null);
 
   const openModal = () => {
-    const rect = iconRef.current.getBoundingClientRect();
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const topPosition = rect.top - containerRect.top;
-    const leftPosition = rect.right - containerRect.left + 10; // Add 10 pixels to the right
+    if (iconRef.current && containerRef.current) {
+      const rect = iconRef.current.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const topPosition = rect.top - containerRect.top;
+      const leftPosition = rect.right - containerRect.left + 10; // Add 10 pixels to the right
 
-    setModalPosition({ top: topPosition, left: leftPosition });
-    setModalIsOpen(true);
+      setModalPosition({ top: topPosition, left: leftPosition });
+      setModalIsOpen(true);
+    }
   };
 
   const closeModal = () => setModalIsOpen(false);
@@ -59,6 +61,7 @@ export const IconWrapper = ({ icon, label }) => {
     </div>
   );
 };
+
 
 
 
