@@ -32,7 +32,7 @@ export const IconWrapper = ({ icon, label }) => {
   const openModal = () => {
     const rect = iconAndLabelRef.current.getBoundingClientRect();
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 0; // Calculating left position based on the right edge
+    const leftPosition = rect.right + 5; // Calculating left position based on the right edge
     setModalPosition({ top: topPosition, left: leftPosition }); // Using left position
     setModalIsOpen(true);
   };
