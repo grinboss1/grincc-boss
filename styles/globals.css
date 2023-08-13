@@ -93,13 +93,6 @@ p {
   z-index: 100; /* Ensure this is above other z-index values */
 }
 
-.modal-content-container {
-  /* Other styles... */
-  min-width: 200px; /* Set a minimum width */
-  max-width: 400px; /* Set a maximum width */
-  overflow: auto; /* Allow scrolling if content is too large */
-}
-
 
 
 .modal-content {
