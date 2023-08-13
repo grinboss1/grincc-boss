@@ -30,13 +30,11 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
-const openModal = () => {
-  const rect = iconRef.current.getBoundingClientRect();
-  const scrollTop = window.scrollY || document.documentElement.scrollTop;
-  const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-  setModalPosition({ top: rect.top + scrollTop, left: rect.right + scrollLeft });
-  setModalIsOpen(true);
-};
+  const openModal = () => {
+    const rect = iconRef.current.getBoundingClientRect();
+    setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
+    setModalIsOpen(true);
+  };
 
 
 
