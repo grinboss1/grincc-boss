@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const icons = [
   { src: "https://i.ibb.co/Bj70xwG/anon.jpg", alt: "Icon 3", label: "anynomous" },
@@ -16,51 +16,6 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
   />
 ));
 
-export const IconWrapper = ({ icon, label }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const iconRef = useRef(null);
-
-  console.log('Position in IconWrapper:', modalPosition);
-
-  const openModal = () => {
-    if (!iconRef.current) {
-      console.error('iconRef.current is undefined');
-      return;
-    }
-
-    const rect = iconRef.current.getBoundingClientRect();
-    if (!rect) {
-      console.error('rect is undefined');
-      return;
-    }
-
-    const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 10;
-
-    setModalPosition({ top: topPosition, left: leftPosition });
-    setModalIsOpen(true);
-  };
-
-  const closeModal = () => setModalIsOpen(false);
-
-  return (
-    <div className="icon-parent-container" style={{ position: 'relative' }}>
-      <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
-        <div className="icon-wrapper">
-          <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
-          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
-        </div>
-      </li>
-      {modalIsOpen && modalPosition.top !== 0 && modalPosition.left !== 0 && (
-  <div className="modal-content-container" style={{ position: 'absolute', top: modalPosition.top, left: modalPosition.left }}>
-    <CustomModal onClose={closeModal} label={label} position={modalPosition} />
-  </div>
-)}
-
-    </div>
-  );
-};
 
 export const IconList = () => (
   <ul className="icon-list">
@@ -70,14 +25,42 @@ export const IconList = () => (
   </ul>
 );
 
-const CustomModal = ({ onClose, label, position }) => {
-  console.log('Position in CustomModal:', position);
-  const contentRef = useRef();
+export const IconWrapper = ({ icon, label }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  const iconRef = useRef(null);
 
-if (!position) {
-    console.error('Position is not defined');
-    return null;
-  }
+  const openModal = () => {
+    const rect = iconRef.current.getBoundingClientRect();
+    console.log('Rect values:', rect); // Log the entire rect object
+    const topPosition = rect.top + window.scrollY;
+    const leftPosition = rect.right + 100; // Add 10 pixels to the right
+
+    console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
+    setModalPosition({ top: topPosition, left: leftPosition });
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => setModalIsOpen(false);
+
+  return (
+    <ul className="icon-list">
+      <div className="icon-parent-container" style={{ position: 'relative' }}>
+        <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+          <div className="icon-wrapper">
+            <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
+            <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
+          </div>
+        </li>
+        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
+      </div>
+    </ul>
+  );
+};
+
+
+const CustomModal = ({ onClose, label, position }) => {
+  const contentRef = useRef();
 
   return (
     <div
@@ -89,9 +72,9 @@ if (!position) {
         width: '100%',
         height: '100%',
         zIndex: 9999,
-        background: 'rgba(0, 0, 0, 0.0)'
+        background: 'rgba(0, 0, 0, 0.0)' // Transparent background
       }}
-      onClick={onClose}
+      onClick={onClose} // Close the modal when the overlay is clicked
     >
       <div
         className="modal-content-container"
@@ -99,9 +82,9 @@ if (!position) {
           position: 'fixed',
           top: position.top,
           left: position.left,
-          zIndex: 10000
+          zIndex: 10000 // Ensure the content is above the overlay
         }}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()} // Prevent clicks on the content from closing the modal
       >
         <div className="modal-content" ref={contentRef}>
           <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
@@ -110,7 +93,6 @@ if (!position) {
     </div>
   );
 };
-
 
 
 
