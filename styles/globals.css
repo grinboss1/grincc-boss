@@ -96,8 +96,16 @@ p {
 
 .modal-content-container {
   position: absolute;
-  z-index: 1000;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure this is above other z-index values */
+  min-width: 200px; /* Set a minimum width */
+  max-width: 400px; /* Set a maximum width */
+  overflow: auto; /* Allow scrolling if content is too large */
 }
+
 
 .modal-content {
   background-color: #ffffff;
