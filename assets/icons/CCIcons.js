@@ -36,17 +36,19 @@ setModalPosition({ top: rect.top + window.scrollY, left: rect.right });
 
   const closeModal = () => setModalIsOpen(false);
 
-  return (
-    <li className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
-      <div className="icon-wrapper">
-        <div ref={iconRef}> {/* Set the ref here */}
+return (
+  <ul className="icon-list">
+    <div className="icon-parent-container" style={{ position: 'relative' }}>
+      <li ref={iconRef} className="icon-container px-2 py-2 relative" onClick={openModal} style={{ cursor: 'pointer' }}>
+        <div className="icon-wrapper">
           <IconComponent />
+          <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
         </div>
-        <span className={`icon-label ${modalIsOpen ? 'highlighted' : ''}`}>{label}</span>
-      </div>
+      </li>
       {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
-    </li>
-  );
+    </div>
+  </ul>
+);
 };
 
 const CustomModal = ({ onClose, label, position }) => {
