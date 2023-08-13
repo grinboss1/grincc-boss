@@ -27,28 +27,47 @@ export const IconList = () => (
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const iconAndLabelRef = useRef(null);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  const iconRef = useRef(null);
 
   const openModal = () => {
+    const rect = iconRef.current.getBoundingClientRect();
+    console.log('Rect values:', rect); // Log the entire rect object
+    const topPosition = rect.top + window.scrollY;
+    const leftPosition = rect.right + 100; // Add 100 pixels to the right
+
+    // Disable scrolling on the index page so the pop up doesn't move down the page( fix for mobile) 
     document.body.style.overflow = 'hidden';
+
+    console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
+    setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
+    // Re-enable scrolling once pop up is closed
     document.body.style.overflow = 'auto';
+
     setModalIsOpen(false);
   };
 
   return (
-    <div className="icon-parent-container" style={{ position: 'relative' }}>
-      <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
-        <Icon src={icon.src} alt={icon.alt} />
-        <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
+    <ul className="icon-list">
+      <div className="icon-parent-container" style={{ position: 'relative' }}>
+        <li className="icon-container px-2 py-2 relative">
+          {/* Wrap the icon and label inside a div and attach the click event to this div */}
+          <div className="icon-clickable" onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+            <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
+            <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
+          </div>
+        </li>
+        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
       </div>
-      {modalIsOpen && <CustomModal iconAndLabelRef={iconAndLabelRef} onClose={closeModal} label={label} />}
-    </div>
+    </ul>
   );
 };
+
+
 
 const CustomModal = ({ onClose, label, position }) => {
   const contentRef = useRef();
