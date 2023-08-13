@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-
-
 const icons = [
   { src: "https://i.ibb.co/Bj70xwG/anon.jpg", alt: "Icon 3", label: "anynomous" },
   { src: "https://i.ibb.co/SX5bMQw/mike.jpg", alt: "Icon 4", label: "mcmmike" },
@@ -30,32 +28,15 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconRef = useRef(null);
 
-const openModal = () => {
-  const rect = iconRef.current.getBoundingClientRect();
-  const modalWidth = 200; // You can adjust this to the actual width of your modal
-  let leftPosition = rect.right;
-
-  console.log("Icon position:", rect); // Log the icon's position
-  console.log("Viewport width:", window.innerWidth); // Log the viewport width
-
-  // Check if the modal will be rendered off the screen
-  if (leftPosition + modalWidth > window.innerWidth) {
-    leftPosition = window.innerWidth - modalWidth - 10; // 10 is a buffer space
-  }
-
-  console.log("Modal left position:", leftPosition); // Log the calculated left position
-
-  setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
-  setModalIsOpen(true);
-};
-
-
-
-
-
-
-
-
+  const openModal = () => {
+    const rect = iconRef.current.getBoundingClientRect();
+    console.log("Icon position:", rect);
+    console.log("Viewport width:", window.innerWidth);
+    const leftPosition = rect.right;
+    console.log("Modal left position:", leftPosition);
+    setModalPosition({ top: rect.top + window.scrollY, left: leftPosition });
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => setModalIsOpen(false);
 
@@ -69,7 +50,6 @@ const openModal = () => {
     </li>
   );
 };
-
 
 const CustomModal = ({ onClose, label, position }) => {
   const contentRef = useRef();
@@ -87,7 +67,7 @@ const CustomModal = ({ onClose, label, position }) => {
     };
   }, [onClose]);
 
- return (
+  return (
     <div className="modal-content-container" style={{ position: 'absolute', top: position.top, left: position.left }}>
       <div className="modal-content" ref={contentRef}>
         <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
@@ -95,6 +75,7 @@ const CustomModal = ({ onClose, label, position }) => {
     </div>
   );
 };
+
 
 
 
