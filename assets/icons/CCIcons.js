@@ -31,12 +31,14 @@ export const IconWrapper = ({ IconComponent, label }) => {
   const iconRef = useRef(null);
 
 const openModal = () => {
-  console.log("Opening modal...");
   const rect = iconRef.current.getBoundingClientRect();
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
   console.log(rect);
-  setModalPosition({ top: rect.bottom, left: rect.right }); // Updated line
+  setModalPosition({ top: rect.bottom + scrollTop, left: rect.right + scrollLeft });
   setModalIsOpen(true);
 };
+
 
 
 
