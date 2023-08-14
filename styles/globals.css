@@ -45,15 +45,7 @@ p {
   position: relative; /* Ensure this is relative */
 }
 
-.icon-parent-container {
-  display: inline-block;
-  border: 2px solid #333; /* Full border */
-  border-right: none; /* No right border */
-  border-radius: 4px;
-  border-top-right-radius: 0; /* No top-right corner rounding */
-  border-bottom-right-radius: 0; /* No bottom-right corner rounding */
-  background-color: #f9f9f9; /* Same as the popup background */
-}
+
 
 .icon-wrapper {
 
@@ -123,6 +115,15 @@ p {
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
+.icon-parent-container {
+  display: inline-block;
+  border: 2px solid #333;
+  border-right: none; /* No right border */
+  border-radius: 4px;
+  border-top-right-radius: 0; /* No top-right corner rounding */
+  border-bottom-right-radius: 0; /* No bottom-right corner rounding */
+  background-color: #f9f9f9; /* Same as the popup background */
+}
 
 .modal-content-container {
   z-index: 100; /* Make sure the modal appears above other content */
@@ -137,8 +138,7 @@ p {
   overflow: auto;
 }
 
-/* Top and bottom sections of the left border for the modal */
-.modal-content-container:before {
+.modal-content-container.special-border:before {
   content: "";
   position: absolute;
   left: -2px; /* Border width */
@@ -148,7 +148,7 @@ p {
   background-color: #333; /* Border color */
 }
 
-.modal-content-container:after {
+.modal-content-container.special-border:after {
   content: "";
   position: absolute;
   left: -2px; /* Border width */
