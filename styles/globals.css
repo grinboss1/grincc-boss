@@ -22,7 +22,7 @@ a {
 }
 
 blockquote {
-  color: #666;
+  color: #f9f9f9;
   margin: 0;
   padding-left: 3em;
   border-left: 0.5em #eee solid;
@@ -158,14 +158,14 @@ p {
 .modal-content-container {
   @apply popup-common-style;
   position: absolute;
-  z-index: 10000;
+  z-index: 1000;
 }
 
 
 
 .icon-clickable.icon-above-popup {
   position: relative;
-  z-index: 10001;
+  z-index: 100;
 }
 
 
