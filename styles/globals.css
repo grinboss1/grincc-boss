@@ -130,7 +130,7 @@ p {
   width: 2px;
   background-color: #333; /* Same as the border color */
   /* Exclude the area where the border overlaps with the user's name */
-  clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0% 20%, 0% 80%, 100% 80%, 100% 100%, 0% 100%);
+  
 }
 
 .modal-content-container {
