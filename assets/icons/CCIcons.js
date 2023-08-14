@@ -48,25 +48,11 @@ export const IconWrapper = ({ icon, label }) => {
     document.body.style.overflow = 'auto'; // Allow scrolling
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
-        closeModal();
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [modalIsOpen]);
+  const iconHeight = 24; // Icon height in pixels
 
- 
+  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
 
-
-
- const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
-
- return (
+  return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
         <div
@@ -77,8 +63,9 @@ export const IconWrapper = ({ icon, label }) => {
             display: 'inline-flex',
             alignItems: 'center',
             border: modalIsOpen ? '2px solid #333' : 'none',
+            borderRight: 'none',
             borderRadius: '4px',
-            backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent', // Same background color as the popup
+            backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent',
           }}
         >
           <Icon src={icon.src} alt={icon.alt} />
@@ -94,8 +81,11 @@ export const IconWrapper = ({ icon, label }) => {
               zIndex: 10000,
               transform: 'translateY(-50%)',
               border: '2px solid #333',
+              borderTopWidth: `calc(50% - ${iconHeight / 2}px)`, // Top border ending before the icon
+              borderBottomWidth: `calc(50% - ${iconHeight / 2}px)`, // Bottom border starting after the icon
+              borderLeft: 'none', // No left border
               borderRadius: '4px',
-              backgroundColor: '#f9f9f9', // Background color of the popup
+              backgroundColor: '#f9f9f9',
             }}
           >
             <div className="modal-content">
@@ -107,6 +97,7 @@ export const IconWrapper = ({ icon, label }) => {
     </li>
   );
 };
+
 
 
 
