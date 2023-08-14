@@ -136,14 +136,15 @@ p {
 .background-popup {
   position: absolute;
   top: 50%;
-  left: 100%;
+  left: 0;
   transform: translateY(-50%);
-  width: 100px; /* Adjust as needed */
+  width: 100%; /* Full width of the parent container */
   height: 24px; /* Height of the Icon */
   background-color: #f9f9f9; /* Same color as the content popup */
   border: 1px solid #ccc;
-  z-index: 9998; /* Make it appear below the content popup */
+  z-index: 9999; /* Make it appear below the content popup */
 }
+
 
 
 .modal-content-container {
