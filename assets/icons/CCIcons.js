@@ -39,12 +39,12 @@ export const IconWrapper = ({ icon, label }) => {
 
   const openModal = () => {
     setModalIsOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    document.body.style.overflow = 'auto'; // Allow scrolling
+    document.body.style.overflow = 'auto';
   };
 
   useEffect(() => {
@@ -61,61 +61,22 @@ export const IconWrapper = ({ icon, label }) => {
 
   const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
 
-  const borderStyle = modalIsOpen
-    ? {
-        borderTop: '2px solid #333',
-        borderBottom: '2px solid #333',
-        borderLeft: '2px solid #333',
-        borderRight: 'none',
-      }
-    : {};
-
   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
-      <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
-        <div
-          ref={iconAndLabelRef}
-          onClick={openModal}
-          style={{
-            cursor: 'pointer',
-            display: 'inline-flex',
-            alignItems: 'center',
-            borderRadius: '4px',
-            backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent',
-            ...borderStyle,
-          }}
-        >
-          <Icon src={icon.src} alt={icon.alt} />
-          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
-        </div>
-        {modalIsOpen && (
-          <div
-            className="modal-content-container"
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '100%',
-              zIndex: 10000,
-              transform: 'translateY(-50%)',
-              border: 'none',
-              borderRadius: '4px',
-              backgroundColor: '#f9f9f9',
-            }}
-          >
-            <div style={{border: '2px solid #333', borderLeft: 'none'}}>
-              <div style={{borderLeft: '2px solid #333', height: '20px'}}></div>
-              <div className="modal-content">
-                <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
-              </div>
-              <div style={{borderLeft: '2px solid #333', height: '20px'}}></div>
-            </div>
-          </div>
-        )}
+      <div className="icon-parent-container" ref={iconAndLabelRef} onClick={openModal} style={{ position: 'relative', padding: '0px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', borderLeft: '2px solid #333', borderTop: '2px solid #333', borderBottom: '2px solid #333', borderRadius: '4px', backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent' }}>
+        <Icon src={icon.src} alt={icon.alt} />
+        <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
       </div>
+      {modalIsOpen && (
+        <div className="modal-content-container seamless-border" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)', border: '2px solid #333', borderLeft: 'none', borderRadius: '4px', backgroundColor: '#f9f9f9' }}>
+          <div className="modal-content">
+            <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+          </div>
+        </div>
+      )}
     </li>
   );
 };
-
 
 
 
