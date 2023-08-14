@@ -61,12 +61,12 @@ export const IconWrapper = ({ icon, label }) => {
 
   const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
 
-  return (
-    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
-      <div className={`icon-parent-container ${modalIsOpen ? 'selected-user border-left-top-bottom' : ''}`} style={{ position: 'relative', padding: '0px' }}>
-  {modalIsOpen && (
-    <div className="background-popup" style={{ width: popupWidth }}></div> {/* Use the dynamically calculated width */}
-  )}
+ return (
+  <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
+    <div className={`icon-parent-container ${modalIsOpen ? 'selected-user border-left-top-bottom' : ''}`} style={{ position: 'relative', padding: '0px' }}>
+      {modalIsOpen && (
+        <div className="background-popup" style={{ width: popupWidth }}></div> // Use the dynamically calculated width
+      )}
         <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
           <Icon src={icon.src} alt={icon.alt} />
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
