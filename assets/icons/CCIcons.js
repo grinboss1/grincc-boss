@@ -64,10 +64,11 @@ export const IconWrapper = ({ icon, label }) => {
  return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
-        <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
-          <Icon src={icon.src} alt={icon.alt} />
-          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
-        </div>
+        <div className={`icon-clickable ${modalIsOpen ? 'icon-above-popup' : ''}`} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+  <Icon src={icon.src} alt={icon.alt} />
+  <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
+</div>
+
         {modalIsOpen && (
           <>
             <div className="background-popup" style={{ width: backgroundPopupWidth }}></div> {/* Width controlled by state */}
