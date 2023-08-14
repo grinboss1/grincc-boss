@@ -175,15 +175,16 @@ p {
 
 .background-popup {
   position: absolute;
-  top: 50%;
+  top: 100%; /* Position it below the user's name */
   left: 0;
-  transform: translateY(-50%);
-  height: 24px; /* Same height as the icon */
-  background-color: #f9f9f9; /* Background color of the popup */
-  border-top: 2px solid #333; /* Top border */
-  border-bottom: 2px solid #333; /* Bottom border */
-  z-index: 9999; /* Ensure it appears behind the main popup */
+  width: 100%; /* Make it span the entire width of the container */
+  height: 24px; /* Adjust as needed */
+  background-color: #f9f9f9;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  z-index: 9999;
 }
+
 
 
 
