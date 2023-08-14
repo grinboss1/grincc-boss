@@ -143,7 +143,7 @@ p {
 }
 
 .modal-content-container {
-  z-index: 100; /* Make sure the modal appears above other content */
+  z-index: 9999; /* Make sure the modal appears above other content */
   background-color: #f9f9f9;
   border: 2px solid #333;
   border-left: none; /* Remove left border */
@@ -178,13 +178,18 @@ p {
 
 .background-popup {
   position: absolute;
-  top: 0;
+  top: 100%; /* Position directly under the username */
   left: 0;
-  width: 100%; /* Make it span the entire width of the container */
-  height: 24px; /* Adjust as needed */
-  background-color: #f9f9f9;
-  z-index: -1; /* Set z-index lower than the other elements */
+  height: 24px; /* Height of the icon */
+  width: 100%; /* Full width of the container */
+  background-color: #f9f9f9; /* Background color of the popup */
+  border-top: 2px solid #333; /* Top border */
+  border-bottom: 2px solid #333; /* Bottom border */
+  z-index: 9998; /* Ensure it appears behind the main popup */
 }
+
+
+
 
 
 
