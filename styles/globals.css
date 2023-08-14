@@ -46,7 +46,10 @@ p {
 
 .icon-parent-container {
   display: inline-block;
+  background-color: #fff; /* Background color of the icon and label */
+  z-index: 1; /* Ensure it appears above the popup */
 }
+
 
 .icon-wrapper {
 
@@ -175,15 +178,14 @@ p {
 
 .background-popup {
   position: absolute;
-  top: 100%; /* Position it below the user's name */
+  top: 0;
   left: 0;
   width: 100%; /* Make it span the entire width of the container */
   height: 24px; /* Adjust as needed */
   background-color: #f9f9f9;
-  border-top: 2px solid #333;
-  border-bottom: 2px solid #333;
-  z-index: 9999;
+  z-index: -1; /* Set z-index lower than the other elements */
 }
+
 
 
 
