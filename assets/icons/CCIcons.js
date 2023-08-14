@@ -63,9 +63,8 @@ export const IconWrapper = ({ icon, label }) => {
             display: 'inline-flex',
             alignItems: 'center',
             border: modalIsOpen ? '2px solid #333' : 'none',
-            borderRight: 'none',
             borderRadius: '4px',
-            backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent',
+            backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent', // Same background color as the popup
           }}
         >
           <Icon src={icon.src} alt={icon.alt} />
@@ -73,7 +72,7 @@ export const IconWrapper = ({ icon, label }) => {
         </div>
         {modalIsOpen && (
           <div
-            className="modal-content-container"
+            className={`modal-content-container ${modalIsOpen ? 'special-border' : ''}`}
             style={{
               position: 'absolute',
               top: '50%',
@@ -81,11 +80,8 @@ export const IconWrapper = ({ icon, label }) => {
               zIndex: 10000,
               transform: 'translateY(-50%)',
               border: '2px solid #333',
-              borderTopWidth: `calc(50% - ${iconHeight / 2}px)`, // Top border ending before the icon
-              borderBottomWidth: `calc(50% - ${iconHeight / 2}px)`, // Bottom border starting after the icon
-              borderLeft: 'none', // No left border
               borderRadius: '4px',
-              backgroundColor: '#f9f9f9',
+              backgroundColor: '#f9f9f9', // Background color of the popup
             }}
           >
             <div className="modal-content">
