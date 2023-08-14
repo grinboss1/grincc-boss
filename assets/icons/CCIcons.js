@@ -63,21 +63,25 @@ export const IconWrapper = ({ icon, label }) => {
   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
-        <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+        <div className={`icon-clickable ${modalIsOpen ? 'icon-above-popup' : ''}`} ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
           <Icon src={icon.src} alt={icon.alt} />
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
         {modalIsOpen && (
-          <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
-            <div className="modal-content">
-              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+          <>
+            <div className="background-popup"></div> {/* Use the new class */}
+            <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
+              <div className="modal-content">
+                <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </li>
   );
 };
+
 
 
 
