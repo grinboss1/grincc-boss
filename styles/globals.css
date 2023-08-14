@@ -124,7 +124,7 @@ p {
 
 .popup-common-style {
   background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   padding: 10px;
   min-width: 200px;
   max-width: 400px;
@@ -139,7 +139,7 @@ p {
   transform: translateY(-50%);
   z-index: 10000;
   background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   /* Other common styles here */
 }
 
@@ -163,7 +163,7 @@ p {
 
 .icon-clickable.icon-above-popup {
   position: relative;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 
