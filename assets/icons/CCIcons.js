@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
+
 const icons = [
   { src: "https://i.ibb.co/Bj70xwG/anon.jpg", alt: "Icon 3", label: "anynomous" },
   { src: "https://i.ibb.co/SX5bMQw/mike.jpg", alt: "Icon 4", label: "mcmmike" },
@@ -23,14 +24,6 @@ export const IconList = () => (
     ))}
   </ul>
 );
-
-// Define the links and text for each user
-const userLinks = {
-  "anynomous": { link: "https://45454545.com", text: "Key base: 45454545.com" },
-  "mcmmike": { link: "https://45545.com", text: "Forum: 45545.com" },
-  "future3000": { link: "https://dfgjkdfgfd.com", text: "Telegram: dfgjkdfgfd.com" },
-  "mwgrin_fr": { link: "https://dfg3434.com", text: "Twitter dfg3434.com" },
-};
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -58,8 +51,6 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
-  const userContent = userLinks[label] || { link: "https://www.grin.mw", text: "Default text if label not found" };
-
   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
@@ -71,7 +62,7 @@ export const IconWrapper = ({ icon, label }) => {
           <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
             {/* top: '50%' and transform: 'translateY(-50%)' center the popup vertically relative to the icon */}
             <div className="modal-content">
-              <p>{userContent.text} <a href={userContent.link} target="_blank" rel="noopener noreferrer">Visit</a></p>
+              <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
             </div>
           </div>
         )}
@@ -84,32 +75,20 @@ export const IconWrapper = ({ icon, label }) => {
 
 
 
-
-const userPopupDetails = {
-  "anynomous": { text: "Key base:", url: "https://45454545.com" },
-  "mcmmike": { text: "Forum:", url: "https://45545.com" },
-  "future3000": { text: "Telegram:", url: "https://dfgjkdfgfd.com" },
-  "mwgrin_fr": { text: "Twitter:", url: "https://dfg3434.com" },
-  // Add more as needed
-};
-
-
 const CustomModal = ({ onClose, label, position }) => {
-  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
-
   return (
     <div
       className="modal-content-container"
       style={{
         position: 'fixed',
         top: position.top,
-        left: position.left,
-        zIndex: 10000,
+        left: position.left, // Using left position instead of right
+        zIndex: 10000
       }}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="modal-content">
-        <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
       </div>
     </div>
   );
