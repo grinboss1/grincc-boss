@@ -138,8 +138,11 @@ p {
   top: 50%;
   left: 100%;
   transform: translateY(-50%);
-  width: 100px; /* Adjust as needed */
+  width: 200px; /* Match the width of the content popup */
   height: 100%; /* Full height */
+  background-color: #f9f9f9; /* Same background color as the content popup */
+  border-right: 1px solid #ccc; /* Add border to match the content popup */
+  z-index: 9999; /* One level below the content popup */
 }
 
 
