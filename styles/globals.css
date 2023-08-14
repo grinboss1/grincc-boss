@@ -155,6 +155,23 @@ p {
 }
 
 
+.border-left-top-bottom:before,
+.border-left-top-bottom:after {
+  content: "";
+  position: absolute;
+  left: -2px; /* Position of the border */
+  width: 2px; /* Border width */
+  height: calc(50% - 12px); /* Height to the middle minus half the icon size */
+  background-color: #333; /* Border color */
+}
+
+.border-left-top-bottom:before {
+  top: 0;
+}
+
+.border-left-top-bottom:after {
+  bottom: 0;
+}
 
 
 
