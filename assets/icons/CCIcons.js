@@ -16,6 +16,7 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
   />
 ));
 
+
 export const IconList = () => (
   <ul className="icon-list">
     {icons.map((icon, index) => (
@@ -27,68 +28,81 @@ export const IconList = () => (
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-  const iconAndLabelRef = useRef(null);
+  const iconRef = useRef(null);
 
   const openModal = () => {
-    const rect = iconAndLabelRef.current.getBoundingClientRect();
+    const rect = iconRef.current.getBoundingClientRect();
+    console.log('Rect values:', rect); // Log the entire rect object
     const topPosition = rect.top + window.scrollY;
-    const leftPosition = rect.right + 20;
+    const leftPosition = rect.right + 100; // Add 100 pixels to the right
+
+    // Disable scrolling on the index page so the pop up doesn't move down the page( fix for mobile) 
+    document.body.style.overflow = 'hidden';
+
+    console.log('Calculated top:', topPosition, 'Calculated left:', leftPosition); // Log the calculated positions
     setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
 
   const closeModal = () => {
+    // Re-enable scrolling once pop up is closed
+    document.body.style.overflow = 'auto';
+
     setModalIsOpen(false);
-    document.body.style.overflow = 'auto'; // Allow scrolling
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
-        closeModal();
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [modalIsOpen]);
-
   return (
-    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem' }}>
-      <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
-        <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
-          <Icon src={icon.src} alt={icon.alt} />
-          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span> {/* Set min-width as needed */}
-        </div>
+    <ul className="icon-list">
+      <div className="icon-parent-container" style={{ position: 'relative' }}>
+        <li className="icon-container px-2 py-2 relative">
+          {/* Wrap the icon and label inside a div and attach the click event to this div */}
+          <div className="icon-clickable" onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+            <Icon ref={iconRef} src={icon.src} alt={icon.alt} />
+            <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
+          </div>
+        </li>
         {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
       </div>
-    </li>
+    </ul>
   );
 };
 
 
 
 const CustomModal = ({ onClose, label, position }) => {
+  const contentRef = useRef();
+
   return (
     <div
-      className="modal-content-container"
+      className="modal-overlay"
       style={{
         position: 'fixed',
-        top: position.top,
-        left: position.left, // Using left position instead of right
-        zIndex: 10000
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: 9999,
+        background: 'rgba(0, 0, 0, 0.0)' // Transparent background
       }}
-      onClick={(e) => e.stopPropagation()}
+      onClick={onClose} // Close the modal when the overlay is clicked
     >
-      <div className="modal-content">
-        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+      <div
+        className="modal-content-container"
+        style={{
+          position: 'fixed',
+          top: position.top,
+          left: position.left,
+          zIndex: 10000 // Ensure the content is above the overlay
+        }}
+        onClick={(e) => e.stopPropagation()} // Prevent clicks on the content from closing the modal
+      >
+        <div className="modal-content" ref={contentRef}>
+          <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+        </div>
       </div>
     </div>
   );
 };
-
 
 
 
