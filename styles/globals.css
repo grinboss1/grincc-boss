@@ -118,14 +118,14 @@ p {
 
 
 .icon-above-popup {
-  z-index: 10001; /* Ensure it appears above the background popup */
+  z-index: 10000; /* Ensure it appears above the background popup */
   position: relative;
 }
 
 .popup-common-style {
   z-index: 10000;
   background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   min-width: 200px;
