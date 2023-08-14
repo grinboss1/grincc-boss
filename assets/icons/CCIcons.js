@@ -40,12 +40,12 @@ export const IconWrapper = ({ icon, label }) => {
 
   const openModal = () => {
     setModalIsOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    //document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    document.body.style.overflow = 'auto'; // Allow scrolling
+   // document.body.style.overflow = 'auto'; // Allow scrolling
   };
 
   useEffect(() => {
