@@ -72,7 +72,7 @@ export const IconWrapper = ({ icon, label }) => {
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className={`icon-parent-container ${modalIsOpen ? 'selected-user border-left-top-bottom' : ''}`} style={{ position: 'relative', padding: '0px' }}>
         {modalIsOpen && (
-          <div className="background-popup" style={{ width: `calc(24px + ${label.length * 6}px)` }}></div> {/* You may need to adjust the multiplier */}
+          <div className="background-popup" style={{ width: popupWidth }}></div>
         )}
         <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
           <Icon src={icon.src} alt={icon.alt} />
