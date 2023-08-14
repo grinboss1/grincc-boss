@@ -16,6 +16,8 @@ const userPopupDetails = {
   // Add more as needed
 };
 
+const popupWidth = `calc(24px + ${label.length * 6}px)`;
+
 export const Icon = React.forwardRef(({ src, alt }, ref) => (
   <img
     ref={ref}
