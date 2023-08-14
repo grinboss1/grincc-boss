@@ -50,8 +50,8 @@ p {
 
 .icon-wrapper {
 
+  position: relative;  
   display: flex;
-  position: relative;
   align-items: center;
   padding: 0px;
   margin-top: 0px;
