@@ -59,28 +59,7 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
-  const userContent = userLinks[label] || { link: "https://www.grin.mw", text: "Default text if label not found" };
-
-  return (
-    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
-      <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
-        <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
-          <Icon src={icon.src} alt={icon.alt} />
-          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
-        </div>
-        {modalIsOpen && (
-          <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
-            {/* top: '50%' and transform: 'translateY(-50%)' center the popup vertically relative to the icon */}
-            <div className="modal-content">
-              <p>{userContent.text} <a href={userContent.link} target="_blank" rel="noopener noreferrer">Visit</a></p>
-            </div>
-          </div>
-        )}
-      </div>
-    </li>
-  );
-};
-
+ 
 
 
 
