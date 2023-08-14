@@ -127,7 +127,7 @@ p {
   border-top: 1px solid #ccc; /* Top border */
   border-bottom: 1px solid #ccc; /* Bottom border */
   border-right: 1px solid #ccc; /* Right border */
-  z-index: 9998; /* Ensure it appears behind the icon and label but above the main content popup */
+  z-index: 99; /* Ensure it appears behind the icon and label but above the main content popup */
   width: 100%; /* Full width to cover the icon and label */
 }
 
