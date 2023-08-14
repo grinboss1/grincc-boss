@@ -139,7 +139,7 @@ p {
 .modal-content-container {
   z-index: 100;
   background-color: #f9f9f9;
-  padding: 0;
+  padding: 10px;
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
@@ -147,11 +147,19 @@ p {
   top: 50%;
   left: 100%;
   transform: translateY(-50%);
-  border-left: none;
-  border-top: 2px solid #333;
-  border-bottom: 2px solid #333;
-  border-right: 2px solid #333;
+  border: 2px solid #333; /* Full border */
 }
+
+.modal-content-container:before {
+  content: "";
+  position: absolute;
+  left: -2px; /* Border width */
+  top: calc(50% - 12px); /* Centered around the middle */
+  width: 2px; /* Border width */
+  height: 24px; /* Icon size */
+  background-color: #f9f9f9; /* Same as the background color of the popup */
+}
+
 
 .modal-content-container.selected-popup {
   border: 2px solid #333;
