@@ -40,17 +40,38 @@ p {
   flex-direction: column;
 }
 
-.icon-container {
-  position: relative; /* Ensure this is relative */
-}
-
 .icon-parent-container {
-  display: inline-block;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0px;
+  margin-left: 0.5rem;
+  border-radius: 4px;
+  background-color: transparent;
 }
 
 .icon-parent-container.selected-user {
   border: 2px solid #333;
-  border-radius: 4px;
+  border-right: none;
+}
+
+.icon-parent-container.selected-user:before,
+.icon-parent-container.selected-user:after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 24px; /* Size of the gap */
+  background-color: #f9f9f9; /* Same as the popup background color */
+  left: -2px; /* Border width */
+}
+
+.icon-parent-container.selected-user:before {
+  top: calc(50% - 12px); /* Centered around the middle */
+}
+
+.icon-parent-container.selected-user:after {
+  bottom: calc(50% - 12px); /* Centered around the middle */
 }
 
 .icon-wrapper {
@@ -139,34 +160,37 @@ p {
 }
 
 .modal-content-container {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
   z-index: 100;
   background-color: #f9f9f9;
   padding: 10px;
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
-  border: 2px solid #333; /* Full border */
+  border: 2px solid #333;
+  border-left: none; /* No left border */
+  border-radius: 4px;
 }
 
-.modal-content-container:before {
+.modal-content-container.selected-popup:before,
+.modal-content-container.selected-popup:after {
   content: "";
   position: absolute;
   left: -2px; /* Border width */
-  top: calc(50% - 12px); /* Centered around the middle */
   width: 2px; /* Border width */
   height: 24px; /* Icon size */
   background-color: #f9f9f9; /* Same as the background color of the popup */
 }
 
+.modal-content-container.selected-popup:before {
+  top: calc(50% - 12px); /* Centered around the middle */
+}
 
-.modal-content-container.selected-popup {
-  border: 2px solid #333;
-  border-radius: 4px;
-  border-left: none; 
+.modal-content-container.selected-popup:after {
+  bottom: calc(50% - 12px); /* Centered around the middle */
 }
 
 
