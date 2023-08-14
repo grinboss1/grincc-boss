@@ -8,13 +8,6 @@ const icons = [
   { src: "https://i.ibb.co/VMsjm9f/mw-grin.png", alt: "Icon 6", label: "mwgrin_fr" }
 ];
 
-const userPopupDetails = {
-  "anynomous": { text: "Key base:", url: "https://45454545.com" },
-  "mcmmike": { text: "Forum:", url: "https://45545.com" },
-  "future3000": { text: "Telegram:", url: "https://dfgjkdfgfd.com" },
-  "mwgrin_fr": { text: "Twitter:", url: "https://dfg3434.com" },
-};
-
 export const Icon = React.forwardRef(({ src, alt }, ref) => (
   <img
     ref={ref}
@@ -35,16 +28,15 @@ export const IconList = () => (
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const iconAndLabelRef = useRef(null);
-  const popupWidth = `calc(24px + ${label.length * 20}px)`; // Define this inside the component
 
   const openModal = () => {
     setModalIsOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'auto'; // Allow scrolling
   };
 
   useEffect(() => {
@@ -59,22 +51,18 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
-  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
-
- return (
-  <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
-    <div className={`icon-parent-container ${modalIsOpen ? 'selected-user border-left-top-bottom' : ''}`} style={{ position: 'relative', padding: '0px' }}>
-      {modalIsOpen && (
-        <div className="background-popup" style={{ width: popupWidth }}></div> // Use the dynamically calculated width
-      )}
+  return (
+    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
+      <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
         <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
           <Icon src={icon.src} alt={icon.alt} />
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
         {modalIsOpen && (
           <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
+            {/* top: '50%' and transform: 'translateY(-50%)' center the popup vertically relative to the icon */}
             <div className="modal-content">
-              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+              <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
             </div>
           </div>
         )}
@@ -83,6 +71,28 @@ export const IconWrapper = ({ icon, label }) => {
   );
 };
 
+
+
+
+
+const CustomModal = ({ onClose, label, position }) => {
+  return (
+    <div
+      className="modal-content-container"
+      style={{
+        position: 'fixed',
+        top: position.top,
+        left: position.left, // Using left position instead of right
+        zIndex: 10000
+      }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="modal-content">
+        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+      </div>
+    </div>
+  );
+};
 
 
 
