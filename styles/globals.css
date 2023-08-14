@@ -118,14 +118,19 @@ p {
 
 
 .background-popup {
-  z-index: 100; /* Same z-index as the modal */
-  background-color: #f9f9f9; /* Same background color as the modal */
-  border: 1px solid #ccc; /* Same border as the modal */
-  border-bottom: none; /* Remove the bottom border so it seamlessly joins */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
   height: 24px; /* Same height as the icon */
-  width: 100px; /* Width to match the label */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Same box shadow as the modal */
+  background-color: #f9f9f9; /* Background color of the popup */
+  border-top: 1px solid #ccc; /* Top border */
+  border-bottom: 1px solid #ccc; /* Bottom border */
+  border-right: 1px solid #ccc; /* Right border */
+  z-index: 9998; /* Ensure it appears behind the icon and label but above the main content popup */
+  width: 100%; /* Full width to cover the icon and label */
 }
+
 
 .modal-content-container {
   z-index: 100; /* Make sure the modal appears above other content */
