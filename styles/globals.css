@@ -123,6 +123,15 @@ p {
 }
 
 
+.modal-content-container.special-border:before {
+  content: "";
+  position: absolute;
+  left: -2px; /* Adjust according to the border width */
+  top: calc(50% - 12px); /* Centered around the middle */
+  width: 2px; /* Same as the border width */
+  height: 24px; /* Icon size */
+  background-color: #f9f9f9; /* Same as the background color of the popup */
+}
 
   
 
