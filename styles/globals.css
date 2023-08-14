@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -40,38 +41,17 @@ p {
   flex-direction: column;
 }
 
+.icon-container {
+  position: relative; /* Ensure this is relative */
+}
+
 .icon-parent-container {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 0px;
-  margin-left: 0.5rem;
-  border-radius: 4px;
-  background-color: transparent;
+  display: inline-block;
 }
 
 .icon-parent-container.selected-user {
   border: 2px solid #333;
-  border-right: none;
-}
-
-.icon-parent-container.selected-user:before,
-.icon-parent-container.selected-user:after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 24px; /* Size of the gap */
-  background-color: #f9f9f9; /* Same as the popup background color */
-  left: -2px; /* Border width */
-}
-
-.icon-parent-container.selected-user:before {
-  top: calc(50% - 12px); /* Centered around the middle */
-}
-
-.icon-parent-container.selected-user:after {
-  bottom: calc(50% - 12px); /* Centered around the middle */
+  border-radius: 4px;
 }
 
 .icon-wrapper {
@@ -89,7 +69,6 @@ p {
   padding-left: 4px;
   margin-bottom: 0px;
   margin-right: 2px;
-  min-width: 100px;
 }
 
 .icon-label span {
@@ -147,60 +126,38 @@ p {
   content: '';
   position: absolute;
   left: 0;
-  top: -200px; /* Extend 20px above the username */
-  bottom: -200px; /* Extend 20px below the username */
+  top: -20px; /* Extend 20px above the username */
+  bottom: -20px; /* Extend 20px below the username */
   width: 2px;
   background-color: #333; /* Same as the border color */
-   
-
-
-  
+  /* Exclude the area where the border overlaps with the user's name */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0% 20%, 0% 80%, 100% 80%, 100% 100%, 0% 100%);
 
   
 }
 
 .modal-content-container {
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
-  z-index: 100;
+  z-index: 100; /* Make sure the modal appears above other content */
   background-color: #f9f9f9;
+  border: 1px solid #ccc;
   padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
+}
+
+.modal-content-container.selected-popup {
   border: 2px solid #333;
-  border-left: none; /* No left border */
   border-radius: 4px;
-}
-
-.modal-content-container.selected-popup:before,
-.modal-content-container.selected-popup:after {
-  content: "";
-  position: absolute;
-  left: -2px; /* Border width */
-  width: 2px; /* Border width */
-  height: 24px; /* Icon size */
-  background-color: #f9f9f9; /* Same as the background color of the popup */
-}
-
-.modal-content-container.selected-popup:before {
-  top: calc(50% - 12px); /* Centered around the middle */
-}
-
-.modal-content-container.selected-popup:after {
-  bottom: calc(50% - 12px); /* Centered around the middle */
+  border-left: none; /* Remove left border to seamlessly join with the user's name */
 }
 
 
 
 .modal-content {
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/*z-index: 1000;*/
 }
-
-
 
 
 
