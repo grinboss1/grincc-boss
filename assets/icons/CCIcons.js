@@ -48,11 +48,25 @@ export const IconWrapper = ({ icon, label }) => {
     document.body.style.overflow = 'auto'; // Allow scrolling
   };
 
-  const iconHeight = 24; // Icon height in pixels
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
+        closeModal();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [modalIsOpen]);
 
-  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
+ 
 
-  return (
+
+
+ const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
+
+ return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
         <div
@@ -71,27 +85,28 @@ export const IconWrapper = ({ icon, label }) => {
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
         {modalIsOpen && (
-         <div
-  className={`modal-content-container ${modalIsOpen ? 'special-border' : ''}`}
-  style={{
-    position: 'absolute',
-    top: '50%',
-    left: '100%',
-    zIndex: 10000,
-    transform: 'translateY(-50%)',
-  }}
->
-  <div className="modal-content">
-    <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
-  </div>
-</div>
-
+          <div
+            className="modal-content-container"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '100%',
+              zIndex: 10000,
+              transform: 'translateY(-50%)',
+              border: '2px solid #333',
+              borderRadius: '4px',
+              backgroundColor: '#f9f9f9', // Background color of the popup
+            }}
+          >
+            <div className="modal-content">
+              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+            </div>
+          </div>
         )}
       </div>
     </li>
   );
 };
-
 
 
 
