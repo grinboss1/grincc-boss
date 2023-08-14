@@ -7,6 +7,14 @@ const icons = [
   { src: "https://i.ibb.co/VMsjm9f/mw-grin.png", alt: "Icon 6", label: "mwgrin_fr" }
 ];
 
+const userPopupDetails = {
+  "anynomous": { text: "Key base:", url: "https://45454545.com" },
+  "mcmmike": { text: "Forum:", url: "https://45545.com" },
+  "future3000": { text: "Telegram:", url: "https://dfgjkdfgfd.com" },
+  "mwgrin_fr": { text: "Twitter:", url: "https://dfg3434.com" },
+  // Add more as needed
+};
+
 export const Icon = React.forwardRef(({ src, alt }, ref) => (
   <img
     ref={ref}
@@ -23,6 +31,7 @@ export const IconList = () => (
     ))}
   </ul>
 );
+
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -50,6 +59,12 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
+ 
+
+
+
+ const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
+
   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
@@ -59,9 +74,8 @@ export const IconWrapper = ({ icon, label }) => {
         </div>
         {modalIsOpen && (
           <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
-            {/* top: '50%' and transform: 'translateY(-50%)' center the popup vertically relative to the icon */}
             <div className="modal-content">
-              <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
+              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
             </div>
           </div>
         )}
@@ -69,33 +83,6 @@ export const IconWrapper = ({ icon, label }) => {
     </li>
   );
 };
-
-
-
-
-
-const CustomModal = ({ onClose, label, position }) => {
-  return (
-    <div
-      className="modal-content-container"
-      style={{
-        position: 'fixed',
-        top: position.top,
-        left: position.left, // Using left position instead of right
-        zIndex: 10000
-      }}
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="modal-content">
-        <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
-      </div>
-    </div>
-  );
-};
-
-
-
-
 
 
 
