@@ -51,6 +51,7 @@ p {
 .icon-wrapper {
 
   display: flex;
+  position: relative;
   align-items: center;
   padding: 0px;
   margin-top: 0px;
