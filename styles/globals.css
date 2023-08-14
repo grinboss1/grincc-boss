@@ -122,15 +122,16 @@ p {
   position: relative;
 }
 
-.popup-common-style {
+.background-popup, .modal-content-container {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  z-index: 10000;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
-  padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  min-width: 200px;
-  max-width: 400px;
-  overflow: auto;
-  overflow: auto; /* Overflow for both popups */
+  /* Other common styles here */
 }
 
 .background-popup {
