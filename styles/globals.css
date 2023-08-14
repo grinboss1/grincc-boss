@@ -119,13 +119,34 @@ p {
 .modal-content-container {
   z-index: 100; /* Make sure the modal appears above other content */
   background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  border: 2px solid #333;
+  border-left: none; /* Remove left border to control it with pseudo-elements */
   padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
 }
+
+.modal-content-container:before {
+  content: "";
+  position: absolute;
+  left: -2px; /* Position of the border */
+  top: 0;
+  width: 2px; /* Border width */
+  height: calc(50% - 12px); /* Height to the middle minus half the icon size */
+  background-color: #333; /* Border color */
+}
+
+.modal-content-container:after {
+  content: "";
+  position: absolute;
+  left: -2px; /* Position of the border */
+  bottom: 0;
+  width: 2px; /* Border width */
+  height: calc(50% - 12px); /* Height to the middle minus half the icon size */
+  background-color: #333; /* Border color */
+}
+
 
 
 .modal-content {
