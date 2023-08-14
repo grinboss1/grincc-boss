@@ -48,6 +48,11 @@ p {
   display: inline-block;
 }
 
+.icon-parent-container.selected-user {
+  border: 2px solid #333;
+  border-radius: 4px;
+}
+
 .icon-wrapper {
 
   position: relative;  
@@ -125,6 +130,12 @@ p {
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
+}
+
+.modal-content-container.selected-popup {
+  border: 2px solid #333;
+  border-radius: 4px;
+  border-left: none; /* Remove left border to seamlessly join with the user's name */
 }
 
 
