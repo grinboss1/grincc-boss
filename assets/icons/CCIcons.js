@@ -62,13 +62,13 @@ export const IconWrapper = ({ icon, label }) => {
   const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
 
   return (
-    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
-      <div className="icon-parent-container" ref={iconAndLabelRef} onClick={openModal} style={{ position: 'relative', padding: '0px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', borderLeft: '2px solid #333', borderTop: '2px solid #333', borderBottom: '2px solid #333', borderRadius: '4px', backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent' }}>
+    <li className="icon-container px-1 py-1 relative">
+      <div className={`icon-parent-container ${modalIsOpen ? 'selected-user' : ''}`} ref={iconAndLabelRef} onClick={openModal}>
         <Icon src={icon.src} alt={icon.alt} />
-        <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
+        <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
       </div>
       {modalIsOpen && (
-        <div className="modal-content-container seamless-border" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)', border: '2px solid #333', borderLeft: 'none', borderRadius: '4px', backgroundColor: '#f9f9f9' }}>
+        <div className="modal-content-container selected-popup">
           <div className="modal-content">
             <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
           </div>
