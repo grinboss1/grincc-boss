@@ -130,37 +130,25 @@ p {
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
-  z-index: 10000; /* Ensure the content is above other content */
+  overflow: auto; /* Overflow for both popups */
 }
 
 .background-popup {
+  @apply popup-common-style;
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
-  transform: translateY(-50%);
-  width: 100%; /* Full width of the parent container */
-  height: 24px; /* Height of the Icon */
-  background-color: #f9f9f9; /* Same color as the content popup */
-  border: 1px solid #ccc;
-  z-index: 10000; /* Make it appear below the content popup */
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
-
-
 
 .modal-content-container {
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  min-width: 200px;
-  max-width: 400px;
-  overflow: auto;
+  @apply popup-common-style;
   position: absolute;
-  top: 50%;
-  left: 100%;
-  z-index: 10000; /* Ensure the content is above other content and the background popup */
-  transform: translateY(-50%);
+  z-index: 10000;
 }
+
 
 
 .icon-clickable.icon-above-popup {
