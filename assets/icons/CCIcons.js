@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-
 const icons = [
   { src: "https://i.ibb.co/Bj70xwG/anon.jpg", alt: "Icon 3", label: "anynomous" },
   { src: "https://i.ibb.co/SX5bMQw/mike.jpg", alt: "Icon 4", label: "mcmmike" },
@@ -27,9 +26,14 @@ export const IconList = () => (
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
   const iconAndLabelRef = useRef(null);
 
   const openModal = () => {
+    const rect = iconAndLabelRef.current.getBoundingClientRect();
+    const topPosition = rect.top + window.scrollY;
+    const leftPosition = rect.right + 20;
+    setModalPosition({ top: topPosition, left: leftPosition });
     setModalIsOpen(true);
     document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
@@ -52,26 +56,17 @@ export const IconWrapper = ({ icon, label }) => {
   }, [modalIsOpen]);
 
   return (
-    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
+    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
         <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
           <Icon src={icon.src} alt={icon.alt} />
-          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
+          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span> {/* Set min-width as needed */}
         </div>
-        {modalIsOpen && (
-          <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
-            {/* top: '50%' and transform: 'translateY(-50%)' center the popup vertically relative to the icon */}
-            <div className="modal-content">
-              <p>Visit the <a href="https://www.grin.mw" target="_blank" rel="noopener noreferrer">forum</a></p>
-            </div>
-          </div>
-        )}
+        {modalIsOpen && <CustomModal position={modalPosition} onClose={closeModal} label={label} />}
       </div>
     </li>
   );
 };
-
-
 
 
 
@@ -93,7 +88,6 @@ const CustomModal = ({ onClose, label, position }) => {
     </div>
   );
 };
-
 
 
 
