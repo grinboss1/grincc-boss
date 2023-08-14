@@ -35,7 +35,7 @@ export const IconList = () => (
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const iconAndLabelRef = useRef(null);
-  const popupWidth = `calc(24px + ${label.length * 6}px)`; // Define this inside the component
+  const popupWidth = `calc(24px + ${label.length * 10}px)`; // Define this inside the component
 
   const openModal = () => {
     setModalIsOpen(true);
