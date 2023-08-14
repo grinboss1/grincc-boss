@@ -65,7 +65,7 @@ export const IconWrapper = ({ icon, label }) => {
 
  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
 
- const borderStyle = modalIsOpen
+const borderStyle = modalIsOpen
     ? {
         borderTop: '2px solid #333',
         borderBottom: '2px solid #333',
@@ -94,14 +94,17 @@ export const IconWrapper = ({ icon, label }) => {
         </div>
         {modalIsOpen && (
           <div
-            className="modal-content-container"
+            className="modal-content-container seamless-border" // Add a class for the custom border
             style={{
               position: 'absolute',
               top: '50%',
               left: '100%',
               zIndex: 10000,
               transform: 'translateY(-50%)',
-              border: '2px solid #333',
+              borderTop: '2px solid #333',
+              borderBottom: '2px solid #333',
+              borderRight: '2px solid #333',
+              borderLeft: 'none', // No left border
               borderRadius: '4px',
               backgroundColor: '#f9f9f9',
             }}
