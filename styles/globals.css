@@ -138,20 +138,28 @@ p {
   top: 50%;
   left: 100%;
   transform: translateY(-50%);
-  width: 200px; /* Match the width of the content popup */
-  height: 100%; /* Full height */
-  background-color: #f9f9f9; /* Same background color as the content popup */
-  border-right: 1px solid #ccc; /* Add border to match the content popup */
-  z-index: 9999; /* One level below the content popup */
+  width: 100px; /* Adjust as needed */
+  height: 24px; /* Height of the Icon */
+  background-color: #f9f9f9; /* Same color as the content popup */
+  border: 1px solid #ccc;
+  z-index: 9999; /* Make it appear below the content popup */
 }
 
-
 .modal-content-container {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  max-width: 400px;
+  overflow: auto;
   position: absolute;
   top: 50%;
   left: 100%;
+  z-index: 10000; /* Ensure the content is above other content and the background popup */
   transform: translateY(-50%);
 }
+
 
 .icon-clickable.icon-above-popup {
   position: relative;
