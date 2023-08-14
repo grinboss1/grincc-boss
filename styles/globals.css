@@ -122,7 +122,7 @@ p {
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
-.modal-content-container.seamless-border:before {
+/*.modal-content-container.seamless-border:before {
   content: '';
   position: absolute;
   left: 0;
@@ -130,7 +130,7 @@ p {
   bottom: -200px; /* Extend 20px below the username */
   width: 2px;
   background-color: #333; /* Same as the border color */
-  /* Exclude the area where the border overlaps with the user's name */
+  /* Exclude the area where the border overlaps with the user's name */*?
   
 
   
@@ -161,7 +161,7 @@ p {
 }
 
 
-.modal-content-container.selected-popup {
+/*.modal-content-container.selected-popup {
   border: 2px solid #333;
   border-radius: 4px;
   border-left: none; /* Remove left border to seamlessly join with the user's name */
