@@ -65,7 +65,16 @@ export const IconWrapper = ({ icon, label }) => {
 
  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
 
- return (
+ const borderStyle = modalIsOpen
+    ? {
+        borderTop: '2px solid #333',
+        borderBottom: '2px solid #333',
+        borderLeft: '2px solid #333',
+        borderRight: 'none', // No right border
+      }
+    : {};
+
+  return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
         <div
@@ -75,9 +84,9 @@ export const IconWrapper = ({ icon, label }) => {
             cursor: 'pointer',
             display: 'inline-flex',
             alignItems: 'center',
-            border: modalIsOpen ? '2px solid #333' : 'none',
             borderRadius: '4px',
-            backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent', // Same background color as the popup
+            backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent',
+            ...borderStyle, // Apply the conditional border style
           }}
         >
           <Icon src={icon.src} alt={icon.alt} />
@@ -94,7 +103,7 @@ export const IconWrapper = ({ icon, label }) => {
               transform: 'translateY(-50%)',
               border: '2px solid #333',
               borderRadius: '4px',
-              backgroundColor: '#f9f9f9', // Background color of the popup
+              backgroundColor: '#f9f9f9',
             }}
           >
             <div className="modal-content">
