@@ -13,10 +13,7 @@ const userPopupDetails = {
   "mcmmike": { text: "Forum:", url: "https://45545.com" },
   "future3000": { text: "Telegram:", url: "https://dfgjkdfgfd.com" },
   "mwgrin_fr": { text: "Twitter:", url: "https://dfg3434.com" },
-  // Add more as needed
 };
-
-const popupWidth = `calc(24px + ${label.length * 6}px)`;
 
 export const Icon = React.forwardRef(({ src, alt }, ref) => (
   <img
@@ -35,20 +32,19 @@ export const IconList = () => (
   </ul>
 );
 
-
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const iconAndLabelRef = useRef(null);
-  const popupWidth = `calc(24px + ${label.length * 6}px)`; // Move this inside the component
+  const popupWidth = `calc(24px + ${label.length * 6}px)`; // Define this inside the component
 
   const openModal = () => {
     setModalIsOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    document.body.style.overflow = 'auto'; // Allow scrolling
+    document.body.style.overflow = 'auto';
   };
 
   useEffect(() => {
@@ -63,13 +59,9 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
- 
+  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
 
-
-
- const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
-
- return (
+  return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className={`icon-parent-container ${modalIsOpen ? 'selected-user border-left-top-bottom' : ''}`} style={{ position: 'relative', padding: '0px' }}>
         {modalIsOpen && (
