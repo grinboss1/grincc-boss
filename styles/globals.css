@@ -46,15 +46,12 @@ p {
 
 .icon-parent-container {
   display: inline-block;
-  background-color: #fff; /* Background color of the icon and label */
-  z-index: 1; /* Ensure it appears above the popup */
 }
-
 
 .icon-wrapper {
 
-  position: relative;  
   display: flex;
+  position: relative;
   align-items: center;
   padding: 0px;
   margin-top: 0px;
@@ -119,86 +116,20 @@ p {
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
-.selected-user {
-  position: relative;
-}
-
-.selected-user::before,
-.selected-user::after {
-  content: "";
-  position: absolute;
-  left: -2px; /* Position of the border */
-  width: 2px; /* Border width */
-  background-color: #333; /* Border color */
-}
-
-.selected-user::before {
-  top: 0;
-  height: calc(50% - 12px); /* Height to the middle minus half the icon size */
-}
-
-.selected-user::after {
-  bottom: 0;
-  height: calc(50% - 12px); /* Height to the middle minus half the icon size */
-}
-
 .modal-content-container {
-  z-index: 9999; /* Make sure the modal appears above other content */
+  z-index: 100; /* Make sure the modal appears above other content */
   background-color: #f9f9f9;
-  border: 2px solid #333;
-  border-left: none; /* Remove left border */
+  border: 1px solid #ccc;
   padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
 }
-
-
-.border-left-top-bottom:before,
-.border-left-top-bottom:after {
-  content: "";
-  position: absolute;
-  left: -2px; /* Position of the border */
-  width: 2px; /* Border width */
-  height: calc(50% - 12px); /* Height to the middle minus half the icon size */
-  background-color: #333; /* Border color */
-}
-
-.border-left-top-bottom:before {
-  top: 0;
-}
-
-.border-left-top-bottom:after {
-  bottom: 0;
-}
-
-.background-popup {
-  position: absolute;
-  top: 100%; /* Position directly under the username */
-  left: 0;
-  height: 24px; /* Height of the icon */
-  width: 100%; /* Full width of the container */
-  background-color: #f9f9f9; /* Background color of the popup */
-  border-top: 2px solid #333; /* Top border */
-  border-bottom: 2px solid #333; /* Bottom border */
-  z-index: 9998; /* Ensure it appears behind the main popup */
-}
-
-
-
-
-
-
-
 
 
 .modal-content {
 /*z-index: 1000;*/
 }
-
 
 
