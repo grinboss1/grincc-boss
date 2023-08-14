@@ -116,6 +116,17 @@ p {
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
+
+.background-popup {
+  z-index: 100; /* Same z-index as the modal */
+  background-color: #f9f9f9; /* Same background color as the modal */
+  border: 1px solid #ccc; /* Same border as the modal */
+  border-bottom: none; /* Remove the bottom border so it seamlessly joins */
+  height: 24px; /* Same height as the icon */
+  width: 100px; /* Width to match the label */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Same box shadow as the modal */
+}
+
 .modal-content-container {
   z-index: 100; /* Make sure the modal appears above other content */
   background-color: #f9f9f9;
