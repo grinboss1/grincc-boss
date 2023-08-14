@@ -40,12 +40,10 @@ export const IconWrapper = ({ icon, label }) => {
 
   const openModal = () => {
     setModalIsOpen(true);
-    //document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-   // document.body.style.overflow = 'auto'; // Allow scrolling
   };
 
   useEffect(() => {
@@ -60,11 +58,7 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
- 
-
-
-
- const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
+  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
 
   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
@@ -74,14 +68,18 @@ export const IconWrapper = ({ icon, label }) => {
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
         {modalIsOpen && (
-          <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
-            <div className="modal-content">
-              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+          <>
+            <div className="background-popup" style={{ position: 'absolute', top: '100%', left: '0', zIndex: 10000, height: '24px', background: '#f9f9f9' }}></div>
+            <div className="modal-content-container" style={{ position: 'absolute', top: '100%', left: '100%', zIndex: 10000 }}>
+              <div className="modal-content">
+                <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </li>
   );
 };
+
 
