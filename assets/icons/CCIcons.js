@@ -59,18 +59,14 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
- 
+  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
 
-
-
- const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
-
-const borderStyle = modalIsOpen
+  const borderStyle = modalIsOpen
     ? {
         borderTop: '2px solid #333',
         borderBottom: '2px solid #333',
         borderLeft: '2px solid #333',
-        borderRight: 'none', // No right border
+        borderRight: 'none',
       }
     : {};
 
@@ -86,7 +82,7 @@ const borderStyle = modalIsOpen
             alignItems: 'center',
             borderRadius: '4px',
             backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent',
-            ...borderStyle, // Apply the conditional border style
+            ...borderStyle,
           }}
         >
           <Icon src={icon.src} alt={icon.alt} />
@@ -94,23 +90,24 @@ const borderStyle = modalIsOpen
         </div>
         {modalIsOpen && (
           <div
-            className="modal-content-container seamless-border" // Add a class for the custom border
+            className="modal-content-container"
             style={{
               position: 'absolute',
               top: '50%',
               left: '100%',
               zIndex: 10000,
               transform: 'translateY(-50%)',
-              borderTop: '2px solid #333',
-              borderBottom: '2px solid #333',
-              borderRight: '2px solid #333',
-              borderLeft: 'none', // No left border
+              border: 'none',
               borderRadius: '4px',
               backgroundColor: '#f9f9f9',
             }}
           >
-            <div className="modal-content">
-              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+            <div style={{border: '2px solid #333', borderLeft: 'none'}}>
+              <div style={{borderLeft: '2px solid #333', height: '20px'}}></div>
+              <div className="modal-content">
+                <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+              </div>
+              <div style={{borderLeft: '2px solid #333', height: '20px'}}></div>
             </div>
           </div>
         )}
