@@ -113,12 +113,12 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
+  background-color: rgba(0, 5.1, 100, 0; /* Semi-transparent background */
 }
 
 
 .icon-above-popup {
-  z-index: 1001; /* Ensure it appears above the background popup */
+  z-index: 1000; /* Ensure it appears above the background popup */
   position: relative;
 }
 
