@@ -7,6 +7,14 @@ const icons = [
   { src: "https://i.ibb.co/VMsjm9f/mw-grin.png", alt: "Icon 6", label: "mwgrin_fr" }
 ];
 
+const userPopupDetails = {
+  "anynomous": { text: "Key base:", url: "https://45454545.com" },
+  "mcmmike": { text: "Forum:", url: "https://45545.com" },
+  "future3000": { text: "Telegram:", url: "https://dfgjkdfgfd.com" },
+  "mwgrin_fr": { text: "Twitter:", url: "https://dfg3434.com" },
+  // Add more as needed
+};
+
 export const Icon = React.forwardRef(({ src, alt }, ref) => (
   <img
     ref={ref}
@@ -24,13 +32,6 @@ export const IconList = () => (
   </ul>
 );
 
-// Define the links and text for each user
-const userLinks = {
-  "anynomous": { link: "https://45454545.com", text: "Key base: 45454545.com" },
-  "mcmmike": { link: "https://45545.com", text: "Forum: 45545.com" },
-  "future3000": { link: "https://dfgjkdfgfd.com", text: "Telegram: dfgjkdfgfd.com" },
-  "mwgrin_fr": { link: "https://dfg3434.com", text: "Twitter dfg3434.com" },
-};
 
 export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -81,17 +82,6 @@ export const IconWrapper = ({ icon, label }) => {
 };
 
 
-
-
-
-
-const userPopupDetails = {
-  "anynomous": { text: "Key base:", url: "https://45454545.com" },
-  "mcmmike": { text: "Forum:", url: "https://45545.com" },
-  "future3000": { text: "Telegram:", url: "https://dfgjkdfgfd.com" },
-  "mwgrin_fr": { text: "Twitter:", url: "https://dfg3434.com" },
-  // Add more as needed
-};
 
 
 const CustomModal = ({ onClose, label, position }) => {
