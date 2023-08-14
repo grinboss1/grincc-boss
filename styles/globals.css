@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body {
-  /*@apply bg-white;*/
+  *@apply bg-white;
 }
 
 .btn {
@@ -122,16 +122,7 @@ p {
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
 }
 
-.modal-content-container.seamless-border:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0px; /* Extend 20px above the username */
-  bottom: 0px; /* Extend 20px below the username */
-  width: 2px;
-  background-color: #333; /* Same as the border color */
-  /* Exclude the area where the border overlaps with the user's name */
-  clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0% 20%, 0% 80%, 100% 80%, 100% 100%, 0% 100%);
+
 
   
 }
@@ -145,12 +136,6 @@ p {
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
-}
-
-.modal-content-container.selected-popup {
-  border: 2px solid #333;
-  border-radius: 4px;
-  border-left: none; /* Remove left border to seamlessly join with the user's name */
 }
 
 
