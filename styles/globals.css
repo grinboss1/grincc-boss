@@ -173,6 +173,18 @@ p {
   bottom: 0;
 }
 
+.background-popup {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 24px; /* Same width as the icon */
+  height: 24px; /* Same height as the icon */
+  background-color: #f9f9f9; /* Background color of the popup */
+  border-top: 2px solid #333; /* Top border */
+  border-bottom: 2px solid #333; /* Bottom border */
+  z-index: 9999; /* Ensure it appears behind the main popup */
+}
 
 
 
