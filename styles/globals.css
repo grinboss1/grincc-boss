@@ -125,8 +125,8 @@ p {
   content: '';
   position: absolute;
   left: 0;
-  top: 20px; /* Extend 20px above the username */
-  bottom: 20px; /* Extend 20px below the username */
+  top: -20px; /* Extend 20px above the username */
+  bottom: -20px; /* Extend 20px below the username */
   width: 2px;
   background-color: #333; /* Same as the border color */
   /* Exclude the area where the border overlaps with the user's name */
