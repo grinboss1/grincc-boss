@@ -117,6 +117,11 @@ p {
 }
 
 
+.icon-above-popup {
+  z-index: 10001; /* Ensure it appears above the background popup */
+  position: relative;
+}
+
 .background-popup {
   position: absolute;
   top: 50%;
@@ -127,9 +132,10 @@ p {
   border-top: 1px solid #ccc; /* Top border */
   border-bottom: 1px solid #ccc; /* Bottom border */
   border-right: 1px solid #ccc; /* Right border */
-  z-index: 99; /* Ensure it appears behind the icon and label but above the main content popup */
+  z-index: 10000; /* Ensure it appears below the icon and label */
   width: 100%; /* Full width to cover the icon and label */
 }
+
 
 
 .modal-content-container {
