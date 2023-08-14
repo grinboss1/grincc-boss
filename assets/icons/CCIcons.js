@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 
 const icons = [
@@ -39,12 +40,12 @@ export const IconWrapper = ({ icon, label }) => {
 
   const openModal = () => {
     setModalIsOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'auto'; // Allow scrolling
   };
 
   useEffect(() => {
@@ -59,21 +60,50 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
-  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
+ 
 
-  return (
-    <li className="icon-container px-1 py-1 relative">
-      <div className={`icon-parent-container ${modalIsOpen ? 'selected-user' : ''}`} ref={iconAndLabelRef} onClick={openModal}>
-        <Icon src={icon.src} alt={icon.alt} />
-        <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`}>{label}</span>
-      </div>
-      {modalIsOpen && (
-        <div className="modal-content-container selected-popup">
-          <div className="modal-content">
-            <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
-          </div>
+
+
+ const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
+
+ return (
+    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
+      <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
+        <div
+          ref={iconAndLabelRef}
+          onClick={openModal}
+          style={{
+            cursor: 'pointer',
+            display: 'inline-flex',
+            alignItems: 'center',
+            border: modalIsOpen ? '2px solid #333' : 'none',
+            borderRadius: '4px',
+            backgroundColor: modalIsOpen ? '#f9f9f9' : 'transparent', // Same background color as the popup
+          }}
+        >
+          <Icon src={icon.src} alt={icon.alt} />
+          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
-      )}
+        {modalIsOpen && (
+          <div
+            className="modal-content-container"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '100%',
+              zIndex: 10000,
+              transform: 'translateY(-50%)',
+              border: '2px solid #333',
+              borderRadius: '4px',
+              backgroundColor: '#f9f9f9', // Background color of the popup
+            }}
+          >
+            <div className="modal-content">
+              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+            </div>
+          </div>
+        )}
+      </div>
     </li>
   );
 };
