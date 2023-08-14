@@ -58,19 +58,19 @@ export const IconWrapper = ({ icon, label }) => {
     };
   }, [modalIsOpen]);
 
+  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
+
   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
-      <div className={`icon-parent-container ${modalIsOpen ? 'icon-above-popup' : ''}`} style={{ position: 'relative', padding: '0px' }}>
+      <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
         <div ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
           <Icon src={icon.src} alt={icon.alt} />
           <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
         {modalIsOpen && (
           <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
-            {/* Include the background popup here */}
-            <div className="background-popup" style={{ width: '100%' }}></div>
             <div className="modal-content">
-              <p>{userPopupDetails[label]?.text || "Visit the forum:"} <a href={userPopupDetails[label]?.url || "https://www.grin.mw"} target="_blank" rel="noopener noreferrer">{userPopupDetails[label]?.url || "https://www.grin.mw"}</a></p>
+              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
             </div>
           </div>
         )}
@@ -78,6 +78,7 @@ export const IconWrapper = ({ icon, label }) => {
     </li>
   );
 };
+
 
 
 
