@@ -118,7 +118,7 @@ p {
   top: -5px; /* Increase space above */
   left: 0;
   width: calc(100% + 20px); /* Increase width */
-  height: calc(100% + 10px); /* Increase height */
+  height: calc(100% + 5px); /* Increase height */
   z-index: 10000;
   background-color: #fff200;
   border: 0px solid #ccc;
