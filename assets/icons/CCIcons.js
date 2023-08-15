@@ -27,20 +27,15 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
   />
 ));
 
-export const IconList = () => {
-  const usernamesRef = useRef(null);
-  const usernamesHeight = usernamesRef.current ? usernamesRef.current.offsetHeight : 0;
+export const IconList = () => (
+  <ul className="icon-list">
+    {icons.map((icon, index) => (
+      <IconWrapper icon={icon} label={icon.label} key={index} />
+    ))}
+  </ul>
+);
 
-  return (
-    <ul className="icon-list" ref={usernamesRef}>
-      {icons.map((icon, index) => (
-        <IconWrapper icon={icon} label={icon.label} key={index} modalHeight={usernamesHeight} />
-      ))}
-    </ul>
-  );
-};
-
-export const IconWrapper = ({ icon, label, modalHeight }) => {
+export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const iconAndLabelRef = useRef(null);
 
@@ -75,8 +70,8 @@ export const IconWrapper = ({ icon, label, modalHeight }) => {
         </div>
         {modalIsOpen && (
           <>
-            <div className="background-popup"></div> {/* Background popup */}
-            <div className="modal-content-container" style={{ height: modalHeight }}> {/* Added inline style for height */}
+            <div className="background-popup popup-common-style"></div> {/* Background popup */}
+            <div className="modal-content-container popup-common-style">
               <div className="modal-content">
                 <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
               </div>
@@ -87,3 +82,4 @@ export const IconWrapper = ({ icon, label, modalHeight }) => {
     </li>
   );
 };
+
