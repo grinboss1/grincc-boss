@@ -27,16 +27,20 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
   />
 ));
 
-export const IconList = () => (
-  <ul className="icon-list">
-    {icons.map((icon, index) => (
-      <IconWrapper icon={icon} label={icon.label} key={index} />
-    ))}
-  </ul>
-);
+export const IconList = () => {
+  const usernamesRef = useRef(null);
+  const usernamesHeight = usernamesRef.current ? usernamesRef.current.offsetHeight : 0;
 
+  return (
+    <ul className="icon-list" ref={usernamesRef}>
+      {icons.map((icon, index) => (
+        <IconWrapper icon={icon} label={icon.label} key={index} modalHeight={usernamesHeight} />
+      ))}
+    </ul>
+  );
+};
 
-export const IconWrapper = ({ icon, label }) => {
+export const IconWrapper = ({ icon, label, modalHeight }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const iconAndLabelRef = useRef(null);
 
@@ -62,24 +66,24 @@ export const IconWrapper = ({ icon, label }) => {
 
   const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
 
-   return (
-  <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
-    <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
-      <div className={`icon-clickable ${modalIsOpen ? 'icon-above-popup' : ''}`} ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
-        <Icon src={icon.src} alt={icon.alt} />
-        <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
-      </div>
-      {modalIsOpen && (
-        <>
-          <div className="background-popup"></div> {/* Background popup */}
-          <div className="modal-content-container">
-            <div className="modal-content">
-              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+  return (
+    <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
+      <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
+        <div className={`icon-clickable ${modalIsOpen ? 'icon-above-popup' : ''}`} ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+          <Icon src={icon.src} alt={icon.alt} />
+          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
+        </div>
+        {modalIsOpen && (
+          <>
+            <div className="background-popup"></div> {/* Background popup */}
+            <div className="modal-content-container" style={{ height: modalHeight }}> {/* Added inline style for height */}
+              <div className="modal-content">
+                <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+              </div>
             </div>
-          </div>
-        </>
-      )}
-    </div>
-  </li>
-);
+          </>
+        )}
+      </div>
+    </li>
+  );
 };
