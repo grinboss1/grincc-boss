@@ -71,12 +71,12 @@ export const IconWrapper = ({ icon, label }) => {
         </div>
         {modalIsOpen && (
           <>
-            <div className="background-popup popup-common-style"></div>
-<div className="modal-content-container popup-common-style">
-  <div className="modal-content">
-    <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
-  </div>
-</div>
+            <div className="background-popup"></div> {/* Background Popup */}
+            <div className="modal-content-container" style={{ position: 'absolute', top: '50%', left: '100%', zIndex: 10000, transform: 'translateY(-50%)' }}>
+              <div className="modal-content">
+                <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+              </div>
+            </div>
           </>
         )}
       </div>
