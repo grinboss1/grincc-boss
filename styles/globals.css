@@ -133,26 +133,28 @@ p {
   overflow: auto; /* Overflow for both popups */
 }
 
-.background-popup, .modal-content-container {
+.background-popup {
+  position: absolute;
+  top: 0; /* Align with the top of the parent */
+  left: 0; /* Align with the left of the parent */
+  width: 100%; /* Cover the full width of the parent */
+  height: 100%; /* Cover the full height of the parent */
+  z-index: 9999; /* Ensure it's below the content container */
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  /* Remove the box-shadow if it was causing issues */
+}
+
+.modal-content-container {
   position: absolute;
   top: 50%;
   left: 100%;
   transform: translateY(-50%);
-  z-index: 10000;
+  z-index: 10000; /* Ensure it's above the background popup */
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* Other common styles here */
-}
-
-.background-popup {
-  @apply popup-common-style;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
+  /* Other styling for the content container */
 }
 
 .modal-content-container {
