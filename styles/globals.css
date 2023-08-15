@@ -127,6 +127,7 @@ p {
 
 .modal-content-container {
   position: absolute;
+  height: 100px;
   top: 50%;
   left: 100%;
   transform: translateY(-50%);
@@ -137,7 +138,10 @@ p {
 }
 
 
-
+.usernames-container {
+  /* Set the height to match the combined height of all usernames */
+  height: 100px; /* Adjust this value */
+}
 
 
 
