@@ -115,7 +115,7 @@ p {
 
 .background-popup {
   position: absolute;
-  top: -5px; /* Increase space above */
+  top: -10px; /* Increase space above */
   left: 0;
   width: calc(100% + 20px); /* Increase width */
   height: calc(100% + 20px); /* Increase height */
