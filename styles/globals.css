@@ -119,9 +119,9 @@ p {
   left: 0; /* Align with the left of the parent */
   width: 100%; /* Cover the full width of the parent */
   height: 100%; /* Cover the full height of the parent */
-  z-index: 9999; /* Ensure it's below the content container */
+  z-index: 10000; /* Ensure it's below the content container */
   background-color: #fff200;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
 }
 
 .modal-content-container {
@@ -131,7 +131,7 @@ p {
   transform: translateY(-50%);
   z-index: 10000; /* Ensure it's above the background popup */
   background-color: #fff200;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
 }
 
 
