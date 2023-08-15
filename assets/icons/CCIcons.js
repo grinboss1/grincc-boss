@@ -82,4 +82,4 @@ export const IconWrapper = ({ icon, label }) => {
     </div>
   </li>
 );
-}:
+};
