@@ -126,7 +126,6 @@ p {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
@@ -135,7 +134,7 @@ p {
 
 .background-popup {
   position: absolute;
-  top: 0; /* Align with the top of the parent */
+  top: 1; /* Align with the top of the parent */
   left: 0; /* Align with the left of the parent */
   width: 100%; /* Cover the full width of the parent */
   height: 100%; /* Cover the full height of the parent */
