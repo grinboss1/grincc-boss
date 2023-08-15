@@ -127,7 +127,7 @@ p {
 
 .modal-content-container {
   position: absolute;
-  height: 100px;
+  height: 200px;
   top: 50%;
   left: 100%;
   transform: translateY(-50%);
