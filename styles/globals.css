@@ -139,7 +139,7 @@ p {
   width: 100%; /* Cover the full width of the parent */
   height: 100%; /* Cover the full height of the parent */
   z-index: 9999; /* Ensure it's below the content container */
-  background-color: #f9f9f9;
+  background-color: #fff200;
   border: 1px solid #ccc;
   /* Remove the box-shadow if it was causing issues */
 }
@@ -150,7 +150,7 @@ p {
   left: 100%;
   transform: translateY(-50%);
   z-index: 10000; /* Ensure it's above the background popup */
-  background-color: #f9f9f9;
+  background-color: #fff200;
   border: 1px solid #ccc;
   /* Other styling for the content container */
 }
