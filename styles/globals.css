@@ -117,12 +117,12 @@ p {
   position: absolute;
   top: -5px; /* Increase space above */
   left: 0;
-  width: calc(100% + 20px); /* Increase width */
+  width: 100%; /* Set the width to 100% of the parent */
   height: calc(100% + 5px); /* Increase height */
   z-index: 10000;
-  background-color: rgba(255, 242, 0, 0.5); /* 90% opacity */
+  background-color: rgba(255, 242, 0, 0.5); /* 50% opacity */
   border: 0px solid #ccc;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px; /* Make the right edge square */
 }
 
 .modal-content-container {
@@ -131,10 +131,11 @@ p {
   left: 100%;
   transform: translateY(-50%);
   z-index: 10000; /* Ensure it's above the background popup */
-  background-color: rgba(255, 242, 0, 0.5); /* 90% opacity */
+  background-color: rgba(255, 242, 0, 0.5); /* 50% opacity */
   border: 0px solid #ccc;
   border-radius: 10px;
 }
+
 
 
 
