@@ -107,29 +107,18 @@ p {
 
 
 
-.modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-}
-
-
 .icon-above-popup {
   z-index: 10000; /* Ensure it appears above the background popup */
   position: relative;
 }
 
 .popup-common-style {
-  background-color: #fff200;
+  background-color: #f9f9f9;
   border: 1px solid #ccc;
   padding: 10px;
   min-width: 200px;
   max-width: 400px;
   overflow: auto;
-  overflow: auto; /* Overflow for both popups */
 }
 
 .background-popup {
@@ -141,10 +130,10 @@ p {
   z-index: 9999; /* Ensure it's below the content container */
   background-color: #fff200;
   border: 1px solid #ccc;
-  /* Remove the box-shadow if it was causing issues */
 }
 
 .modal-content-container {
+  @apply popup-common-style;
   position: absolute;
   top: 50%;
   left: 100%;
@@ -152,14 +141,8 @@ p {
   z-index: 10000; /* Ensure it's above the background popup */
   background-color: #fff200;
   border: 1px solid #ccc;
-  /* Other styling for the content container */
 }
 
-.modal-content-container {
-  @apply popup-common-style;
-  position: absolute;
-  z-index: 10000;
-}
 
 
 
