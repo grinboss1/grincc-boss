@@ -119,7 +119,7 @@ p {
   left: 0;
   width: calc(100% + 20px); /* Increase width */
   height: calc(100% + 20px); /* Increase height */
-  z-index: 9999;
+  z-index: 10000;
   background-color: #fff200;
   border: 0px solid #ccc;
   border-radius: 10px;
