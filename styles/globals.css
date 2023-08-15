@@ -115,14 +115,16 @@ p {
 
 .background-popup {
   position: absolute;
-  top: 0; /* Align with the top of the parent */
-  left: 0; /* Align with the left of the parent */
-  width: 100%; /* Cover the full width of the parent */
-  height: 100%; /* Cover the full height of the parent */
-  z-index: 10000; /* Ensure it's below the content container */
+  top: -10px; /* Increase space above */
+  left: 0;
+  width: calc(100% + 20px); /* Increase width */
+  height: calc(100% + 20px); /* Increase height */
+  z-index: 9999;
   background-color: #fff200;
-  border: 0px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 10px;
+}
+
 }
 
 .modal-content-container {
