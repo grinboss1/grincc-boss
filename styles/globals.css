@@ -120,12 +120,10 @@ p {
   width: calc(100% + 20px); /* Increase width */
   height: calc(100% + 5px); /* Increase height */
   z-index: 10000;
-  background-color: #fff200;
+  background-color: rgba(255, 242, 0, 0.9); /* 90% opacity */
   border: 0px solid #ccc;
   border-radius: 10px;
 }
-
-
 
 .modal-content-container {
   position: absolute;
@@ -133,10 +131,11 @@ p {
   left: 100%;
   transform: translateY(-50%);
   z-index: 10000; /* Ensure it's above the background popup */
-  background-color: #fff200;
+  background-color: rgba(255, 242, 0, 0.9); /* 90% opacity */
   border: 0px solid #ccc;
   border-radius: 10px;
 }
+
 
 
 
