@@ -18,6 +18,15 @@ const userPopupDetails = {
   // Add more as needed
 };
 
+export const Icon = React.forwardRef(({ src, alt }, ref) => (
+  <img
+    ref={ref}
+    src={src}
+    alt={alt}
+    style={{ width: '24px', height: '24px', borderRadius: '50%' }}
+  />
+));
+
 export const IconList = () => (
   <ul className="icon-list">
     {icons.map((icon, index) => (
