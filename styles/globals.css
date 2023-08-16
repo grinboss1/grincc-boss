@@ -127,9 +127,11 @@ p {
 
 .modal-content-container {
   position: absolute;
-  top: 50%;
+  top: 0;
+  /*top: 50%;*/
   left: 100%;
-  transform: translateY(-50%);
+  height: 100%;
+  /*transform: translateY(-50%);*/
   z-index: 10000; /* Ensure it's above the background popup */
   background-color: rgba(255, 242, 0, 0.5); /* 50% opacity */
   border: 0px solid #ccc;
