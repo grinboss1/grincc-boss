@@ -116,7 +116,7 @@ p {
 
 
 .background-popup {
-  position: fixed; /* Make it fixed to cover the entire screen */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -124,13 +124,15 @@ p {
   z-index: 10000;
   background-color: rgba(255, 242, 0, 0.5); /* 50% opacity */
   border: 0px solid #ccc;
+  border-radius: 10px 0 0 10px; /* Make the right edge square */
 }
 
 .modal-content-container {
   position: absolute;
-  top: 0; /* Align with the top */
+  top: 0;
   left: 100%;
-  height: 100%;
+  width: 200px; /* Set the desired width */
+  height: 100%; /* Take up the space of all usernames */
   z-index: 10000; /* Ensure it's above the background popup */
   background-color: rgba(255, 242, 0, 0.5); /* 50% opacity */
   border: 0px solid #ccc;
