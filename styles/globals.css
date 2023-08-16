@@ -127,7 +127,7 @@ p {
 
 .modal-content-container {
   position: fixed;
-  top: 250px; /* Set the desired top position */
+  top: 150px; /* Set the desired top position */
   left: 150px; /* Set the desired left position */
   width: 200px;
   height: 150px;
