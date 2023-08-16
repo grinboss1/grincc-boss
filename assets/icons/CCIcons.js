@@ -28,15 +28,22 @@ export const Icon = React.forwardRef(({ src, alt }, ref) => (
 ));
 
 export const IconList = () => {
-  const [modalDetails, setModalDetails] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [details, setDetails] = useState(null);
+
+  const openModal = (label) => {
+    const labelDetails = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
+    setDetails(labelDetails);
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => {
-    setModalDetails(null);
+    setModalIsOpen(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (modalDetails && !event.target.closest('.icon-container')) {
+      if (modalIsOpen && !event.target.closest('.icon-container')) {
         closeModal();
       }
     };
@@ -44,44 +51,35 @@ export const IconList = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [modalDetails]);
+  }, [modalIsOpen]);
 
   return (
-    <div className="icon-list-container"> {/* Correct placement for this div */}
-      <ul className="icon-list">
-        {icons.map((icon, index) => (
-          <IconWrapper icon={icon} label={icon.label} key={index} setModalDetails={setModalDetails} />
-        ))}
-        {modalDetails && (
-          <>
-            <div className="background-popup popup-common-style"></div>
-            <div className="modal-content-container popup-common-style">
-              <div className="modal-content">
-                <p>{modalDetails.text} <a href={modalDetails.url} target="_blank" rel="noopener noreferrer">{modalDetails.url}</a></p>
-              </div>
+    <ul className="icon-list">
+      {icons.map((icon, index) => (
+        <IconWrapper icon={icon} label={icon.label} key={index} openModal={openModal} />
+      ))}
+      {modalIsOpen && (
+        <>
+          <div className="background-popup popup-common-style"></div>
+          <div className="modal-content-container popup-common-style">
+            <div className="modal-content">
+              <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
             </div>
-          </>
-        )}
-      </ul>
-    </div>
+          </div>
+        </>
+      )}
+    </ul>
   );
 };
 
-
-export const IconWrapper = ({ icon, label, setModalDetails }) => {
-  const openModal = () => {
-    const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
-    setModalDetails(details);
-  };
-
+export const IconWrapper = ({ icon, label, openModal }) => {
   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
-      <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
-        <div className="icon-clickable" onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
-          <Icon src={icon.src} alt={icon.alt} />
-          <span className="icon-label" style={{ minWidth: '100px' }}>{label}</span>
+      {/* ... (rest of the code) */}
+        <div className="icon-clickable" onClick={() => openModal(label)} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+          {/* ... */}
         </div>
-      </div>
+      {/* ... */}
     </li>
   );
 };
