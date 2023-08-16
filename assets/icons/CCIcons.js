@@ -61,7 +61,7 @@ export const IconWrapper = ({ icon, label }) => {
 
   const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
 
-  return (
+   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
         <div className={`icon-clickable ${modalIsOpen ? 'icon-above-popup' : ''}`} ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
@@ -70,7 +70,7 @@ export const IconWrapper = ({ icon, label }) => {
         </div>
         {modalIsOpen && (
           <>
-            <div className="background-popup popup-common-style"></div> {/* Background popup */}
+            <div className="background-popup popup-common-style"></div>
             <div className="modal-content-container popup-common-style">
               <div className="modal-content">
                 <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
