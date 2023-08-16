@@ -19,19 +19,38 @@ const userPopupDetails = {
 };
 
 export const Icon = React.forwardRef(({ src, alt }, ref) => (
-  <img ref={ref} src={src} alt={alt} style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
+  <img
+    ref={ref}
+    src={src}
+    alt={alt}
+    style={{ width: '24px', height: '24px', borderRadius: '50%' }}
+  />
 ));
 
-export const IconList = () => {
-  const [modalDetails, setModalDetails] = useState(null);
+export const IconList = () => (
+  <ul className="icon-list">
+    {icons.map((icon, index) => (
+      <IconWrapper icon={icon} label={icon.label} key={index} />
+    ))}
+  </ul>
+);
+
+
+export const IconWrapper = ({ icon, label }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const iconAndLabelRef = useRef(null);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => {
-    setModalDetails(null);
+    setModalIsOpen(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (modalDetails && !event.target.closest('.icon-container')) {
+      if (modalIsOpen && iconAndLabelRef.current && !iconAndLabelRef.current.contains(event.target)) {
         closeModal();
       }
     };
@@ -39,42 +58,27 @@ export const IconList = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [modalDetails]);
+  }, [modalIsOpen]);
 
-  return (
-    <div className="icon-list-container"> {/* Ensure this class exists */}
-      <ul className="icon-list">
-        {icons.map((icon, index) => (
-          <IconWrapper icon={icon} label={icon.label} key={index} setModalDetails={setModalDetails} />
-        ))}
-        {modalDetails && (
-          <>
-            <div className="background-popup popup-common-style"></div>
-            <div className="modal-content-container popup-common-style">
-              <div className="modal-content">
-                <p>{modalDetails.text} <a href={modalDetails.url} target="_blank" rel="noopener noreferrer">{modalDetails.url}</a></p>
-              </div>
-            </div>
-          </>
-        )}
-      </ul>
-    </div>
-  );
-};
+  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
 
-export const IconWrapper = ({ icon, label, setModalDetails }) => {
-  const openModal = () => {
-    const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
-    setModalDetails(details);
-  };
-
-  return (
+   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
       <div className="icon-parent-container" style={{ position: 'relative', padding: '0px' }}>
-        <div className="icon-clickable" onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
+        <div className={`icon-clickable ${modalIsOpen ? 'icon-above-popup' : ''}`} ref={iconAndLabelRef} onClick={openModal} style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center' }}>
           <Icon src={icon.src} alt={icon.alt} />
-          <span className="icon-label" style={{ minWidth: '100px' }}>{label}</span>
+          <span className={`icon-label ${modalIsOpen ? 'icon-label-bold' : ''}`} style={{ minWidth: '100px' }}>{label}</span>
         </div>
+        {modalIsOpen && (
+          <>
+            <div className="background-popup popup-common-style"></div>
+<div className="modal-content-container popup-common-style">
+  <div className="modal-content">
+    <p>{details.text} <a href={details.url} target="_blank" rel="noopener noreferrer">{details.url}</a></p>
+  </div>
+</div>
+          </>
+        )}
       </div>
     </li>
   );
