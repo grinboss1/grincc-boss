@@ -129,6 +129,7 @@ p {
   position: absolute;
   top: 50%;
   left: 100%;
+  width: 200px;
   height: auto;
   transform: translateY(-50%);
   z-index: 10000; /* Ensure it's above the background popup */
