@@ -128,9 +128,9 @@ p {
 .modal-content-container {
   position: fixed;
   top: 50px; /* Set the desired top position */
-  left: 50px; /* Set the desired left position */
-  width: 400px;
-  height: 400px;
+  left: 100px; /* Set the desired left position */
+  width: 200px;
+  height: 200px;
   z-index: 10000;
   background-color: rgba(255, 242, 0, 0.5);
   border: 0px solid #ccc;
