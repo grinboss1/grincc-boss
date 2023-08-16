@@ -47,23 +47,26 @@ export const IconList = () => {
   }, [modalDetails]);
 
   return (
-    <ul className="icon-list">
-      {icons.map((icon, index) => (
-        <IconWrapper icon={icon} label={icon.label} key={index} setModalDetails={setModalDetails} />
-      ))}
-      {modalDetails && (
-        <>
-          <div className="background-popup popup-common-style"></div>
-          <div className="modal-content-container popup-common-style">
-            <div className="modal-content">
-              <p>{modalDetails.text} <a href={modalDetails.url} target="_blank" rel="noopener noreferrer">{modalDetails.url}</a></p>
+    <div className="icon-list-container"> {/* Correct placement for this div */}
+      <ul className="icon-list">
+        {icons.map((icon, index) => (
+          <IconWrapper icon={icon} label={icon.label} key={index} setModalDetails={setModalDetails} />
+        ))}
+        {modalDetails && (
+          <>
+            <div className="background-popup popup-common-style"></div>
+            <div className="modal-content-container popup-common-style">
+              <div className="modal-content">
+                <p>{modalDetails.text} <a href={modalDetails.url} target="_blank" rel="noopener noreferrer">{modalDetails.url}</a></p>
+              </div>
             </div>
-          </div>
-        </>
-      )}
-    </ul>
+          </>
+        )}
+      </ul>
+    </div>
   );
 };
+
 
 export const IconWrapper = ({ icon, label, setModalDetails }) => {
   const openModal = () => {
