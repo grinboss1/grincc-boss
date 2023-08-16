@@ -19,22 +19,10 @@ const userPopupDetails = {
 };
 
 export const Icon = React.forwardRef(({ src, alt }, ref) => (
-  <img
-    ref={ref}
-    src={src}
-    alt={alt}
-    style={{ width: '24px', height: '24px', borderRadius: '50%' }}
-  />
+  <img ref={ref} src={src} alt={alt} style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
 ));
 
-export const IconList = () => {
-  const [modalDetails, setModalDetails] = useState(null);
-
-  const closeModal = () => {
-    setModalDetails(null);
-  };
-
-  export const IconWrapper = ({ icon, label }) => {
+export const IconWrapper = ({ icon, label }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const iconAndLabelRef = useRef(null);
 
@@ -58,7 +46,7 @@ export const IconList = () => {
     };
   }, [modalIsOpen]);
 
-  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" }; // Default if label not found
+  const details = userPopupDetails[label] || { text: "Visit the forum:", url: "https://www.grin.mw" };
 
   return (
     <li className="icon-container px-1 py-1 relative" style={{ marginLeft: '0.5rem', position: 'relative' }}>
@@ -81,3 +69,11 @@ export const IconList = () => {
     </li>
   );
 };
+
+export const IconList = () => (
+  <ul className="icon-list">
+    {icons.map((icon, index) => (
+      <IconWrapper icon={icon} label={icon.label} key={index} />
+    ))}
+  </ul>
+);
