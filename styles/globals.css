@@ -105,7 +105,9 @@ p {
   /* Other styling for the popup here */
 }
 
-
+.icon-list-container {
+  position: relative; /* Make this the reference for the absolute positioning of the modal */
+}
 
 .icon-above-popup {
   z-index: 10000; /* Ensure it appears above the background popup */
@@ -123,6 +125,7 @@ p {
   background-color: rgba(255, 242, 0, 0.5); /* 50% opacity */
   border: 0px solid #ccc;
   border-radius: 10px 0 0 10px; /* Make the right edge square */
+  width: calc(100% - 200px);
 }
 
 .modal-content-container {
